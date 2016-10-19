@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('posts_categories')->insert([
+            'title'             => 'Uncategories',
+            'alias'             => 'uncategories',
+            'created_user_id'    => '1'
+        ]);
     }
 }
