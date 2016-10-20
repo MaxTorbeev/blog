@@ -17,9 +17,9 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('alias');
-            $table->text('introtext')->nullable();
-            $table->text('fulltext');
-            $table->boolean('state')->default(1);
+            $table->text('intro_text')->nullable();
+            $table->text('full_text');
+            $table->boolean('published')->default(1);
             $table->integer('cat_id')->default(1);
             $table->integer('created_user_id');
             $table->integer('modify_user_id')->nullable();
