@@ -10,6 +10,14 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
+                {{ \Illuminate\Support\Facades\Auth::user()->premissions }}
+                @can('edit_forum')
+                    <h1>Can edit_forum</h1>
+                @endcan
+
+                @can('manage_money')
+                <h1>Can manage_money</h1>
+                @endcan
             </div>
         </div>
     </div>

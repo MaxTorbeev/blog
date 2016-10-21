@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use App\Posts\Models\Post;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,21 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        $this->authorize('update', $post);
+
+        return view('posts.show', compact('post'));
+    }
+
     public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function edit()
     {
         return view('posts.create');
     }

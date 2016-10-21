@@ -1,9 +1,6 @@
 
 window._ = require('lodash');
 
-window.swal = require('./vendor/sweetalert.min');
-require('bootstrap-sass');
-
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -11,7 +8,13 @@ require('bootstrap-sass');
  */
 
 window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
+require('bootstrap');
+
+/**
+ * Sweet alert
+ * @link: http://t4t5.github.io/sweetalert/
+ */
+window.swal = require('sweetalert');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

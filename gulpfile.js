@@ -16,7 +16,6 @@ require('laravel-elixir-vue-2');
 elixir(mix => {
     mix.sass('app.scss')
        .webpack(
-           'app.js',
-           'node_modules/sweetalert/dev/sweetalert.es6.js'
+           'app.js'
        )
 });

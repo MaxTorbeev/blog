@@ -21,7 +21,7 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('article_tag', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
 
             $table->integer('post_id')->unsigned()->index();
             $table->foreign('post_id')
