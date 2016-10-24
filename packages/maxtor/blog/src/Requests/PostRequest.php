@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace MaxTor\Blog\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title'     => 'required',
-            'alias'     => 'required',
+            'alias'     => 'required|unique:posts|max:255',
             'full_text' => 'required',
         ];
     }

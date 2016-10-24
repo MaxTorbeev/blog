@@ -25,7 +25,9 @@
         <a class="navbar-brand" href="{{ url('/') }}">MaxTor.name v 2</a>
         <ul class="nav navbar-nav">
             <li class="nav-item active"> <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Блог</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('post.index') }}">Блог</a>
+            </li>
             <li class="nav-item"><a class="nav-link" href="#">Портфолио</a></li>
             @if (Auth::guest())
                 <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
@@ -50,5 +52,8 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+
+    @include('partials.flash')
+
 </body>
 </html>

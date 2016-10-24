@@ -39,7 +39,7 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('App\Posts\Models\Post', 'created_user_id');
+        return $this->hasMany('MaxTor\Blog\Models\Post', 'created_user_id');
     }
 
     public function assingRole(Role $role)

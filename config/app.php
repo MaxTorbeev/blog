@@ -163,13 +163,16 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Collective\Html\HtmlServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
-
+        Collective\Html\HtmlServiceProvider::class,
         //
+
+        /*
+         * MaxTor packages Service Providers...
+         */
+        MaxTor\Blog\BlogServiceProvider::class,
 
         /*
          * Application Service Providers...

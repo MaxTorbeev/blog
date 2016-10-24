@@ -16,7 +16,7 @@
 
 
     {!! Form::model($article = new \App\Posts\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
-    @include ('posts.form', ['submitButtonText' => 'Добавить новый материал' ])
+    @include ('blog::form', ['submitButtonText' => 'Добавить новый материал' ])
     {!! Form::close() !!}
 
 @stop

@@ -1,0 +1,20 @@
+{
+    "name": "maxtor/blog",
+    "description": "Simple blog package for maxtor blog",
+    "keywords": ["laravel", "content", "blog"],
+    "authors": [
+        {
+            "name": "Maxim Torbeev",
+            "email": "mxtsoftprow@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "MaxTor\\Blog\\": "src/"
+        }
+    }
+}

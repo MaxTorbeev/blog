@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1689f86e1202cd21063911de40ae8931",
-    "content-hash": "6ee7593c46cf44120c6335b8ba8de094",
+    "hash": "c6497032f0a407187d5b3ff217277fb7",
+    "content-hash": "757ed484380e592203d40bd3161a76fe",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -490,16 +490,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.31",
+            "version": "1.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "521a233642773505222a5dd53231ccf5b0607d5a"
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/521a233642773505222a5dd53231ccf5b0607d5a",
-                "reference": "521a233642773505222a5dd53231ccf5b0607d5a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
                 "shasum": ""
             },
             "require": {
@@ -569,7 +569,38 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-19 13:15:54"
+            "time": "2016-10-19 20:38:46"
+        },
+        {
+            "name": "maxtor/blog",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./packages/maxtor/blog",
+                "reference": "16815f58be0df8e132acf338b8e107cea15a49a0",
+                "shasum": null
+            },
+            "require": {
+                "illuminate/support": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MaxTor\\Blog\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Maxim Torbeev",
+                    "email": "mxtsoftprow@yandex.ru"
+                }
+            ],
+            "description": "Simple blog package for maxtor blog",
+            "keywords": [
+                "blog",
+                "content",
+                "laravel"
+            ]
         },
         {
             "name": "monolog/monolog",
@@ -3494,7 +3525,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "maxtor/blog": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

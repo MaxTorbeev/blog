@@ -10,7 +10,7 @@
         </div>
 
         <div class="entry-content">
-            {{ $post->full_text }}
+            {!! $post->full_text !!}
         </div>
     </div>
 @stop
