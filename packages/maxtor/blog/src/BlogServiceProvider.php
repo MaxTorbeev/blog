@@ -43,20 +43,4 @@ class BlogServiceProvider extends ServiceProvider
         //
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @param  \Illuminate\Routing\Router $router
-     * @return void
-     */
-    protected function mapWebRoutes(Router $router)
-    {
-//        $router->group([
-//            'namespace' => $this->namespace, 'middleware' => 'web',
-//        ], function ($router) {
-//            require __DIR__.'/routes.php';
-//        });
-    }
 }

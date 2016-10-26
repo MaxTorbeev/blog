@@ -32,7 +32,8 @@ class BlogCommand extends Command {
     {
         $this->info('Welcome to MaxTor Blog Installations');
         $this->call('vendor:publish');
-        $this->call('migrate', array('--path' => 'vendor/maxtor/blog/src/database/migrations'));
+        $this->call('migrate', ['--path' => 'vendor/maxtor/blog/src/database/migrations']);
+        $this->call('db:seed', ['--path' => 'vendor/maxtor/blog/src/database/seeds']);
     }
 
     /**

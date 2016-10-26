@@ -5,7 +5,7 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "bootstrap": "4.0.0-alpha",
+    "bootstrap": "4.0.0-alpha.5",
     "dropzone": "latest",
     "gulp": "^3.9.1",
     "jquery": "^3.1.0",

@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxTor\Core\Commands;
+namespace MaxTor\MXTCore\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,7 +32,7 @@ class MXTCoreCommand extends Command {
     {
         $this->info('Welcome to MXTCore Installations');
         $this->call('vendor:publish');
-        $this->call('migrate', array('--path' => 'vendor/maxtor/mxtcore/src/database/migrations'));
+        $this->call('migrate', ['--path' => 'vendor/maxtor/mxtcore/src/database/migrations']);
     }
 
     /**

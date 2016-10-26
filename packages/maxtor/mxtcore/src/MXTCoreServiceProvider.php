@@ -16,6 +16,12 @@ class MXTCoreServiceProvider extends ServiceProvider
     {
         include_once __DIR__ . "/Commands/Command.php";
 
+        $this->app['mxtcore::install'] = $this->app->share(function () {
+            return new \MaxTor\MXTCore\Commands\MXTCoreCommand();
+        });
+        
+        $this->commands('mxtcore::install');
+
         $this->loadViewsFrom(__DIR__.'./views', 'mxtcore');
 
         $this->publishes([
