@@ -11,10 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts_categories')->insert([
-            'title'             => 'Uncategories',
-            'alias'             => 'uncategories',
-            'created_user_id'    => '1'
-        ]);
+//        $this->call(\MainMenuTypeTableSeeder::class);
+        $this->call(\ExtensionsTableSeeder::class);
+//        DB::table('posts_categories')->insert([
+//            'title'             => 'Uncategories',
+//            'alias'             => 'uncategories',
+//            'created_user_id'    => '1'
+//        ]);
     }
 }

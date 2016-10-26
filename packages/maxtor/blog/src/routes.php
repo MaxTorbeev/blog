@@ -1,5 +1,6 @@
 <?php
 
+
 Route::group([
     'prefix' => '/',
     'namespace' => 'MaxTor\Blog\Controllers',
@@ -16,5 +17,10 @@ Route::group([
             ]
         ]
     );
+
+    Route::post('posts/{alias}/photos', [
+        'as' => 'store_photo_path',
+        'uses' => 'PostsController@addPhoto'
+    ]);
 
 });

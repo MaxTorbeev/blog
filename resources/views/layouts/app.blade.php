@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="{{ config('mxtcore.baseUrl') }}" target="_top">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="{{ config('mxtcore.keywords') }}">
+    <meta name="description" content="{{ config('mxtcore.description') }}">
+    <meta name="generator" content="{{ config('mxtcore.generator') }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('mxtcore.title', 'MaxTor blog') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+        window.Laravel = <?php echo json_encode([ 'csrfToken' => csrf_token(), ]); ?>
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-faded" role="navigator">
+    <nav class="navbar navbar-light bg-faded">
         <a class="navbar-brand" href="{{ url('/') }}">MaxTor.name v 2</a>
         <ul class="nav navbar-nav">
             <li class="nav-item active"> <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a></li>
@@ -52,6 +53,8 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+
+    @yield('scripts.footer')
 
     @include('partials.flash')
 

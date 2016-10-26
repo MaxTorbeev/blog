@@ -1,0 +1,24 @@
+.form{
+    &-table{
+        display: table;
+
+        .input-group-addon{
+            display: block;
+            width: 100%;
+        }
+
+        input,
+        .btn,
+        .input-group-addon,
+        select{
+            border-radius: 0;
+        }
+
+        .tr{
+            display: table-row;
+        }
+        .td{
+            display: table-cell;
+        }
+    }
+}

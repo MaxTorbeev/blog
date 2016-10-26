@@ -2,19 +2,58 @@
 
 namespace MaxTor\Blog\Models;
 
+use Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 
 class Photo extends Model
 {
-    protected $table = 'post_photos';
+    protected $table = 'posts_photos';
+
+    protected $baseDir = 'images/posts';
 
     protected $fillable = [
         'filename',
-        'path'
+        'path',
+        'original_name'
     ];
 
     public function posts()
     {
-        return $this->belongsTo('App\Posts\Models\Post');
+        return $this->belongsTo('MaxTor\Blog\Models\Post');
+    }
+
+    /**
+     *
+     * (new static) === $photo = new static;
+     * @param string $filename
+     * @return mixed
+     */
+    public static function named($filename)
+    {
+        return (new static)->saveAs($filename);
+    }
+
+    protected function saveAs($filename)
+    {
+        $this->filename = time();
+        $this->path = sprintf("%s/%s", $this->baseDir, $this->filename);
+        $this->thumbnail_path = sprintf("%s/tn-%s", $this->baseDir, $this->filename);
+        $this->original_name = $this->filename;
+
+        return $this;
+    }
+
+    public function move(UploadedFile $file)
+    {
+        $file->move($this->baseDir, $this->filename);
+        $this->makeThumbnail();
+
+        return $this;
+    }
+
+    protected function makeThumbnail()
+    {
+        Image::make($this->path)->fit(200)->save($this->thumbnail_path);
     }
 }

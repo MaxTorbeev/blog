@@ -1,0 +1,12 @@
+.sidebar{
+    margin-top: 20px;
+    &_menu{
+        margin-left: -40px;
+        li{
+            display: block;
+            a{
+                color: white;
+            }
+        }
+    }
+}

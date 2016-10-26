@@ -15,6 +15,8 @@ class BlogServiceProvider extends ServiceProvider
     {
         include_once __DIR__ . "/Commands/Command.php";
 
+        $this->app->register('MaxTor\MXTCore\MXTCoreServiceProvider');
+
         $this->app['blog::install'] = $this->app->share(function () {
             return new \MaxTor\Blog\Commands\BlogCommand();
         });

@@ -1,0 +1,20 @@
+{
+    "name": "maxtor/mxtcore",
+    "description": "App core for maxtor blog",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxim Torbeev",
+            "email": "mxtsoftprow@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "intervention/image": "2.x"
+    },
+    "autoload": {
+        "psr-4": {
+            "MaxTor\\MXTCore\\": "src/"
+        }
+    }
+}

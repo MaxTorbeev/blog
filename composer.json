@@ -8,7 +8,9 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.*",
-        "maxtor/blog": "dev-master"
+        "intervention/image": "2.x",
+        "maxtor/blog": "dev-master",
+        "maxtor/mxtcore": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -21,6 +23,10 @@
         {
             "type": "path",
             "url": "./packages/maxtor/blog/"
+        },
+        {
+            "type": "path",
+            "url": "./packages/maxtor/mxtcore/"
         }
     ],
     "autoload": {

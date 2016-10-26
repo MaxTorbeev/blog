@@ -33,9 +33,14 @@ class Post extends Model
      */
     public function scopeLocatedAt($query, $alias)
     {
-        $alias = str_replace('-', ' ', $alias);
+        $alias = rusToLat(str_replace('-', ' ', $alias));
 
         return $query->where(compact('alias'));
+    }
+
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
     }
 
     /**
@@ -45,7 +50,7 @@ class Post extends Model
      */
     public function photos()
     {
-        return $this->hasMany('App\Posts\Models\Photo');
+        return $this->hasMany('MaxTor\Blog\Models\Photo');
     }
 
     /**
@@ -57,6 +62,6 @@ class Post extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'created_user_id');
     }
 }

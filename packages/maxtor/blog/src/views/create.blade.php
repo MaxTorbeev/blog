@@ -15,7 +15,7 @@
     @endif
 
 
-    {!! Form::model($article = new \App\Posts\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
+    {!! Form::model($post = new \MaxTor\Blog\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
     @include ('blog::form', ['submitButtonText' => 'Добавить новый материал' ])
     {!! Form::close() !!}
 

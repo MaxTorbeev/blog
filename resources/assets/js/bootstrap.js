@@ -19,6 +19,12 @@ require('bootstrap');
 window.swal = require('sweetalert');
 
 /**
+ * Dropzone js
+ * @link: http://dropzonejs.com/
+ */
+window.Dropzone = require("./components/dropzone/dropzone");
+
+/**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
  * and simple, leaving you to focus on building your next great project.
