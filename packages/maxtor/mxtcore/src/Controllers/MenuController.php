@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use MaxTor\MXTCore\Models\Extension;
+use MaxTor\MXTCore\Models\Menu;
 
-class ExtensionsController extends Controller
+class MenuController extends Controller
 {
     public function index()
     {
@@ -24,11 +25,11 @@ class ExtensionsController extends Controller
 
         return redirect()->back();
     }
-    
+
     public function dashboard()
     {
-        $extensions = Extension::all();
+        $menu = Menu::get();
 
-        return view('mxtcore::dashboard.extensions.index', compact('extensions'));
+        return view('mxtcore::dashboard.menu.index', compact('menu'));
     }
 }

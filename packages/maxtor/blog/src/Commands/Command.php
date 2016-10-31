@@ -5,6 +5,7 @@ namespace MaxTor\Blog\Commands;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use MaxTor\Blog\Seeds\DatabaseSeeder;
 
 class BlogCommand extends Command {
 
@@ -30,10 +31,13 @@ class BlogCommand extends Command {
 
     public function fire()
     {
+//        $this->call('mxtcore:install');
+
         $this->info('Welcome to MaxTor Blog Installations');
-        $this->call('vendor:publish');
-        $this->call('migrate', ['--path' => 'vendor/maxtor/blog/src/database/migrations']);
-        $this->call('db:seed', ['--path' => 'vendor/maxtor/blog/src/database/seeds']);
+//        $this->call('vendor:publish');
+        $this->call('migrate:refresh', ['--path'    => 'vendor/maxtor/blog/src/database/migrations']);
+        
+//        $this->call('db:seed', ['--class'   => 'DatabaseSeeder' ]);
     }
 
     /**

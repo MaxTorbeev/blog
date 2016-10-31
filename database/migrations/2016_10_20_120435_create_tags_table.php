@@ -24,6 +24,7 @@ class CreateTagsTable extends Migration
         Schema::create('post_tag', function (Blueprint $table) {
 
             $table->integer('post_id')->unsigned()->index();
+            
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
@@ -49,7 +50,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('article_tag');
+        Schema::drop('post_tag');
         Schema::drop('tags');
     }
 }

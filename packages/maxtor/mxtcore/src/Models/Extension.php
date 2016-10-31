@@ -18,4 +18,11 @@ class Extension extends Model
     {
         return $this->belongsTo('MaxTor\MXTCore\Models\Menu', 'alias');
     }
+    
+    public function controllerName()
+    {
+        $controllerPath = explode('\\', $this->controller_path);
+        
+        return end($controllerPath);
+    }
 }

@@ -52,6 +52,13 @@ class PostsController extends Controller
 
         return redirect()->back();
     }
+    
+    public function dashboard()
+    {
+        $posts = Post::get();
+
+        return view('blog::dashboard.index', compact('posts'));
+    }
 
     public function addPhoto($alias, Request $request)
     {

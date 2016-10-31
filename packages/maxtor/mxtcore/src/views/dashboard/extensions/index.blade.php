@@ -12,9 +12,9 @@
                     {!! Form::input('text', 'name', $extension->name, ['class'=>'form-control' ]) !!}
                 </div>
 
-                <span class="input-group-addon">namespace:</span>
+                <span class="input-group-addon">controller path:</span>
                 <div class="td">
-                    {!! Form::input('namespace', 'namespace', $extension->namespace, ['class'=>'form-control' ]) !!}
+                    {!! Form::input('controller_path', 'controller_path', $extension->controller_path, ['class'=>'form-control' ]) !!}
                 </div>
 
                 <div class="td">

@@ -35,7 +35,7 @@ class CreateMenuTable extends Migration
             $table->increments('id');
             $table->string('menu_type');
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
         });

@@ -16,9 +16,10 @@ class CreateExtensionsTable extends Migration
         Schema::create('extensions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('namespace');
+            $table->string('controller_path');
             $table->boolean('enabled')->default(0);
             $table->timestamps();
+
         });
     }
 

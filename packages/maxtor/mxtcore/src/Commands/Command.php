@@ -5,6 +5,7 @@ namespace MaxTor\MXTCore\Commands;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use MaxTor\MXTCore\Seeder\ExtensionsTableSeeder;
 
 class MXTCoreCommand extends Command {
 
@@ -31,8 +32,11 @@ class MXTCoreCommand extends Command {
     public function fire()
     {
         $this->info('Welcome to MXTCore Installations');
-        $this->call('vendor:publish');
-        $this->call('migrate', ['--path' => 'vendor/maxtor/mxtcore/src/database/migrations']);
+//        $this->call('vendor:publish');
+        $this->call('migrate:refresh', ['--path' => 'vendor/maxtor/mxtcore/src/database/migrations']);
+        $this->info(class_exists('MaxTor\MXTCore\Seeder\DatabaseSeeder'));
+        $this->call('db:seed', ['--class'   => 'ExtensionsTableSeeder']);
+
     }
 
     /**
