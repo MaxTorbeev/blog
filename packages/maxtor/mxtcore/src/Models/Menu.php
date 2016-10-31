@@ -33,4 +33,9 @@ class Menu extends Model
     {
         return $this->belongsTo('MaxTor\MXTCore\Models\Extension', 'extensions_id');
     }
+
+    public function parent()
+    {
+        return $this->belongsTo('MaxTor\MXTCore\Models\Menu', 'parent_id');
+    }
 }

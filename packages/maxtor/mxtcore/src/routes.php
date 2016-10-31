@@ -17,5 +17,6 @@ Route::group([
     ]);
 
     Route::resource('/extensions', 'ExtensionsController');
+    Route::resource('/menu', 'MenuController');
 
 });

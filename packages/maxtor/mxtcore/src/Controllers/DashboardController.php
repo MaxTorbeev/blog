@@ -17,7 +17,6 @@ class DashboardController extends Controller
 
     public function dashboard($alias)
     {
-        dd($alias);
         $page = Menu::whereAlias($alias)->firstOrFail();
 
         return view('mxtcore::dashboard.index', compact('page'));
@@ -39,6 +38,7 @@ class DashboardController extends Controller
         }
 
         $control = $controller->callAction($method, ['entity' => $extension->controllerName()]);
+
 
         return $control;
     }

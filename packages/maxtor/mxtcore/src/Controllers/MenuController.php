@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use MaxTor\MXTCore\Models\Extension;
 use MaxTor\MXTCore\Models\Menu;
+use MaxTor\MXTCore\Models\MenuType;
 
 class MenuController extends Controller
 {
@@ -20,16 +21,26 @@ class MenuController extends Controller
 
     public function update($id, Request $request)
     {
-        $extension = Extension::whereId($id)->firstOrFail();
-        $extension->update($request->all());
+        $menu = Menu::whereId($id)->firstOrFail();
+        $menu->update($request->all());
 
         return redirect()->back();
     }
 
     public function dashboard()
     {
-        $menu = Menu::get();
+        $menu = Menu::all();
+        $extensions = Extension::pluck('name', 'id');
+        $menuTypes = MenuType::pluck('title', 'id');
 
-        return view('mxtcore::dashboard.menu.index', compact('menu'));
+        return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes'));
     }
+
+    public function addMenuType()
+    {
+
+        return 'menu types';
+
+    }
+
 }

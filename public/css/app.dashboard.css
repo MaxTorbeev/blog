@@ -5263,7 +5263,12 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
     display: none !important; } }
 
 .form-table {
-  display: table; }
+  display: table;
+  margin-bottom: 1rem; }
+  .form-table select.form-control-sm, .form-table .input-group-sm > select.form-control, .form-table
+  .input-group-sm > select.input-group-addon, .form-table
+  .input-group-sm > .input-group-btn > select.btn {
+    height: 1.7rem !important; }
   .form-table .input-group-addon {
     display: block;
     width: 100%; }
@@ -5275,7 +5280,12 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .form-table .tr {
     display: table-row; }
   .form-table .td {
-    display: table-cell; }
+    display: table-cell;
+    vertical-align: top; }
+
+.input-group-addon-sm {
+  padding: 0.28em;
+  font-size: 0.875rem; }
 
 .dashboard {
   height: 100%; }

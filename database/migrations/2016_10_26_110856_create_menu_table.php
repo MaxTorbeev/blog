@@ -17,7 +17,7 @@ class CreateMenuTable extends Migration
             $table->increments('id');
             $table->integer('menu_type_id')->unsigned();
             $table->integer('extensions_id')->default(0)->unsigned();
-            $table->integer('parent_id')->default(0);
+            $table->integer('parent_id')->default(1);
             $table->integer('level')->default(0);
             $table->string('title');
             $table->string('alias');

@@ -16,12 +16,18 @@ class ExtensionsTableSeeder extends Seeder
                 'id'                => '1',
                 'name'              => 'extensions',
                 'controller_path'   => 'MaxTor\MXTCore\Controllers\ExtensionsController'
-            ],
+            ]
+        );
+
+        DB::table('extensions')->insert(
             [
                 'id'                => '2',
                 'name'              => 'dashboard',
                 'controller_path'   => 'MaxTor\MXTCore\Controllers\DashboardController'
-            ],
+            ]
+        );
+
+        DB::table('extensions')->insert(
             [
                 'id'                => '3',
                 'name'              => 'menu',
