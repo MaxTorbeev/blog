@@ -27,19 +27,20 @@ class MenuController extends Controller
         return redirect()->back();
     }
 
-    public function dashboard()
+    public function dashboard($controller, $page)
     {
         $menu = Menu::all();
         $extensions = Extension::pluck('name', 'id');
         $menuTypes = MenuType::pluck('title', 'id');
 
-        return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes'));
+        return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes', 'page'));
     }
 
     public function addMenuType()
     {
+        $menuTypes = MenuType::all();
 
-        return 'menu types';
+        return view('mxtcore::dashboard.menu.menu-types.create', compact('menuTypes'));
 
     }
 

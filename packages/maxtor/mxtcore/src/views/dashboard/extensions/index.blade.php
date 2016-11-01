@@ -1,7 +1,7 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-    <h1>Расширения</h1>
+    <h1>{{ $page->title }}</h1>
     <hr>
     @foreach($extensions as $extension)
         {!! Form::model($extension, ['metod' => 'PATCH',  'url' => route('extensions.update', ['id' => $extension->id]), 'class' => 'form-table input-group']) !!}

@@ -15,10 +15,8 @@ class DashboardController extends Controller
        return redirect('admin/dashboard');
     }
 
-    public function dashboard($alias)
+    public function dashboard($controller, $page)
     {
-        $page = Menu::whereAlias($alias)->firstOrFail();
-
         return view('mxtcore::dashboard.index', compact('page'));
     }
 
@@ -37,8 +35,7 @@ class DashboardController extends Controller
             throw new \Exception('Can not found the ' . $extension->controller_path);
         }
 
-        $control = $controller->callAction($method, ['entity' => $extension->controllerName()]);
-
+        $control = $controller->callAction($method, ['entity' => $extension->controllerName(), 'page' => $page]);
 
         return $control;
     }

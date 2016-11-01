@@ -25,10 +25,10 @@ class ExtensionsController extends Controller
         return redirect()->back();
     }
     
-    public function dashboard()
+    public function dashboard($controller, $page)
     {
         $extensions = Extension::all();
 
-        return view('mxtcore::dashboard.extensions.index', compact('extensions'));
+        return view('mxtcore::dashboard.extensions.index', compact('extensions', 'page'));
     }
 }

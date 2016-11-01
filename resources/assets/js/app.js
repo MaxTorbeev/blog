@@ -13,8 +13,38 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
-//const app = new Vue({
-//    el: '#app'
+//Vue.component('menuTypes', require('./components/dashboard/menu/menuTypes.vue'));
+//Vue.component('menuTypes', {
+//    template: '#menu-types',
+//    props: ['list']
 //});
+//
+
+Vue.component('counter', {
+
+    template: '#counter-template',
+
+    props: ['subject'],
+
+    data: function() {
+        return {
+            count: 0
+        }
+    }
+
+});
+
+new Vue({
+    el: '#app',
+
+    methods: {
+        data: {
+            count: 0
+        },
+
+        handleIt: function() {
+            console.log('Handled');
+        }
+    }
+
+});
