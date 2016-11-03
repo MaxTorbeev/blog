@@ -15,9 +15,14 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component ready.')
+    new Vue({
+        el: '#app',
+        data: {
+            tasks: [
+                'Go to the store',
+                'Go to the bank',
+                'Go to the doctor'
+            ]
         }
-    }
+    });
 </script>

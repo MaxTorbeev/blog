@@ -60,7 +60,7 @@ class MXTCoreServiceProvider extends ServiceProvider
 
             $dashboard = MenuType::whereMenuType('dashboard')->firstOrFail();
 
-            $view->with('dashboardMenu', $dashboard->menu()->get());
+            $view->with('dashboardMenu', $dashboard->menu()->whereNull('parent_id')->get());
 
         });
     }

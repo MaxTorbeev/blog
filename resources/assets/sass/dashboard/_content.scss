@@ -1,0 +1,12 @@
+.content{
+    &_pageHeader{
+        color: $gray_70;
+        font-size: 1.8rem;
+    }
+    &_topBar{
+        padding: 15px 0;
+        margin-bottom: 1em;
+        border-bottom: 1px solid $gray-blue_10;
+    }
+
+}

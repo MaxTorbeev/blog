@@ -1,10 +1,10 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-    <h1>{{ $page->title }}</h1>
-    <hr>
+    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'create']) }}" class="btn btn-success">Добавить расширение</a>
+
     @foreach($extensions as $extension)
-        {!! Form::model($extension, ['metod' => 'PATCH',  'url' => route('extensions.update', ['id' => $extension->id]), 'class' => 'form-table input-group']) !!}
+        {!! Form::model($extension, ['method' => 'PATCH',  'url' => route('extensions.update', ['id' => $extension->id]), 'class' => 'form-table input-group']) !!}
             <input type="hidden" name="_method" value="PATCH">
             <div class="tr">
                 <span class="input-group-addon">id:{{ $extension->id }}:</span>

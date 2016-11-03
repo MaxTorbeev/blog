@@ -3,10 +3,9 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-    <h1>{{ $page->title }}</h1>
-    <hr>
-        <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'addMenuItem']) }}" class="btn btn-success">Добавить пункт меню</a>
-        <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'addMenuType']) }}" class="btn btn-outline-success">Добавить новый тип меню</a>
+
+    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'createmenuitem']) }}" class="btn btn-success">Добавить пункт меню</a>
+    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'createMenuType']) }}" class="btn btn-outline-success">Добавить новый тип меню</a>
     @foreach($menu as $item)
         @if($menuType != $item->menuType->title)
         <h4>{{ $item->menuType->title }}</h4>

@@ -1,14 +1,12 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-
+    <style>
+        .completed{
+            text-decoration: underline;
+        }
+    </style>
     <div id="app">
-        <counter subject="Likes"></counter>
-        <counter subject="Dislikes"></counter>
+        <menu-items></menu-items>
     </div>
-
-    <template id="counter-template">
-        <button @click="count += 1">@{{ subject }}: @{{ count }}</button>
-    </template>
-
 @endsection

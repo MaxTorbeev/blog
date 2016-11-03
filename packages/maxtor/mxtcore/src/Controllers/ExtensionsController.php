@@ -31,4 +31,20 @@ class ExtensionsController extends Controller
 
         return view('mxtcore::dashboard.extensions.index', compact('extensions', 'page'));
     }
+
+    public function create()
+    {
+        $extension = new Extension();
+
+        return view('mxtcore::dashboard.extensions.create', compact('extension'));
+    }
+
+    public function store(Request $request)
+    {
+//        dd($request->all());
+        $extension = new Extension();
+        $extension->save($request->all());
+
+        return redirect()->back();
+    }
 }

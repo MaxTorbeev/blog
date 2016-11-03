@@ -30,7 +30,18 @@
         </aside>
 
         <main class="col-lg-10 col-md-9 dashboard_main">
-            @yield('content')
+            <div class="content">
+                <div class="content_topBar">
+                    <h1 class="content_pageHeader">
+                        @if( !empty($page->title) )
+                            {{ $page->title }}
+                        @endif
+                    </h1>
+                </div>
+                <div class="content_main">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 

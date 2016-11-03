@@ -11,7 +11,7 @@ Route::group([
         'uses'  => 'DashboardController@index'
     ]);
 
-    Route::get('/{alias}/{method?}', [
+    Route::get('/{alias?}/{method?}', [
         'as'    => 'dashboard.components',
         'uses'  => 'DashboardController@loadComponents'
     ]);

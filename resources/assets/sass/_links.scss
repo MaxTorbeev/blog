@@ -1,4 +1,12 @@
-$get-path-to-assets : "./../../../node_modules/bootstrap/scss/";
+@import "colors/blue-light";
+@import "colors/cyan";
+@import "colors/gray";
+@import "colors/gray-blue";
+@import "colors/green";
+@import "colors/orange";
+@import "colors/red";
+@import "colors/social-networks";
+@import "colors/yellow";
 
 // Core variables and mixins
 @import "../../../node_modules/bootstrap/scss/custom";

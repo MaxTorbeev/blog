@@ -1,13 +1,13 @@
 
 <div class="row">
     <div class="col-md-8">
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group {{ $errors->has('alias') ? ' has-error' : '' }}">
             {!! Form::label('title', 'Title:') !!}
             {!! Form::text('title', null, ['class'=>'form-control']) !!}
         </div>
     </div>
     <div class="col-md-4">
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group {{ $errors->has('alias') ? ' has-error' : '' }}">
             {!! Form::label('alias', 'Алиас:') !!}
             {!! Form::text('alias', null, ['class'=>'form-control']) !!}
         </div>

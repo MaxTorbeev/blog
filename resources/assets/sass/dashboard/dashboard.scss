@@ -1,12 +1,19 @@
 .dashboard {
     height: 100%;
+    @include gradient-y($blue-light_70, $blue-light_90);
+
     &_row,
     &_container {
         height: 100%;
     }
+    &_container{
+        background-color: white;
+    }
     &_aside {
+        padding: 0 !important;
+        margin: 0 !important;
         flex: 1;
-        background-color: $gray;
+        background-color: $gray-blue_90;
         color: white;
     }
 
@@ -16,3 +23,5 @@
 }
 
 @import "sidebar";
+
+@import "content";

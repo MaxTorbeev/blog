@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -13,38 +12,12 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-//Vue.component('menuTypes', require('./components/dashboard/menu/menuTypes.vue'));
-//Vue.component('menuTypes', {
-//    template: '#menu-types',
-//    props: ['list']
-//});
-//
 
-Vue.component('counter', {
+//Vue.component('tasks', require('./components/Tasks.vue'));
+Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
 
-    template: '#counter-template',
-
-    props: ['subject'],
-
-    data: function() {
-        return {
-            count: 0
-        }
-    }
-
-});
 
 new Vue({
-    el: '#app',
-
-    methods: {
-        data: {
-            count: 0
-        },
-
-        handleIt: function() {
-            console.log('Handled');
-        }
-    }
-
+    el: '#app'
 });
+

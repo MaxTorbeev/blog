@@ -11,8 +11,19 @@ class Menu extends Model
     protected $fillable = [
         'title',
         'alias',
-        'extensions_id'
+        'menu_type_id',
+        'extensions_id',
+        'parent_id',
+        'image',
+        'published',
     ];
+
+    public function getControllerAttribute()
+    {
+        $controllerArr = explode('\\', $this->extension()->first()->controller_path);
+
+        return end($controllerArr);
+    }
 
     /**
      * Menu type by menu item
@@ -37,5 +48,10 @@ class Menu extends Model
     public function parent()
     {
         return $this->belongsTo('MaxTor\MXTCore\Models\Menu', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('MaxTor\MXTCore\Models\Menu', 'parent_id');
     }
 }

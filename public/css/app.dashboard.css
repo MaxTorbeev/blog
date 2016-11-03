@@ -5287,28 +5287,6 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   padding: 0.28em;
   font-size: 0.875rem; }
 
-.dashboard {
-  height: 100%; }
-  .dashboard_row, .dashboard_container {
-    height: 100%; }
-  .dashboard_aside {
-    -webkit-box-flex: 1;
-    flex: 1;
-    background-color: #55595c;
-    color: white; }
-  .dashboard_main {
-    -webkit-box-flex: 1;
-    flex: 1; }
-
-.sidebar {
-  margin-top: 20px; }
-  .sidebar_menu {
-    margin-left: -40px; }
-    .sidebar_menu li {
-      display: block; }
-      .sidebar_menu li a {
-        color: white; }
-
 body.stop-scrolling {
   height: 100%;
   overflow: hidden; }
@@ -6305,5 +6283,67 @@ body.stop-scrolling {
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-bottom: 6px solid #be2626; }
+
+.dashboard {
+  height: 100%;
+  background-image: -webkit-linear-gradient(top, #0288D1 0%, #01579B 100%);
+  background-image: linear-gradient(to bottom, #0288D1 0%, #01579B 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0288D1', endColorstr='#FF01579B', GradientType=0); }
+  .dashboard_row, .dashboard_container {
+    height: 100%; }
+  .dashboard_container {
+    background-color: white; }
+  .dashboard_aside {
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-box-flex: 1;
+    flex: 1;
+    background-color: #263238;
+    color: white; }
+  .dashboard_main {
+    -webkit-box-flex: 1;
+    flex: 1; }
+
+.sidebar_logo {
+  background-color: #37474F;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  padding: 15px; }
+
+.sidebar_menu {
+  margin-left: -40px; }
+  .sidebar_menu > li {
+    display: block; }
+    .sidebar_menu > li:nth-child(2n) {
+      background-color: #222c31; }
+    .sidebar_menu > li a {
+      display: block;
+      padding: 5px 15px;
+      color: white;
+      opacity: .8; }
+      .sidebar_menu > li a:hover {
+        text-decoration: none;
+        opacity: 1; }
+    .sidebar_menu > li ul > li {
+      border-left: 2px solid #03A9F4;
+      margin-left: -40px;
+      display: block; }
+      .sidebar_menu > li ul > li a {
+        padding-left: 20px; }
+      .sidebar_menu > li ul > li > ul {
+        margin-left: 20px; }
+        .sidebar_menu > li ul > li > ul li {
+          border-left: 2px solid #039BE5;
+          display: block; }
+
+.content_pageHeader {
+  color: #616161;
+  font-size: 1.8rem; }
+
+.content_topBar {
+  padding: 15px 0;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #CFD8DC; }
 
 /*# sourceMappingURL=app.dashboard.css.map */

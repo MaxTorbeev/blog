@@ -10,8 +10,8 @@ class Extension extends Model
 
     protected $fillable = [
         'name',
-        'namespace',
-        'original_name'
+        'controller_path',
+        'enabled',
     ];
 
     public function getTypeByMenuAlias()

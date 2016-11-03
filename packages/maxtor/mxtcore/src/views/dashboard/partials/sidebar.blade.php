@@ -3,8 +3,6 @@
         MXTCore
     </div>
     <ul class="sidebar_menu">
-        @foreach($dashboardMenu as $item)
-        <li><a href="{{ route('dashboard.components', ['alias' => $item->alias]) }}">{{ $item->title }}</a></li>
-        @endforeach
+        @each('mxtcore::dashboard.partials.sidebar.menu', $dashboardMenu, 'item', '')
     </ul>
 </nav>
