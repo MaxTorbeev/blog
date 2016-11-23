@@ -1,13 +1,13 @@
 
 <div class="row">
     <div class="col-md-8">
-        <div class="form-group {{ $errors->has('alias') ? ' has-error' : '' }}">
+        <div class="form-group">
             {!! Form::label('title', 'Title:') !!}
             {!! Form::text('title', null, ['class'=>'form-control']) !!}
         </div>
     </div>
     <div class="col-md-4">
-        <div class="form-group {{ $errors->has('alias') ? ' has-error' : '' }}">
+        <div class="form-group">
             {!! Form::label('alias', 'Алиас:') !!}
             {!! Form::text('alias', null, ['class'=>'form-control']) !!}
         </div>
@@ -17,18 +17,18 @@
 
 <div class="row">
     <div class="col-sm-8">
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group">
             {!! Form::label('intro_text', 'Вводный текст:') !!}
             {!! Form::textarea('intro_text', null, ['class'=>'form-control', 'rows'=>'3', ]) !!}
         </div>
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group">
             {!! Form::label('full_text', 'Полный текст:') !!}
             {!! Form::textarea('full_text', null, ['class'=>'form-control', 'id'=>'editor']) !!}
         </div>
     </div>
     <div class="col-sm-4">
 
-        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group">
             {!! Form::label('published', 'Опубликовано:') !!}
             {!! Form::select('published', array('0' => 'Нет', '1' => 'Да'), null, ['class'=>'form-control select']) !!}
         </div>

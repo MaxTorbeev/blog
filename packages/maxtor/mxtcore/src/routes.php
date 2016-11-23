@@ -3,7 +3,7 @@
 Route::group([
     'prefix' => '/admin',
     'namespace' => 'MaxTor\MXTCore\Controllers',
-    'middleware' => 'web'
+    'middleware' => 'auth.basic'
 ], function() {
 
     Route::get('/', [

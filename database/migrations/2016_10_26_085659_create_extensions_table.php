@@ -17,9 +17,9 @@ class CreateExtensionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('controller_path');
+            $table->integer('created_user_id');
             $table->boolean('enabled')->default(0);
             $table->timestamps();
-
         });
     }
 

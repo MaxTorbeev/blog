@@ -15,7 +15,8 @@ class ExtensionsTableSeeder extends Seeder
             [
                 'id'                => '1',
                 'name'              => 'extensions',
-                'controller_path'   => 'MaxTor\MXTCore\Controllers\ExtensionsController'
+                'controller_path'   => 'MaxTor\MXTCore\Controllers\ExtensionsController',
+                'created_user_id'   => '1'
             ]
         );
 
@@ -23,7 +24,8 @@ class ExtensionsTableSeeder extends Seeder
             [
                 'id'                => '2',
                 'name'              => 'dashboard',
-                'controller_path'   => 'MaxTor\MXTCore\Controllers\DashboardController'
+                'controller_path'   => 'MaxTor\MXTCore\Controllers\DashboardController',
+                'created_user_id'   => '1'
             ]
         );
 
@@ -31,7 +33,8 @@ class ExtensionsTableSeeder extends Seeder
             [
                 'id'                => '3',
                 'name'              => 'menu',
-                'controller_path'   => 'MaxTor\MXTCore\Controllers\MenuController'
+                'controller_path'   => 'MaxTor\MXTCore\Controllers\MenuController',
+                'created_user_id'   => '1'
             ]
         );
     }

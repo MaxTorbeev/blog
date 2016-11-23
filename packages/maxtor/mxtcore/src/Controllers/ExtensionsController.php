@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use MaxTor\MXTCore\Models\Extension;
+use MaxTor\MXTCore\Requests\ExtensionsRequests;
 
 class ExtensionsController extends Controller
 {
@@ -39,11 +41,9 @@ class ExtensionsController extends Controller
         return view('mxtcore::dashboard.extensions.create', compact('extension'));
     }
 
-    public function store(Request $request)
+    public function store(ExtensionsRequests $request)
     {
-//        dd($request->all());
-        $extension = new Extension();
-        $extension->save($request->all());
+        Auth::user()->extensions()->create($request->all());
 
         return redirect()->back();
     }

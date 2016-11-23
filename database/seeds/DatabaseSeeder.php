@@ -11,8 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(\ExtensionsTableSeeder::class);
-        $this->call(\MainMenuTypeTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(ExtensionsTableSeeder::class);
+        $this->call(MainMenuTypeTableSeeder::class);
 
         DB::table('posts_categories')->insert([
             'title'             => 'Uncategories',

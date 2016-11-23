@@ -42,6 +42,15 @@ class User extends Authenticatable
         return $this->hasMany('MaxTor\Blog\Models\Post', 'created_user_id');
     }
 
+    /**
+     * A user can have many posts
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function extensions()
+    {
+        return $this->hasMany('MaxTor\MXTCore\Models\Extension', 'created_user_id');
+    }
+
     public function assingRole(Role $role)
     {
         return $this->roles()->save(
