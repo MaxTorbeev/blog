@@ -43,6 +43,15 @@ class User extends Authenticatable
     }
 
     /**
+     * A user can have many categories
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function categories()
+    {
+        return $this->hasMany('MaxTor\Blog\Models\Category', 'created_user_id');
+    }
+
+    /**
      * A user can have many posts
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Auth;
 use MaxTor\Blog\Models\Category;
 use MaxTor\Blog\Models\Photo;
 use MaxTor\Blog\Models\Post;
+use MaxTor\Blog\Requests\CategoryRequest;
 use MaxTor\Blog\Requests\PostRequest;
 
-class PostsController extends Controller
+class CategoriesController extends Controller
 {
     public function __construct()
     {
@@ -36,43 +37,40 @@ class PostsController extends Controller
         return view('blog::show', compact('post'));
     }
 
-    public function create(Category $category)
+    public function create($controller, $page)
     {
-        $categoriesList = $this->getCategoriesList($category);
-
-        return view('blog::create', compact('categoriesList'));
+        $categoryList = $this->getCategoriesList(Category::get());
+        return view('blog::dashboard.categories.create',  compact('categoryList', 'page'));
     }
 
     public function edit($controller, $page, $id)
     {
-        $post = Post::findOrFail($id);
-        $categories = Category::pluck('title', 'id');
+        $category = Category::findOrFail($id);
+        $categoryList = $this->getCategoriesList($category);
 
-        return view('blog::dashboard.posts.edit', compact('post', 'categories', 'page'));
+        return view('blog::dashboard.categories.edit', compact('category', 'categoryList', 'page'));
     }
 
-    public function store(PostRequest $request, Flash $flash)
-    {
-        Auth::user()->posts()->create($request->all());
-        flash()->success('Материал был создан', 'Материал успешно создан.');
+    public function update($id, Request $request){
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
 
         return redirect()->back();
     }
 
-    /** @todo: Пока не работает */
-    public function update($id, Request $request){
-        $post = Post::findOrFail($id);
-        $post->update($request->all());
+    public function store(CategoryRequest $request, Flash $flash)
+    {
+        Auth::user()->categories()->create($request->all());
+        flash()->success('Категория была создан', 'Материал успешно создан.');
 
         return redirect()->back();
     }
     
-    public function dashboard($controller, $page)
+    public function dashboard($controller, $page, $id)
     {
-        $posts = Post::get();
-        $categories = Category::pluck('title', 'id');
+        $categories = Category::get();
 
-        return view('blog::dashboard.posts.index', compact('posts', 'categories', 'page'));
+        return view('blog::dashboard.categories.index', compact('categories', 'page'));
     }
 
     public function addPhoto($alias, Request $request)
@@ -91,11 +89,12 @@ class PostsController extends Controller
     protected function makePhoto(UploadedFile $file)
     {
         return Photo::named($file->getClientOriginalName())->move($file);
-
     }
 
     protected function getCategoriesList($model)
     {
-        return $model::lists('title', 'id');
+        $model = Category::pluck('title', 'id');
+
+        return $model->prepend('Не выбрано', null);
     }
 }

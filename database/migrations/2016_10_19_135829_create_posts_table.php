@@ -32,6 +32,27 @@ class CreatePostsTable extends Migration
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
+
+//        Schema::create('posts_categories', function (Blueprint $table) {
+//
+//            $table->integer('posts_cat_id')->unsigned()->index();
+//
+//            $table->foreign('posts_cat_id')
+//                ->references('id')
+//                ->on('posts_categories')
+//                ->onUpdate('cascade')
+//                ->onDelete('cascade');
+//
+//            $table->integer('post_id')->unsigned()->index();
+//
+//            $table->foreign('post_id')
+//                ->references('id')
+//                ->on('posts')
+//                ->onUpdate('cascade')
+//                ->onDelete('cascade');
+//
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -41,6 +62,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('posts_categories');
         Schema::dropIfExists('posts');
     }
 }

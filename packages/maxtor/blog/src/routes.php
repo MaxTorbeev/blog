@@ -18,6 +18,18 @@ Route::group([
         ]
     );
 
+    Route::resource('categories', 'CategoriesController',
+        ['names' => [
+            'index'     => 'categories.index',
+            'show'      => 'categories.show',
+            'edit'      => 'categories.edit',
+            'store'     => 'categories.store',
+            'update'    => 'categories.update',
+            'destroy'   => 'categories.destroy',
+            ]
+        ]
+    );
+
     Route::post('posts/{alias}/photos', [
         'as' => 'store_photo_path',
         'uses' => 'PostsController@addPhoto'

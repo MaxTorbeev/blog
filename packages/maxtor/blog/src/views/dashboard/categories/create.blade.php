@@ -1,8 +1,7 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-    <h1>Create new post</h1>
-    <hr>
+    <h2>Создание новой категории</h2>
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -15,10 +14,7 @@
     @endif
 
 
-    {!! Form::model($post = new \MaxTor\Blog\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
-    @include ('blog::form', [
-        'submitButtonText' => 'Добавить новый материал'
-    ])
+    {!! Form::model($category = new \MaxTor\Blog\Models\Category(), ['url' => route('categories.store'), 'files' => true, 'method' => 'POST']) !!}
+    @include ('blog::dashboard.categories.form', ['submitButtonText' => 'Добавить категорию'])
     {!! Form::close() !!}
-
-@stop
+@endsection

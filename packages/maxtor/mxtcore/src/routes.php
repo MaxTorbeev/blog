@@ -3,7 +3,7 @@
 Route::group([
     'prefix' => '/admin',
     'namespace' => 'MaxTor\MXTCore\Controllers',
-    'middleware' => 'auth.basic'
+    'middleware' => 'web'
 ], function() {
 
     Route::get('/', [
@@ -11,7 +11,7 @@ Route::group([
         'uses'  => 'DashboardController@index'
     ]);
 
-    Route::get('/{alias?}/{method?}', [
+    Route::get('/{alias?}/{method?}/{id?}', [
         'as'    => 'dashboard.components',
         'uses'  => 'DashboardController@loadComponents'
     ]);

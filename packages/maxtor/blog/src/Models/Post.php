@@ -43,6 +43,11 @@ class Post extends Model
         return $this->photos()->save($photo);
     }
 
+    public function category()
+    {
+        return $this->hasOne('MaxTor\Blog\Models\Category', 'id', 'cat_id');
+    }
+
     /**
      * A post is composed of many photos
      *
@@ -54,13 +59,13 @@ class Post extends Model
     }
 
     /**
-     * An article is owned by a user
+     * An post is owned by a user
      *
      * Передаем user_id  в базу данных при создании статьи
      * Использование: $article->user()
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function author()
     {
         return $this->belongsTo('App\User', 'created_user_id');
     }

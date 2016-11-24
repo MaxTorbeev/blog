@@ -20,7 +20,7 @@ class DashboardController extends Controller
         return view('mxtcore::dashboard.index', compact('page'));
     }
 
-    public function loadComponents($alias, $method = null)
+    public function loadComponents($alias, $method = null, $id = null)
     {
         $page = Menu::whereAlias($alias)->firstOrFail();
         $extension = $page->extension()->first();
@@ -35,7 +35,11 @@ class DashboardController extends Controller
             throw new \Exception('Can not found the ' . $extension->controller_path);
         }
 
-        $control = $controller->callAction($method, ['entity' => $extension->controllerName(), 'page' => $page]);
+        $control = $controller->callAction($method, [
+            'entity'    => $extension->controllerName(),
+            'page'      => $page,
+            'id'        => $id
+        ]);
 
         return $control;
     }
