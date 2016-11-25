@@ -71,11 +71,14 @@ class MenuController extends Controller
 //        return view('mxtcore::dashboard.menu.menu-items.update', compact('menu', 'menuTypes', 'extensions', 'parentMenuItem'));
 //    }
 
-    public function createMenuType()
+    public function createMenuType($controller, $page)
     {
         $menuTypes = MenuType::all();
 
-        return view('mxtcore::dashboard.menu.menu-types.create', compact('menuTypes'));
+        return view('mxtcore::dashboard.menu.menu-types.create', compact(
+            'menuTypes',
+            'page'
+        ));
 
     }
 

@@ -36,11 +36,11 @@ class PostsController extends Controller
         return view('blog::show', compact('post'));
     }
 
-    public function create(Category $category)
+    public function create($controller, $page)
     {
-        $categoriesList = $this->getCategoriesList($category);
+        $categories = $this->getCategoriesList((new Category()));
 
-        return view('blog::create', compact('categoriesList'));
+        return view('blog::create', compact('categories'));
     }
 
     public function edit($controller, $page, $id)
@@ -63,6 +63,7 @@ class PostsController extends Controller
     public function update($id, Request $request){
         $post = Post::findOrFail($id);
         $post->update($request->all());
+        flash()->success('Материал был сохранен', 'Материал успешно сохранен.');
 
         return redirect()->back();
     }
@@ -96,6 +97,6 @@ class PostsController extends Controller
 
     protected function getCategoriesList($model)
     {
-        return $model::lists('title', 'id');
+        return $model::pluck('title', 'id');
     }
 }

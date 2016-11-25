@@ -14,7 +14,7 @@
         <tbody>
         @foreach($posts as $post)
             <tr>
-                <td><a href="{{ url( '/admin/' . $page->alias . '/edit', [1]) }}">{{ $post->title }}</a></td>
+                <td><a href="{{ url( '/admin/' . $page->alias . '/edit', [$post->id]) }}">{{ $post->title }}</a></td>
                 <td>{{ $post->category->title }}</td>
                 <td>{{ $post->author->name }}</td>
                 <td>{{ $post->hits }}</td>
