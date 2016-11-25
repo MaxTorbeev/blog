@@ -1,20 +1,21 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
+    {{--@todo сделать дерективу, которая генерирует меню управления--}}
     <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'create']) }}" class="btn btn-success">Добавить расширение</a>
 
     @foreach($extensions as $extension)
         {!! Form::model($extension, ['method' => 'PATCH',  'url' => route('extensions.update', ['id' => $extension->id]), 'class' => 'form-table input-group']) !!}
             <input type="hidden" name="_method" value="PATCH">
             <div class="tr">
-                <span class="input-group-addon">id:{{ $extension->id }}:</span>
+                <span class="input-group-addon input-group-addon-sm">id:{{ $extension->id }}:</span>
                 <div class="td">
-                    {!! Form::input('text', 'name', $extension->name, ['class'=>'form-control' ]) !!}
+                    {!! Form::input('text', 'name', $extension->name, ['class'=>'form-control form-control-sm' ]) !!}
                 </div>
 
-                <span class="input-group-addon">controller path:</span>
+                <span class="input-group-addon input-group-addon-sm">controller path:</span>
                 <div class="td">
-                    {!! Form::input('controller_path', 'controller_path', $extension->controller_path, ['class'=>'form-control' ]) !!}
+                    {!! Form::input('controller_path', 'controller_path', $extension->controller_path, ['class'=>'form-control form-control-sm' ]) !!}
                 </div>
 
                 <div class="td">

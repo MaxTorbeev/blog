@@ -18,6 +18,13 @@ class MainMenuTypeTableSeeder extends Seeder
             'description'       => 'Main menu on dashboard'
         ]);
 
+        DB::table('menu_type')->insert([
+            'id'                => 2,
+            'menu_type'         => 'main_menu',
+            'title'             => 'Главное меню',
+            'description'       => 'Main menu on front end web site'
+        ]);
+
         DB::table('menu')->insert(
             [
                 'menu_type_id'      => '1',

@@ -11,6 +11,7 @@ class Extension extends Model
     protected $fillable = [
         'name',
         'controller_path',
+        'created_user_id',
         'enabled',
     ];
 
