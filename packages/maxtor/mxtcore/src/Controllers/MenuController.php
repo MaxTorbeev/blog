@@ -44,14 +44,20 @@ class MenuController extends Controller
         return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes', 'page'));
     }
 
-    public function createMenuItem()
+    public function createMenuItem($controller, $page)
     {
         $menu = new Menu();
         $parentMenuItem = Menu::pluck('title', 'id');
         $extensions = Extension::pluck('name', 'id');
         $menuTypes = MenuType::pluck('title', 'id');
 
-        return view('mxtcore::dashboard.menu.menu-items.create', compact('menu', 'menuTypes', 'extensions', 'parentMenuItem'));
+        return view('mxtcore::dashboard.menu.menu-items.create', compact(
+            'menu',
+            'menuTypes',
+            'extensions',
+            'parentMenuItem',
+            'page'
+        ));
     }
 
 //    public function editMenuItem($id)

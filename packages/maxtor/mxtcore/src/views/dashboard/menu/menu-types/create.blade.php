@@ -7,6 +7,9 @@
         }
     </style>
     <div id="app">
+        <alert type="error">
+            <strong>Error</strong> Your account has not been updated.
+        </alert>
         <menu-items></menu-items>
     </div>
 @endsection

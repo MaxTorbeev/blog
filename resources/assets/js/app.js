@@ -12,12 +12,12 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-
-//Vue.component('tasks', require('./components/Tasks.vue'));
+var Alert = require('./components/system/ui/Alert.vue');
 Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
-
+//Vue.component('alert', require('./components/system/ui/Alert.vue'));
 
 new Vue({
-    el: '#app'
+    el: '#app',
+    components: {Alert}
 });
 
