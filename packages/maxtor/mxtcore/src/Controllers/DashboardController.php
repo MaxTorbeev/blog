@@ -10,6 +10,11 @@ use MaxTor\MXTCore\Models\Menu;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
        return redirect('admin/dashboard');

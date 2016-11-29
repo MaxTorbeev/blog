@@ -12,12 +12,18 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+
 var Alert = require('./components/system/ui/Alert.vue');
+var Editor = require('./components/system/ui/TinyMCE.vue');
+
 Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
-//Vue.component('alert', require('./components/system/ui/Alert.vue'));
+Vue.component('menu-types-form', require('./components/dashboard/menu/MenuTypesForm.vue'));
 
 new Vue({
     el: '#app',
-    components: {Alert}
+    components: {
+        'alert' : Alert,
+        'editor' : Editor
+    }
 });
 

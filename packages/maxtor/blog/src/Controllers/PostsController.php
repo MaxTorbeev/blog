@@ -67,6 +67,13 @@ class PostsController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+    }
     
     public function dashboard($controller, $page)
     {

@@ -16,6 +16,11 @@ Route::group([
         'uses'  => 'DashboardController@loadComponents'
     ]);
 
+    Route::post('/menu/menu-type/store', [
+        'as'    => 'menutype.create',
+        'uses'  => 'MenuController@menuTypeStore'
+    ]);
+
     Route::resource('/extensions', 'ExtensionsController');
     Route::resource('/menu', 'MenuController');
 

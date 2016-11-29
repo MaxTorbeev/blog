@@ -16,6 +16,7 @@ class Post extends Model
         'alias',
         'intro_text',
         'full_text',
+        'cat_id',
         'published'
     ];
 
