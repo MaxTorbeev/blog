@@ -99,7 +99,30 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
 
-        return $menu;
+        return $this->getArrayForForm($menu);
+    }
+
+    public function getArrayForForm($model)
+    {
+        return [
+            'id' => [
+                'value' => $model->id,
+                'type' => 'text'
+            ],
+
+            'menu_type_id' => [
+                'label' => 'Тип меню',
+                'value' => $model->menu_type_id,
+                'type' => 'select',
+                'options' => MenuType::pluck('title', 'id')
+            ],
+
+            'extensions_id' => [
+                'value' => $model->menu_type_id,
+                'type' => 'select'
+            ],
+
+        ];
     }
 
 }
