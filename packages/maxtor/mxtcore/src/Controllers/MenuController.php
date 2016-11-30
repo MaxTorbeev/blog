@@ -41,7 +41,7 @@ class MenuController extends Controller
         $extensions = Extension::pluck('name', 'id');
         $menuTypes = MenuType::pluck('title', 'id');
 
-        return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes', 'page'));
+        return view('mxtcore::dashboard.menu.menu-items.index', compact('menu', 'extensions', 'menuTypes', 'page'));
     }
 
     public function createMenuItem($controller, $page)
@@ -119,7 +119,8 @@ class MenuController extends Controller
 
             'extensions_id' => [
                 'value' => $model->menu_type_id,
-                'type' => 'select'
+                'type' => 'select',
+                'options' => Extension::pluck('name', 'id')
             ],
 
         ];

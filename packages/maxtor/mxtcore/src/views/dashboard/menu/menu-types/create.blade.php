@@ -6,15 +6,20 @@
             text-decoration: underline;
         }
     </style>
+
     <alert type="error">
         <strong>Error</strong> Your account has not been updated.
     </alert>
+
     <menu-items></menu-items>
 
 
-    <menu-types-form id="1" action="/admin/manage-menus/apiItem" >
+    <form-table
+            id="1"
+            action="/admin/manage-menus/apiItem"
+    >
 
-    </menu-types-form>
+    </form-table>
 
     {{--<form method="POST" action="{{ route('post.destroy', [1]) }}">--}}
         {{--{{ method_field('DELETE') }}--}}
