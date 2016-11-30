@@ -1,13 +1,13 @@
 # MaxTor blog
 
-Мой личный блок, основанный на [Laravel framework](http://laravel.com), который использует мною разработанные пакеты, которые будут добавлены composer репозитории
-## Official Documentation
+Мой личный блог, основанный на [Laravel framework](http://laravel.com), который использует мною разработанные пакеты, которые будут добавлены composer репозитории
 
 ## Установка и использование
 
 * php artisan migrate
 * php artisan db:seed
 * php artisan blog:install
+
 
 ## Лицензия
 
