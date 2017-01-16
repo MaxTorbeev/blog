@@ -16,11 +16,7 @@ require('./bootstrap');
 var Alert = require('./components/system/ui/Alert.vue');
 var Editor = require('./components/system/ui/TinyMCE.vue');
 
-window.VueTinyMCE = {};
-VueTinyMCE.install = function (Vue) {
-    Vue.component('tinymce', require('./components/system/ui/TinyMCE.vue'));
-}
-
+Vue.component('tinymce', require('./components/system/ui/TinyMCE.vue'));
 
 Vue.component('form-table', require('./components/system/forms/form-table.vue'));
 Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
