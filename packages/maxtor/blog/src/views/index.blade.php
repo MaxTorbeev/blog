@@ -12,7 +12,7 @@
                 <div class="entry-header">
                     <h2 class="entry-title"><a href="{{ route('post.show',  ['id' => $post->alias]) }}">{{ $post->title }}</a></h2>
                     <ul class="entry-meta clearfix">
-                        <li><span class="post-author"><a href="#">{{ $post->user->name }}</a></span></li>
+{{--                        <li><span class="post-author"><a href="#">{{ $post->user }}</a></span></li>--}}
                         <li><span class="post-date"><a href="#">{{ $post->created_at }}</a></span></li>
                     </ul>
                 </div>

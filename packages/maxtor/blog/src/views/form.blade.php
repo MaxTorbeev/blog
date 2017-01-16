@@ -20,6 +20,8 @@
     </div>
 </div>
 
+<tinymce></tinymce>
+
 
 <div class="row">
     <div class="col-sm-8">
