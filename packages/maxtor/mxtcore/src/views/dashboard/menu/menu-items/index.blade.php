@@ -1,5 +1,5 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'createMenuItem']) }}"></a>
+    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'createMenuItem']) }}">Добавить пункт меню</a>
 @endsection

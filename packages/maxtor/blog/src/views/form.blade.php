@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<tinymce></tinymce>
+
 
 
 <div class="row">
@@ -34,7 +34,10 @@
         </div>
         <div class="form-group  {{ $errors->has('full_text') ? 'has-danger' : '' }}">
             {!! Form::label('full_text', 'Полный текст:') !!}
-            {!! Form::textarea('full_text', null, ['class'=>'form-control', 'id'=>'editor']) !!}
+            <tinymce name="full_text">
+                {{ $post->full_text }}
+            </tinymce>
+            {{--{!! Form::textarea('full_text', null, ['class'=>'form-control', 'id'=>'editor']) !!}--}}
             @if ($errors->has('full_text'))
                 <small class="form-control-feedback">{{ $errors->first('full_text') }}</small>
             @endif
