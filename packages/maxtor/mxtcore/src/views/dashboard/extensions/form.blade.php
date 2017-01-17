@@ -1,9 +1,9 @@
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col col-md-8">
         <div class="form-group row {{ $errors->has('name') ? 'has-danger' : '' }}">
-            {!! Form::label('name', 'Имя расширения:', ['class' => 'col-xs-4 col-form-label']) !!}
-            <div class="col-xs-8">
+            {!! Form::label('name', 'Имя расширения:', ['class' => 'col col-xs-4 col-form-label']) !!}
+            <div class="col col-xs-8">
                 {!! Form::text('name', $extension->name, ['class'=>'form-control']) !!}
                 @if ($errors->has('name'))
                     <small class="form-control-feedback">{{ $errors->first('name') }}</small>
@@ -12,8 +12,8 @@
         </div>
 
         <div class="form-group row {{ $errors->has('controller_path') ? 'has-danger' : '' }}">
-            {!! Form::label('controller_path', 'Используемый контроллер:', ['class' => 'col-xs-4 col-form-label']) !!}
-            <div class="col-xs-8">
+            {!! Form::label('controller_path', 'Используемый контроллер:', ['class' => 'col col-xs-4 col-form-label']) !!}
+            <div class="col col-xs-8">
                 {!! Form::text('controller_path', $extension->controller_path, ['class'=>'form-control']) !!}
                 @if ($errors->has('controller_path'))
                     <small class="form-control-feedback">{{ $errors->first('controller_path') }}</small>
@@ -22,8 +22,8 @@
         </div>
 
         <div class="form-group row {{ $errors->has('enabled') ? 'has-danger' : '' }}">
-            {!! Form::label('enable', 'Включить расширение? ', ['class' => 'col-xs-4 col-form-label']) !!}
-            <div class="col-xs-8">
+            {!! Form::label('enable', 'Включить расширение? ', ['class' => 'col col-xs-4 col-form-label']) !!}
+            <div class="col col-xs-8">
                 {!! Form::select('enabled', ['0' => 'Нет', '1' => 'Да'], 1, ['class'=>'form-control select']) !!}
                 @if ($errors->has('enabled'))
                     <small class="form-control-feedback">{{ $errors->first('enabled') }}</small>

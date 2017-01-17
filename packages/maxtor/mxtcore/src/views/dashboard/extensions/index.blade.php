@@ -20,14 +20,14 @@
 
                 <div class="td">
                     @if ( $extension->enabled == 1)
-                    <button type="button" class="btn btn-warning btn-block">Отключить</button>
+                    <button type="button" class="btn btn-sm btn-warning btn-block">Отключить</button>
                     @else
-                    <button type="button" class="btn btn-success btn-block">Включить</button>
+                    <button type="button" class="btn btn-sm btn-success btn-block">Включить</button>
                     @endif
                 </div>
 
                 <div class="td">
-                    {!! Form::submit( 'Изменить', ['class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::submit( 'Изменить', ['class' => 'btn btn-sm btn-primary btn-block']) !!}
                 </div>
             </div>
         {!! Form::close() !!}

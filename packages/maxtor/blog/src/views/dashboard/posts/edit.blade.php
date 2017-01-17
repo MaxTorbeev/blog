@@ -9,6 +9,17 @@
         'deletePost' => 'true'
         ])
     {!! Form::close() !!}
+    <h3>Добавить изображения</h3>
+    {!! Form::model(
+           $post,
+           [
+               'action' => ['\MaxTor\Blog\Controllers\PostsController@addPhoto', $post->alias],
+               'id' => 'addPhotoForm',
+               'class' => 'dropzone',
+               'files' => true
+           ])
+       !!}
+    {!! Form::close() !!}
 
     <form method="POST" action="{{ route('post.destroy', [$post->id]) }}" v-ajax>
         {{ method_field('DELETE') }}

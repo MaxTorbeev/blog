@@ -1,5 +1,5 @@
 <template id="tinymce-template">
-    <textarea id="editor" class="wysiwyg" cols="30" rows="10">
+    <textarea id="editor" :name="name" class="wysiwyg" cols="30" rows="10">
         <slot></slot>
     </textarea>
 </template>
@@ -15,7 +15,9 @@
     export default {
         template: '#tinymce-template',
 
-        props: ['name'],
+        props: [
+            'name'
+        ],
 
         created() {
             tinymce.init({

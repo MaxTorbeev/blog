@@ -31,7 +31,7 @@
 
             <span class="input-group-addon input-group-addon-sm">parent:</span>
             <div class="td">
-                {!! Form::select('parent_id', $menu->pluck('title', 'id'), null, ['class'=>'form-control form-control form-control-sm']) !!}
+                {!! Form::select('parent_id', $parentMenuItem, null, ['class'=>'form-control form-control form-control-sm']) !!}
             </div>
 
             <div class="td">

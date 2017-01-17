@@ -25,6 +25,9 @@
         .td{
             display: table-cell;
             vertical-align: top;
+            .form-control{
+                width: 100%;
+            }
         }
     }
 }

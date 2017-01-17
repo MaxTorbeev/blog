@@ -21,7 +21,7 @@ class CreatePostsPhotosTable extends Migration
 
             $table->string('filename');
             $table->string('path');
-            $table->string('thumbnail_path');
+            $table->string('thumbnail_filename');
             $table->string('original_name');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

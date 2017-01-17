@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('mxtcore::layouts.app')
 
 @section('content')
     @can('update', $post)
@@ -17,20 +17,9 @@
             </div>
             <div class="col-md-9">
                 @foreach($post->photos as $photo)
-                    <img src="/{{ $photo->path . $photo->filename }}" class="img-responsive" alt="{{ $photo->original_name }}">
+                    <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-responsive" alt="{{ $photo->original_name }}">
                 @endforeach
             </div>
         </div>
-
-        {!! Form::model(
-            $post,
-            [
-                'action' => ['\MaxTor\Blog\Controllers\PostsController@addPhoto', $post->alias],
-                'id' => 'addPhotoForm',
-                'class' => 'dropzone',
-                'files' => true
-            ])
-        !!}
-        {!! Form::close() !!}
     </div>
 @stop

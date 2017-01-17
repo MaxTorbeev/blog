@@ -98,7 +98,7 @@ class PostsController extends Controller
 
     protected function makePhoto(UploadedFile $file)
     {
-        return Photo::named($file->getClientOriginalName())->move($file);
+        return Photo::named($file)->move($file);
 
     }
 

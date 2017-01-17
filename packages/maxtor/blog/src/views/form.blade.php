@@ -20,9 +20,6 @@
     </div>
 </div>
 
-<tinymce></tinymce>
-
-
 <div class="row">
     <div class="col-sm-8">
         <div class="form-group  {{ $errors->has('intro_text') ? 'has-danger' : '' }}">
@@ -34,13 +31,19 @@
         </div>
         <div class="form-group  {{ $errors->has('full_text') ? 'has-danger' : '' }}">
             {!! Form::label('full_text', 'Полный текст:') !!}
-            {!! Form::textarea('full_text', null, ['class'=>'form-control', 'id'=>'editor']) !!}
+
+            <tinymce name="full_text">
+                {{ $post->full_text }}
+            </tinymce>
+            {{--{!! Form::textarea('full_text', null, ['class'=>'form-control', 'id'=>'editor']) !!}--}}
             @if ($errors->has('full_text'))
                 <small class="form-control-feedback">{{ $errors->first('full_text') }}</small>
             @endif
         </div>
     </div>
     <div class="col-sm-4">
+
+
 
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">
             {!! Form::label('published', 'Опубликовано:') !!}
@@ -57,6 +60,10 @@
             {!! Form::select('cat_id', $categories, null, ['class'=>'form-control select2']) !!}
         </div>
 
+        @foreach($post->photos as $photo)
+            <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-responsive" alt="{{ $photo->original_name }}">
+        @endforeach
+
         {{--<div class="form-group">--}}
             {{--{!! Form::label('metadesc', 'meta-description:') !!}--}}
             {{--{!! Form::input('text', 'metadesc', $posts->metadesc, ['class'=>'form-control' ]) !!}--}}
@@ -66,7 +73,6 @@
             {{--{!! Form::label('metakey', 'meta-keywords:') !!}--}}
             {{--{!! Form::input('text', 'metakey', $posts->metakey, ['class'=>'form-control' ]) !!}--}}
         {{--</div>--}}
-
     </div>
 </div>
 

@@ -38,16 +38,17 @@ class MenuController extends Controller
     public function dashboard($controller, $page)
     {
         $menu = Menu::all();
+        $parentMenuItem = $this->getMenuList($menu);
         $extensions = Extension::pluck('name', 'id');
         $menuTypes = MenuType::pluck('title', 'id');
 
-        return view('mxtcore::dashboard.menu.menu-items.index', compact('menu', 'extensions', 'menuTypes', 'page'));
+        return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes', 'parentMenuItem', 'page'));
     }
 
     public function createMenuItem($controller, $page)
     {
         $menu = new Menu();
-        $parentMenuItem = Menu::pluck('title', 'id');
+        $parentMenuItem = $this->getMenuList($menu);
         $extensions = Extension::pluck('name', 'id');
         $menuTypes = MenuType::pluck('title', 'id');
 
@@ -100,6 +101,13 @@ class MenuController extends Controller
         $menu = Menu::find($id);
 
         return $this->getArrayForForm($menu);
+    }
+
+    protected function getMenuList($model)
+    {
+        $model = $model->pluck('title', 'id');
+
+        return $model->prepend('Не выбрано', null);
     }
 
     public function getArrayForForm($model)

@@ -34,12 +34,12 @@ class Photo extends Model
         return (new static)->saveAs($filename);
     }
 
-    protected function saveAs($filename)
+    protected function saveAs($file)
     {
-        $this->filename = time();
-        $this->path = sprintf("%s/%s", $this->baseDir, $this->filename);
-        $this->thumbnail_path = sprintf("%s/tn-%s", $this->baseDir, $this->filename);
-        $this->original_name = $this->filename;
+        $this->filename         = md5(time()) . '.' .$file->getClientOriginalExtension();
+        $this->path             = $this->baseDir;
+        $this->thumbnail_filename   = 'tn-' . $this->filename;
+        $this->original_name    = $file->getClientOriginalName();
 
         return $this;
     }
@@ -54,6 +54,8 @@ class Photo extends Model
 
     protected function makeThumbnail()
     {
-        Image::make($this->path)->fit(200)->save($this->thumbnail_path);
+        Image::make($this->path . '/' . $this->filename)
+            ->fit(90)
+            ->save($this->path . '/' . $this->thumbnail_filename);
     }
 }
