@@ -20,9 +20,16 @@
         ],
 
         created() {
+            console.log(this.name);
             tinymce.init({
                 selector:'#editor',
             });
+        },
+
+        computed: {
+            name() {
+                return this.name;
+            }
         },
 
         beforeDestroy: function(){
