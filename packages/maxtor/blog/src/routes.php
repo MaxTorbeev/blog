@@ -30,6 +30,18 @@ Route::group([
         ]
     );
 
+    Route::resource('tags', 'TagsController',
+        ['names' => [
+            'index'     => 'tags.index',
+            'show'      => 'tags.show',
+            'edit'      => 'tags.edit',
+            'store'     => 'tags.store',
+            'update'    => 'tags.update',
+            'destroy'   => 'tags.destroy',
+            ]
+        ]
+    );
+
     Route::post('posts/{alias}/photos', [
         'as' => 'store_photo_path',
         'uses' => 'PostsController@addPhoto'
