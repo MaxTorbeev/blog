@@ -4,7 +4,7 @@
     <h2>Редактирование материала</h2>
 
     {!! Form::model($post, ['url' =>  route('post.update', [$post->id]), 'files' => true, 'method' => 'PATCH']) !!}
-        @include ('blog::form', [
+        @include ('blog::dashboard.posts.form', [
         'submitButtonText' => 'Редактировать материал',
         'deletePost' => 'true'
         ])

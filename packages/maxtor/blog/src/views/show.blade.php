@@ -14,6 +14,12 @@
                 <div class="entry-content">
                     {!! $post->full_text !!}
                 </div>
+
+                @foreach($post->tags as $tag)
+                    <a href="{{ route('tags.show',  ['id' => $tag->alias]) }}">
+                        <span class="badge badge-primary">{{ $tag->name }}</span>
+                    </a>
+                @endforeach
             </div>
             <div class="col-md-9">
                 @foreach($post->photos as $photo)

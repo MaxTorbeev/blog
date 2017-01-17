@@ -12,7 +12,10 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name',
+        'alias',
+        'description',
+        'user_id',
     ];
 
 
@@ -22,12 +25,24 @@ class Tag extends Model
     }
 
     /**
+     * An post is owned by a user
+     *
+     * Передаем user_id  в базу данных при создании статьи
+     * Использование: $article->user()
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function author()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+    /**
      * Get the articles associated with the give tag.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function posts()
     {
-        return $this->belongsToMany('App\Posts\Models\Post')->withTimestamps();
+        return $this->belongsToMany('MaxTor\Blog\Models\Post')->withTimestamps();
     }
 }

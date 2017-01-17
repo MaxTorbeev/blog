@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('alias');
+            $table->text('preview_photo_id')->nullable();
             $table->text('intro_text')->nullable();
             $table->text('full_text');
             $table->boolean('published')->default(1);

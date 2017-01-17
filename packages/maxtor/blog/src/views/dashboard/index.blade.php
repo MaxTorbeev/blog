@@ -16,7 +16,7 @@
 
 
     {!! Form::model($post = new \MaxTor\Blog\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
-    @include ('blog::form', [
+    @include ('blog::dashboard.posts.form', [
         'submitButtonText' => 'Добавить новый материал'
     ])
     {!! Form::close() !!}

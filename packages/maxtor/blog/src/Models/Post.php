@@ -17,6 +17,7 @@ class Post extends Model
         'intro_text',
         'full_text',
         'cat_id',
+        'preview_photo_id',
         'published'
     ];
 
@@ -50,6 +51,15 @@ class Post extends Model
     }
 
     /**
+     * Preview image
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function previewImage()
+    {
+        return $this->hasOne('MaxTor\Blog\Models\Photo', 'id', 'preview_photo_id');
+    }
+
+    /**
      * A post is composed of many photos
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -57,6 +67,16 @@ class Post extends Model
     public function photos()
     {
         return $this->hasMany('MaxTor\Blog\Models\Photo');
+    }
+
+    /**
+     * Get the tags associated with the give article
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('MaxTor\Blog\Models\Tag')->withTimestamps();
     }
 
     /**

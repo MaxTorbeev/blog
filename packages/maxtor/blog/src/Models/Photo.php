@@ -23,6 +23,11 @@ class Photo extends Model
         return $this->belongsTo('MaxTor\Blog\Models\Post');
     }
 
+    public function getThumbnail()
+    {
+        return $this->path . '/' . $this->thumbnail_filename;
+    }
+
     /**
      *
      * (new static) === $photo = new static;
@@ -54,8 +59,6 @@ class Photo extends Model
 
     protected function makeThumbnail()
     {
-        Image::make($this->path . '/' . $this->filename)
-            ->fit(90)
-            ->save($this->path . '/' . $this->thumbnail_filename);
+        Image::make($this->path . '/' . $this->filename)->fit(450)->save($this->path . '/' . $this->thumbnail_filename);
     }
 }

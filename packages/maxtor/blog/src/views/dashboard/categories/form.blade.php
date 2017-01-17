@@ -52,7 +52,6 @@
     </div>
 </div>
 {{--<alert></alert>--}}
-<editor></editor>
 
 <div class="form-group">
     {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}

@@ -32,9 +32,10 @@ class TagsController extends Controller
 
     public function show($alias)
     {
-        $post = Post::whereAlias($alias)->firstOrFail();
+        $tag = Tag::whereAlias($alias)->firstOrFail();
+        $posts = $tag->posts->all();
 
-        return view('blog::show', compact('post'));
+        return view('blog::index', compact('posts'));
     }
 
     public function create($controller, $page)
@@ -42,9 +43,9 @@ class TagsController extends Controller
         return view('blog::dashboard.tags.create', compact('page'));
     }
 
-    public function store(PostRequest $request, Flash $flash)
+    public function store(Request $request)
     {
-        Auth::user()->posts()->create($request->all());
+        Auth::user()->tags()->create($request->all());
         flash()->success('Материал был создан', 'Материал успешно создан.');
 
         return redirect()->back();

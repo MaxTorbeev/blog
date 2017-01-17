@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use MaxTor\Blog\Models\Category;
 use MaxTor\Blog\Models\Photo;
 use MaxTor\Blog\Models\Post;
+use MaxTor\Blog\Models\Tag;
 use MaxTor\Blog\Requests\PostRequest;
 
 class PostsController extends Controller
@@ -38,17 +39,20 @@ class PostsController extends Controller
 
     public function create($controller, $page)
     {
-        $categories = $this->getCategoriesList((new Category()));
+        $categories = $this->getCategoriesList( (new Category()) );
+        $tags = Tag::pluck('name', 'id');
 
-        return view('blog::create', compact('categories'));
+        return view('blog::dashboard.posts.create', compact('categories', 'tags'));
     }
 
     public function edit($controller, $page, $id)
     {
-        $post = Post::findOrFail($id);
+        $post       = Post::findOrFail($id);
         $categories = Category::pluck('title', 'id');
+        $tags       = Tag::pluck('name', 'id');
+        $photos     = $post->photos->pluck('original_name', 'id');
 
-        return view('blog::dashboard.posts.edit', compact('post', 'categories', 'page'));
+        return view('blog::dashboard.posts.edit', compact('post', 'categories', 'page', 'tags', 'photos'));
     }
 
     public function store(PostRequest $request, Flash $flash)
@@ -59,9 +63,9 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
-    /** @todo: Пока не работает */
     public function update($id, Request $request){
         $post = Post::findOrFail($id);
+        $this->syncTags($post, $request->input('tag_list'));
         $post->update($request->all());
         flash()->success('Материал был сохранен', 'Материал успешно сохранен.');
 
@@ -81,6 +85,16 @@ class PostsController extends Controller
         $categories = Category::pluck('title', 'id');
 
         return view('blog::dashboard.posts.index', compact('posts', 'categories', 'page'));
+    }
+
+    /**
+     * Sync up the list of tags in the database
+     *
+     * @param Article $article Request $request
+     */
+    public function syncTags(Post $post, array $tags)
+    {
+        $post->tags()->sync($tags);
     }
 
     public function addPhoto($alias, Request $request)
