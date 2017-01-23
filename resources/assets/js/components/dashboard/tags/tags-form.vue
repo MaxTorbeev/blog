@@ -1,23 +1,23 @@
 <template id="tagsForm-template">
     <div>
-        <form @submit.prevent="onSubmit" @keydown="errors.clear($event.target.name)">
+        <form @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
 
             <div class="form-group">
                 <label class="form-control-label">Новый тег</label>
-                <input type="text" name="name" class="form-control" placeholder="Новый тег" v-model="name">
-                <small class="form-text text-muted" v-if="errors.has('name')" v-text="errors.get('name')"></small>
+                <input type="text" name="name" class="form-control" placeholder="Новый тег" v-model="form.name">
+                <small class="form-text text-muted" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></small>
             </div>
 
             <div class="form-group">
-                <input type="text" name="alias" class="form-control form-control-sm" v-model="alias">
-                <small class="form-text text-muted" v-text="errors.get('alias')"></small>
+                <input type="text" name="alias" class="form-control form-control-sm" v-model="form.alias">
+                <small class="form-text text-muted" v-text="form.errors.get('alias')"></small>
             </div>
             
             <div class="form-group">
-                <textarea name="description" class="form-control form-control-sm" v-model="description"></textarea>
+                <textarea name="description" class="form-control form-control-sm" v-model="form.description"></textarea>
             </div>
 
-            <input type="submit" class="btn btn-success" value="Сохранить" :disabled="errors.any()">
+            <input type="submit" class="btn btn-success" value="Сохранить" :disabled="form.errors.any()">
 
         </form>
     </div>
@@ -48,8 +48,56 @@
         }
 
         clear(field) {
-            console.log(field);
-            delete this.errors[field];
+            if (field){
+                delete this.errors[field];
+
+                return;
+            }
+
+            this.errors = {};
+        }
+    }
+
+    class Form {
+        constructor(data) {
+            this.originalData = data;
+
+            for (let field in data) {
+                this[field] = data[field]
+            }
+
+            this.errors = new Errors();
+        }
+
+        data(){
+            let data = Object.assign({}, this);
+
+            delete data.originalData;
+            delete data.errors;
+
+            return data;
+        }
+
+        submit(requestType, url){
+            axios[requestType](url, this.data())
+                .then(this.onSuccess.bind(this))
+                .catch(this.onFail.bind(this))
+        }
+
+        onSuccess(response){
+            alert(response.data.message);
+            this.errors.clear();
+            this.reset();
+        }
+
+        onFail(error){
+            this.errors.record(error.response.data);
+        }
+
+        reset() {
+            for (let field in this.originalData){
+                this[field] = null
+            }
         }
     }
 
@@ -62,27 +110,18 @@
 
         data() {
             return {
-                name: '',
-                alias: '',
-                description: '',
-                errors: new Errors()
+                form: new Form({
+                    name: '',
+                    alias: '',
+                    description: '',
+                }),
             }
         },
 
         methods: {
             onSubmit() {
-                axios.post('/tags', this.$data)
-                    .then(this.onSuccess)
-                    .catch(error => this.errors.record(error.response.data))
+                this.form.submit('post', '/tags');
             },
-
-            onSuccess(response){
-                alert(response.data.message);
-
-                this.name = '';
-                this.alias = '';
-                this.description = '';
-            }
         },
 
         watch: {
