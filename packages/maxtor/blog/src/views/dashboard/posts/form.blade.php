@@ -81,22 +81,9 @@
     </div>
 </div>
 
-
 <div class="form-group">
     {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}
     <a href="{{ url()->previous() }}" class="btn btn btn-secondary">Назад</a>
 </div>
 
-
-@section('footer')
-
-    <script type="text/javascript" src="{!! asset('build/media/ckeditor/ckeditor.js') !!}"></script>
-
-    <script>
-        CKEDITOR.replace('body',{
-            filebrowserBrowseUrl : '/elfinder/ckeditor'
-        });
-
-    </script>
-
-@endsection
+@section('footer') @endsection

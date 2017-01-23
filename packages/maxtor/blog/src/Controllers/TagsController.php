@@ -15,6 +15,7 @@ use MaxTor\Blog\Models\Photo;
 use MaxTor\Blog\Models\Post;
 use MaxTor\Blog\Models\Tag;
 use MaxTor\Blog\Requests\PostRequest;
+use MaxTor\Blog\Requests\TagRequest;
 
 class TagsController extends Controller
 {
@@ -43,12 +44,14 @@ class TagsController extends Controller
         return view('blog::dashboard.tags.create', compact('page'));
     }
 
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
         Auth::user()->tags()->create($request->all());
-        flash()->success('Материал был создан', 'Материал успешно создан.');
 
-        return redirect()->back();
+        return [
+            'message' => 'Тег успешно создан'
+        ];
+//        return redirect()->back();
     }
 
     public function edit($controller, $page, $id)
