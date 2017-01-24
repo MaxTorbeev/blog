@@ -23,7 +23,7 @@
     </div>
 </template>
 
-<script>
+<script type="text/babel">
     class Errors {
         constructor() {
             this.errors = {};
@@ -59,6 +59,12 @@
     }
 
     class Form {
+
+        /**
+         * Create a new Form instance.
+         *
+         * @param data
+         */
         constructor(data) {
             this.originalData = data;
 
@@ -69,35 +75,87 @@
             this.errors = new Errors();
         }
 
-        data(){
-            let data = Object.assign({}, this);
+        posr(url){
+            return this.submit('POST', url)
+        }
 
-            delete data.originalData;
-            delete data.errors;
+        delete(url){
+            return this.submit('DELETE', url)
+        }
+
+        /**
+         * Fetch all relevants data for the form.
+         *
+         * @returns {*|void}
+         */
+        data(){
+            let data = {}
+
+            for(let property in this.originalData){
+                data[property] = this[property];
+            }
+
+//            let data = Object.assign({}, this);
+//
+//            delete data.originalData;
+//            delete data.errors;
 
             return data;
         }
 
+        /**
+         * Submit the form.
+         *
+         * @param {string} requestType
+         * @param {string} url
+         */
         submit(requestType, url){
-            axios[requestType](url, this.data())
-                .then(this.onSuccess.bind(this))
-                .catch(this.onFail.bind(this))
+            return new Promise((resolve, reject) => {
+                axios[requestType](url, this.data())
+                    .then(response => {
+                        this.onSuccess(response.data);
+
+                        resolve(response.data);
+                    })
+                    .catch(error => {
+                        this.onFail(error.response.data);
+
+                        reject(error.response.data);
+                    })
+            });
         }
 
-        onSuccess(response){
-            alert(response.data.message);
-            this.errors.clear();
+        /**
+         * Handle a successful form submission.
+         *
+         * @param {object} data
+         */
+
+        onSuccess(data){
+            alert(data.message);
+
             this.reset();
         }
 
-        onFail(error){
-            this.errors.record(error.response.data);
+        /**
+         * Handle a failed form submission.
+         *
+         * @param {object} errors
+         */
+        onFail(errors){
+            this.errors.record(errors);
         }
 
+        /**
+         * Reset the form fields.
+         */
         reset() {
             for (let field in this.originalData){
                 this[field] = null
             }
+
+            this.errors.clear();
+
         }
     }
 
@@ -120,7 +178,9 @@
 
         methods: {
             onSubmit() {
-                this.form.submit('post', '/tags');
+                this.form.submit('post', '/tags')
+                        .then(data => console.log(data))
+                        .catch(errors => console.log(errors))
             },
         },
 
