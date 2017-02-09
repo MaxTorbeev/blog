@@ -61,7 +61,7 @@
         </div>
 
         @foreach($post->photos as $photo)
-            <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-responsive" alt="{{ $photo->original_name }}">
+            <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">
         @endforeach
 
         <div class="form-group">

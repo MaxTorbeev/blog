@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="card-columns">
+
     @foreach($posts as $post)
         <div class="card">
             @if($post->previewImage)
                 <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">
-                    <img src="{{ $post->previewImage->getThumbnail() }}"  class="card-img-top img-fluid" alt="{{ $post->title }}">
+                    <img src="/{{ $post->previewImage->getThumbnail() }}"  class="card-img-top img-fluid" alt="{{ $post->title }}">
                 </a>
             @endif
             <div class="card-block">
@@ -20,5 +21,6 @@
             </div>
         </div>
     @endforeach
+
     </div>
 @endsection

@@ -12,6 +12,8 @@
     <meta name="description" content="{{ config('mxtcore.description') }}">
     <meta name="generator" content="{{ config('mxtcore.generator') }}">
 
+    @yield('meta')
+
     <title>{{ config('mxtcore.title', 'MaxTor blog') }}</title>
 
     <!-- Styles -->
@@ -23,7 +25,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse bg-faded">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse bg-faded mb-lg-1">
     <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
