@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
-                {{ \Illuminate\Support\Facades\Auth::user()->premissions }}
+                {{--{{ dd(\Illuminate\Support\Facades\Auth::user()->roles) }}--}}
                 @can('edit_forum')
                     <h1>Can edit_forum</h1>
                 @endcan
