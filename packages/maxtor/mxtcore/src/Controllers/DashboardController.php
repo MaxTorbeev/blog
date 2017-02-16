@@ -15,6 +15,9 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function index()
     {
        return redirect('admin/dashboard');
@@ -25,6 +28,15 @@ class DashboardController extends Controller
         return view('mxtcore::dashboard.index', compact('page'));
     }
 
+    /**
+     * load and init MXTCore components
+     *
+     * @param $alias
+     * @param null $method
+     * @param null $id
+     * @return mixed
+     * @throws \Exception
+     */
     public function loadComponents($alias, $method = null, $id = null)
     {
         $page = Menu::whereAlias($alias)->firstOrFail();

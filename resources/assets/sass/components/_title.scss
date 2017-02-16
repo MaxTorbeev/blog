@@ -1,0 +1,29 @@
+.title{
+    &-baseSize{
+        font-size: 1rem;
+    }
+
+    &-small{
+        font-size: .6em;
+    }
+
+    &-bold{
+        font-weight: bold;
+    }
+
+    &-large{
+        font-size: 1.4em;
+    }
+
+    &-uppercase{
+        text-transform: uppercase;
+    }
+
+    &-underline{
+        border-bottom: 1px solid $black;
+    }
+
+    &-lSpacing-7{
+        letter-spacing: 7px;
+    }
+}

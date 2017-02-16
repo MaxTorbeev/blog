@@ -30,6 +30,11 @@ class PostsController extends Controller
         return view('blog::index', compact('posts'));
     }
 
+    public function portfolio($alias)
+    {
+        return 'portfolio';
+    }
+
     public function show($alias)
     {
         $post = Post::whereAlias($alias)->firstOrFail();
@@ -65,7 +70,9 @@ class PostsController extends Controller
 
     public function update($id, Request $request){
         $post = Post::findOrFail($id);
-        $this->syncTags($post, $request->input('tag_list'));
+        if($request->input('tag_list')){
+            $this->syncTags($post, $request->input('tag_list'));
+        }
         $post->update($request->all());
         flash()->success('Материал был сохранен', 'Материал успешно сохранен.');
 

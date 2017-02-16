@@ -25,40 +25,40 @@
 </head>
 <body>
 
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse bg-faded mb-lg-1">
+<nav class="navbar navbar-toggleable-md mb-lg-1">
     <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <a class="navbar-brand" href="{{ url('/') }}">MaxTor.name v 2</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('post.index') }}">Блог</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Портфолио</a>
-                </li>
-                @if (Auth::guest())
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
-                @else
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/admin') }}">Панель управления</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a href="{{ url('/logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                        </div>
-                    </li>
-                @endif
             </ul>
         </div>
+
+        <ul class="float-right navbar-nav">
+            @if (Auth::guest())
+                <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
+            @else
+                <li class="nav-item"><a class="nav-link" href="{{ url('/admin') }}">Панель управления</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a href="{{ url('/logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                    </div>
+                </li>
+            @endif
+        </ul>
+
     </div>
 </nav>
 

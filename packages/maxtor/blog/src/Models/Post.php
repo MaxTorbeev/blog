@@ -70,7 +70,7 @@ class Post extends Model
     }
 
     /**
-     * Get the tags associated with the give article
+     * Get the tags associated with the give post
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

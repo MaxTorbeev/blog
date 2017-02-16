@@ -42,7 +42,8 @@
 
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">
             {!! Form::label('preview_photo_id', 'Изображение вводного текста:') !!}
-            {!! Form::select('preview_photo_id', $photos, null, ['class'=>'form-control select2']) !!}
+
+            {!! Form::select('preview_photo_id', $photos, null, ['class'=>'form-control selectPreviewPhoto']) !!}
         </div>
 
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">
@@ -66,7 +67,7 @@
 
         <div class="form-group">
             {!! Form::label('tag_list', 'Tags:') !!}
-            {!! Form::select('tag_list[]', $tags, null, ['class'=>'form-control select2' , 'multiple']) !!}
+            {!! Form::select('tag_list[]', $tags, $post->tags->pluck('id')->all(), ['class'=>'form-control select2' , 'multiple']) !!}
         </div>
 
         <div class="form-group">
@@ -85,5 +86,6 @@
     {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}
     <a href="{{ url()->previous() }}" class="btn btn btn-secondary">Назад</a>
 </div>
+@section('footer')
 
-@section('footer') @endsection
+@endsection

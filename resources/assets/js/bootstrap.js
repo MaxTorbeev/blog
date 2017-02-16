@@ -25,6 +25,11 @@ window.swal = require('sweetalert');
  */
 window.Dropzone = require("./components/dropzone/dropzone");
 
+require("./components/select2/select2");
+
+
+
+
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean

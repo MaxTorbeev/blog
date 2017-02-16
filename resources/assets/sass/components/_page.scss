@@ -1,0 +1,9 @@
+.page{
+    &_title{
+        font-size: 3rem;
+
+        &-center{
+            text-align: center;
+        }
+    }
+}

@@ -7,7 +7,7 @@
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->intro_text }}">
     <meta property="og:site_name" content="maxtor.name">
-{{--    <meta property="og:url" content="{{ action('mxtblog:PostsController@show', ['alias' => $post->alias]) }}">--}}
+    <meta property="og:url" content="{{  route('post.show', ['alias' => $post->alias]) }}">
     <meta property="og:type" content="article">
     {{--<meta property="og:image" content="{{ asset($photo->path . '/' . $photo->thumbnail_filename) }}">--}}
 @endsection

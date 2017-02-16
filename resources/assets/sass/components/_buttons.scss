@@ -1,0 +1,61 @@
+
+@mixin gradientButton($color){
+    position: relative;
+    border: none;
+    z-index: 1000;
+    @include transition(.3s);
+    @include gradient-x($color, lighten($color, 20%));
+
+    &::after{
+        display: block;
+        position: absolute;
+        content: "";
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        transform: scale(.8);
+        left: 0;
+        top: .5em;
+        border-radius: 2em;
+        filter: blur(10px);
+        @include gradient-x($color, lighten($color, 10%));
+    }
+
+    *::-ms-backdrop, &::after {
+        display: none;
+    }
+
+    &:active,
+    &:hover{
+        @include gradient-x(darken($color, 10%), lighten($color, 0%));
+    }
+    &:active{
+
+        &::after{
+            transition: 3s;
+        }
+    }
+
+}
+
+.btn{
+    @include transition(.3s);
+
+    &-rounded{
+        border-radius: 2em;
+    }
+
+    &-warning{
+        &-gradient{
+            color: $white !important;
+            @include gradientButton($brand-warning)
+        }
+    }
+
+    &-primary{
+        &-gradient{
+            color: $white !important;
+            @include gradientButton($brand-primary)
+        }
+    }
+}

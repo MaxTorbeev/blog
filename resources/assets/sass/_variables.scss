@@ -42,18 +42,31 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
+
+@import "colors/blue-light";
+@import "colors/cyan";
+@import "colors/gray";
+@import "colors/gray-blue";
+@import "colors/green";
+@import "colors/orange";
+@import "colors/red";
+@import "colors/yellow";
+@import "colors/social-networks";
+
+
+
 $gray-dark:                 #373a3c !default;
 $gray:                      #55595c !default;
 $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
-$brand-primary:             #0275d8 !default;
+$brand-primary:             $blue-light_80 !default;
 $brand-success:             #5cb85c !default;
 $brand-info:                #5bc0de !default;
-$brand-warning:             #f0ad4e !default;
-$brand-danger:              #d9534f !default;
-$brand-inverse:             $gray-dark !default;
+$brand-warning:             $orange_50 !default;
+$brand-danger:              $red_50 !default;
+$brand-inverse:             $gray_90 !default;
 
 
 // Options
@@ -112,7 +125,7 @@ $body-color: $gray-dark !default;
 //
 // Style anchor elements.
 
-$link-color:            $brand-primary !default;
+$link-color:            $blue-light_50 !default;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;

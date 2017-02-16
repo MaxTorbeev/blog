@@ -10,6 +10,7 @@ Route::group([
     Route::resource('posts', 'PostsController',
         ['names' => [
                 'index'     => 'post.index',
+                'portfolio' => 'post.portfolio',
                 'show'      => 'post.show',
                 'store'     => 'post.store',
                 'update'    => 'post.update',
@@ -45,6 +46,11 @@ Route::group([
     Route::post('posts/{alias}/photos', [
         'as' => 'store_photo_path',
         'uses' => 'PostsController@addPhoto'
+    ]);
+
+    Route::get('posts/api/photos/{postId}', [
+        'as' => 'store_photo_path',
+        'uses' => 'ApiController@getPhotosList'
     ]);
 
 });
