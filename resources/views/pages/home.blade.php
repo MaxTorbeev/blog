@@ -21,9 +21,10 @@
             </p>
 
             <p class="text-center">
-                <a class="btn btn-primary-gradient btn-rounded" href="#">Following</a>
-                <a class="btn btn-warning-gradient btn-rounded" href="#">Following</a>
+                <a class="btn btn-primary-gradient btn-rounded" href="#">Подписаться</a>
+                <a class="btn btn-warning-gradient btn-rounded" href="#">Связаться</a>
             </p>
+
         </div>
     </div>
 @stop

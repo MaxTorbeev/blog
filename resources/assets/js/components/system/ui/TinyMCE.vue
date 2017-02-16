@@ -21,7 +21,8 @@
 
         created() {
             tinymce.init({
-                selector:'#editor',
+                selector        : '#editor',
+                height          : 700
             });
         },
 

@@ -1,0 +1,22 @@
+.select2{
+    &-results{
+        &_image,
+        &_title{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        &_image{
+            width: 30%;
+            height: auto;
+            & > img{
+                display: block;
+                width: 100%;
+            }
+        }
+        &_title{}
+
+        &__options{
+            max-height: 500px !important;
+        }
+    }
+}

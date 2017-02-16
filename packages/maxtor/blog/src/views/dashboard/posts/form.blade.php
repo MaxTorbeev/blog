@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-md-8">
         <div class="form-group  {{ $errors->has('title') ? 'has-danger' : '' }}">
@@ -61,10 +60,6 @@
             {!! Form::select('cat_id', $categories, null, ['class'=>'form-control select2']) !!}
         </div>
 
-        @foreach($post->photos as $photo)
-            <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">
-        @endforeach
-
         <div class="form-group">
             {!! Form::label('tag_list', 'Tags:') !!}
             {!! Form::select('tag_list[]', $tags, $post->tags->pluck('id')->all(), ['class'=>'form-control select2' , 'multiple']) !!}
@@ -86,6 +81,7 @@
     {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}
     <a href="{{ url()->previous() }}" class="btn btn btn-secondary">Назад</a>
 </div>
+
 @section('footer')
 
 @endsection

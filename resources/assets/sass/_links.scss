@@ -59,8 +59,11 @@
 // Utility classes
 @import "../../../node_modules/bootstrap/scss/utilities";
 
-//mxtcore components
 
+@import "components/swiper";
+
+//mxtcore components
+@import "components/select2";
 @import "components/buttons";
 @import "components/forms";
 @import "components/page";

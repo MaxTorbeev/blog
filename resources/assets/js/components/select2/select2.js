@@ -47,18 +47,31 @@ $(function() {
         templateSelection: formatRepoSelection
     });
 
-    function formatRepo (repo) {
+    function formatRepo(repo){
         if (repo.loading) return 'Загрузка';
+        var markup;
 
-        var markup = "<div class='select2-result-repository__title'>" + repo.original_name + "</div>";
-
-        markup += '<img src="/' + repo.path + '/' + repo.thumbnail_filename + '" class="">';
+        markup = `
+                <div class="select2-results">
+                    <div class="select2-results_image">
+                       <img src="/${repo.path}/${repo.thumbnail_filename}" class=""> 
+                    </div>
+                    <div class="select2-results_title">${repo.original_name}</div>
+                </div>
+                 `;
 
         return markup;
     }
 
     function formatRepoSelection (repo) {
-        return repo.full_name || repo.text;
+        return `
+            <div class="select2-selection__rendered">
+                ${repo.original_name || repo.text}
+            </div>
+                
+                
+                
+                `;
     }
 });
 

@@ -26,6 +26,7 @@ window.swal = require('sweetalert');
 window.Dropzone = require("./components/dropzone/dropzone");
 
 require("./components/select2/select2");
+require("./components/swiper/swiper");
 
 
 

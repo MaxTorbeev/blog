@@ -21,9 +21,21 @@
         <div class="row">
 
             <div class="col col-3">
-                @foreach($post->photos as $photo)
-                    <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">
-                @endforeach
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    @foreach($post->photos as $photo)
+                        <div class="swiper-slide">
+                            <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">
+                        </div>
+                    @endforeach
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                {{--@foreach($post->photos as $photo)--}}
+                    {{--<img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">--}}
+                {{--@endforeach--}}
             </div>
 
             <div class="col col-9">
