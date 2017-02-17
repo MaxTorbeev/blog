@@ -3,8 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,7 +47,31 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+
+        switch($exception){
+
+            case ($exception instanceof AuthorizationException  ):
+                return redirect()->action('Auth\AuthController@getLogin');
+                break;
+
+            case ($exception instanceof \ErrorException):
+                return response()->view('mxtcore::app.errors.500', ['e' => $exception]);
+                break;
+
+            case ($exception instanceof \BadMethodCallException):
+                return response()->view('mxtcore::dashboard.errors.error', ['e' => $exception]);
+                break;
+
+            case ($exception instanceof ModelNotFoundException):
+                return response()->view('mxtcore::app.errors.404', ['e' => $exception], 404);
+                break;
+
+            default:
+                return parent::render($request, $exception);
+
+        }
+
+
     }
 
     /**

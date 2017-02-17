@@ -35,27 +35,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('post.index') }}">Блог</a>
                 </li>
+
+                @if (Auth::guest())
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Вход</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Регистрация</a></li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/admin') }}">Dashboard</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a href="{{ url('/logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                        </div>
+                    </li>
+                @endif
+
             </ul>
         </div>
-
-        <ul class="float-right navbar-nav">
-            @if (Auth::guest())
-                <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Вход</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Регистрация</a></li>
-            @else
-                <li class="nav-item"><a class="nav-link" href="{{ url('/admin') }}">Dashboard</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a href="{{ url('/logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                    </div>
-                </li>
-            @endif
-        </ul>
-
     </div>
 </nav>
 

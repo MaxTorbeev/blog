@@ -48,7 +48,7 @@ class Post extends Model
     {
         if(!Auth::user()){
             return $query->where('published_at', '<=', Carbon::now())
-                ->where('publish', '=', 1);
+                ->where('published', '=', 1);
         }
         return $query->where('published_at', '<=', Carbon::now())->where('published', '=', 1) ;
     }

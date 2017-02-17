@@ -52,6 +52,10 @@ class DashboardController extends Controller
             throw new \Exception('Can not found the ' . $extension->controller_path);
         }
 
+        if( !method_exists($controller, $method) ) {
+            throw new \BadMethodCallException('Can not found the method ' . $extension->controller_path . '@' . $method);
+        }
+
         $control = $controller->callAction($method, [
             'entity'    => $extension->controllerName(),
             'page'      => $page,

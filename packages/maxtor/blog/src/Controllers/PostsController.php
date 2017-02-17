@@ -64,6 +64,11 @@ class PostsController extends Controller
     public function store(PostRequest $request, Flash $flash)
     {
         Auth::user()->posts()->create($request->all());
+
+        if($request->input('tag_list')){
+            $this->syncTags($post, $request->input('tag_list'));
+        }
+
         flash()->success('Материал был создан', 'Материал успешно создан.');
 
         return redirect()->back();
