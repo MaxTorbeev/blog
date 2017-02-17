@@ -3,6 +3,7 @@
 namespace MaxTor\Blog;
 
 use Illuminate\Support\ServiceProvider;
+use MaxTor\Blog\Models\Post;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -40,7 +41,12 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('pages.home', function ($view) {
+
+            $posts = Post::published();
+            $view->with('posts', $posts->get());
+
+        });
     }
 
 }

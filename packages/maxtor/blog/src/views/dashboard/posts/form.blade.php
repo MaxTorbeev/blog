@@ -42,7 +42,7 @@
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">
             {!! Form::label('preview_photo_id', 'Изображение вводного текста:') !!}
 
-            {!! Form::select('preview_photo_id', $photos, null, ['class'=>'form-control selectPreviewPhoto']) !!}
+            {!! Form::select('preview_photo_id', $photos, null, ['class'=>'form-control selectPreviewPhoto', 'data-post-id' => $post->id]) !!}
         </div>
 
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">

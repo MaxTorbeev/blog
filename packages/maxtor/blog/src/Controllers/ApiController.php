@@ -2,7 +2,7 @@
 
 namespace MaxTor\Blog\Controllers;
 
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use MaxTor\Blog\Models\Photo;
 use MaxTor\Blog\Models\Post;
@@ -11,7 +11,7 @@ class ApiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index'] ]);
+        $this->middleware('auth', ['except' => ['index']]);
     }
 
     /**
@@ -20,12 +20,12 @@ class ApiController extends Controller
      * @param $id
      * @return mixed
      */
-    public function getPhotosList($id){
-        $post       = Post::findOrFail($id);
-        $photos     = $post->photos->all();
+    public function getPhotosList($id)
+    {
+        $post = Post::findOrFail($id);
+        $photos = $post->photos->all();
 
         return $photos;
     }
-
 
 }

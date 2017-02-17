@@ -14,11 +14,11 @@ $(function() {
         }
     }
 
-    $(".select2").select2({});
+    $('.select2').select2({});
 
-    $(".selectPreviewPhoto").select2({
+    $('.selectPreviewPhoto').select2({
         ajax: {
-            url: window.location.origin + '/posts/api/photos/9',
+            url: window.location.origin + '/posts/api/photos/' + $('.selectPreviewPhoto').data('post-id'),
             dataType: 'json',
             delay: 100,
 

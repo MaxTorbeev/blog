@@ -16,15 +16,41 @@
             </div>
 
             <p class="mt-lg-2 text-center">
-                Bootstrap’s grid includes five tiers of predefined classes for building complex responsive layouts.
-                Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.
+                Добро пожаловать! Я - Максим «MaxTor» Торбеев. Сей сайт был сделан для публикаций своих работы, <br> дабы себя показать и...
+                Ну в общем вы поняли.
             </p>
 
             <p class="text-center">
                 <a class="btn btn-primary-gradient btn-rounded" href="#">Подписаться</a>
                 <a class="btn btn-warning-gradient btn-rounded" href="#">Связаться</a>
             </p>
-
         </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-lg-2">
+        <section class="section col-12 col-md-auto">
+            <h2 class="text-center mb-1">Последние посты</h2>
+
+            <div class="swiper-container hSlider">
+                <div class="swiper-wrapper">
+                    @foreach($posts as $post)
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <img class="card-img-top" src="{{ $post->previewImage->getThumbnail() }}" alt="{{ $post->title }}">
+                                <div class="card-block">
+                                    <h4 class="card-title">
+                                        <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">{{ $post->title }}</a>
+                                    </h4>
+                                    <p class="card-text">{{ $post->intro_text }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
     </div>
 @stop

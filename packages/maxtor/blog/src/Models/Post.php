@@ -2,7 +2,9 @@
 
 namespace MaxTor\Blog\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -18,12 +20,51 @@ class Post extends Model
         'full_text',
         'cat_id',
         'preview_photo_id',
-        'published'
+        'published',
+        'published_at'
     ];
+
+    /**
+     * Additional fields to treat as Carbon instances
+     *
+     * @var array
+     */
+    protected $dates = ['published_at'];
 
     public function setAliasAttribute($alias)
     {
         $this->attributes['alias'] = str_replace(' ', '-', $alias);
+    }
+
+    /**
+     * scopeFunction name
+     *
+     * Возможно использование Article::published()->get()
+     * @param $query
+     * @return bool
+     */
+
+    public function scopePublished($query)
+    {
+        if(!Auth::user()){
+            return $query->where('published_at', '<=', Carbon::now())
+                ->where('publish', '=', 1);
+        }
+        return $query->where('published_at', '<=', Carbon::now())->where('published', '=', 1) ;
+    }
+
+    /** Set the published_at attribite
+     *
+     *  @param $date
+     */
+    public function setPublishedAtAttribute($date)
+    {
+        $this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d', $date);
+    }
+
+    public function getPublishedAtAttribute($date)
+    {
+        return Carbon::parse($date)->format('Y-m-d');
     }
 
     /**

@@ -1,13 +1,9 @@
 window.Swiper = require('swiper');
 
-var blogPreviewSlider =  new Swiper('.swiper-container', {
+var blogPreviewSlider =  new Swiper('.hSlider', {
     pagination: '.swiper-pagination',
-    effect: 'cube',
-    grabCursor: true,
-    cube: {
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94
-    }
+    slidesPerView: 2,
+    paginationClickable: true,
+    //spaceBetween: 30,
+    //freeMode: true
 });

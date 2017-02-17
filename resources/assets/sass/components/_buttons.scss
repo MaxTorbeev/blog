@@ -18,7 +18,7 @@
         top: .5em;
         border-radius: 2em;
         filter: blur(10px);
-        @include gradient-x($color, lighten($color, 10%));
+        @include gradient-x(lighten($color, 10%), lighten($color, 20%));
     }
 
     *::-ms-backdrop, &::after {
@@ -40,6 +40,7 @@
 
 .btn{
     @include transition(.3s);
+
 
     &-rounded{
         border-radius: 2em;
