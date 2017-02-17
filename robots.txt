@@ -1,0 +1,9 @@
+User-agent: *
+
+Disallow: /public/
+Disallow: /admin/
+Disallow: /api/
+
+Host: https://maxtor.name
+Host: http://maxtor.name
+Host: maxtor.name

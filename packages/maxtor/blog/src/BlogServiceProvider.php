@@ -24,7 +24,7 @@ class BlogServiceProvider extends ServiceProvider
 
         $this->commands('blog::install');
 
-        $this->loadViewsFrom(__DIR__.'./views', 'blog');
+        $this->loadViewsFrom(__DIR__ . '/views', 'blog');
 
         $this->publishes([
             __DIR__ . '/../../public' => public_path('packages/maxtor/blog')
