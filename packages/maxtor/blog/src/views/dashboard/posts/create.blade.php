@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('mxtcore::layouts.dashboard')
 
 @section('content')
     <h1>Create new post</h1>
@@ -14,9 +14,8 @@
         </div>
     @endif
 
-
     {!! Form::model($post = new \MaxTor\Blog\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
-    @include ('blog::dashboard.posts.form', ['submitButtonText' => 'Добавить новый материал' ])
+        @include ('blog::dashboard.posts.form', ['submitButtonText' => 'Добавить новый материал' ])
     {!! Form::close() !!}
 
 @stop

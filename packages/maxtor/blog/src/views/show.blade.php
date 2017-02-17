@@ -22,7 +22,7 @@
 
             <div class="col col-3">
 
-                <div class="swiper-container">
+                <div class="swiper-container hBlogImagesSlider">
                     <div class="swiper-wrapper">
                     @foreach($post->photos as $photo)
                         <div class="swiper-slide">
@@ -32,6 +32,9 @@
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
                 {{--@foreach($post->photos as $photo)--}}
                     {{--<img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">--}}

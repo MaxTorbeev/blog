@@ -1,7 +1,8 @@
 
-@mixin gradientButton($color){
+@mixin gradientButton($color, $textColor: $white){
     position: relative;
     border: none;
+    color: $textColor;
     z-index: 1000;
     @include transition(.3s);
     @include gradient-x($color, lighten($color, 20%));
@@ -27,6 +28,7 @@
 
     &:active,
     &:hover{
+        color: $textColor;
         @include gradient-x(darken($color, 10%), lighten($color, 0%));
     }
     &:active{
@@ -48,15 +50,31 @@
 
     &-warning{
         &-gradient{
-            color: $white !important;
             @include gradientButton($brand-warning)
         }
     }
 
     &-primary{
         &-gradient{
-            color: $white !important;
             @include gradientButton($brand-primary)
+        }
+    }
+
+    &-facebook{
+        &-gradient{
+            @include gradientButton($social-facebook)
+        }
+    }
+
+    &-vk{
+        &-gradient{
+            @include gradientButton($social-vk)
+        }
+    }
+
+    &-behance{
+        &-gradient{
+            @include gradientButton($social-behance)
         }
     }
 }

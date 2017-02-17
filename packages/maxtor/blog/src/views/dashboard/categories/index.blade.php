@@ -1,6 +1,16 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
+
+    @include('mxtcore::dashboard.partials.components.toolbar', [
+        'menu' => [
+                    [
+                        'url'      => url( '/admin/' . $page->alias . '/create'),
+                        'title'    => 'Добавить категорию'
+                    ],
+            ]
+    ])
+
     <table class="table table-sm ">
         <thead class="thead-inverse">
         <tr>

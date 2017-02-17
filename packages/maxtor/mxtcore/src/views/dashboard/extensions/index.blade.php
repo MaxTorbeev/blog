@@ -1,8 +1,15 @@
 @extends('mxtcore::layouts.dashboard')
 
 @section('content')
-    {{--@todo сделать дерективу, которая генерирует меню управления--}}
-    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'create']) }}" class="btn btn-success">Добавить расширение</a>
+
+    @include('mxtcore::dashboard.partials.components.toolbar', [
+        'menu' => [
+                    [
+                        'url'      => route('dashboard.components', ['alias' => $page->alias, 'method' => 'create']),
+                        'title'    => 'Добавить расширение'
+                    ],
+            ]
+    ])
 
     @foreach($extensions as $extension)
         {!! Form::model($extension, ['method' => 'PATCH',  'url' => route('extensions.update', ['id' => $extension->id]), 'class' => 'form-table input-group']) !!}

@@ -21,14 +21,21 @@
             </p>
 
             <p class="text-center">
-                <a class="btn btn-primary-gradient btn-rounded" href="#">Подписаться</a>
-                <a class="btn btn-warning-gradient btn-rounded" href="#">Связаться</a>
+                <a class="btn btn-facebook-gradient btn-rounded" href="https://www.facebook.com/">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-vk-gradient btn-rounded" href="https://vk.com/id13237163">
+                    <i class="fa fa-vk" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-behance-gradient btn-rounded" href="https://www.behance.net/MaxTorb">
+                    <i class="fa fa-behance" aria-hidden="true"></i>
+                </a>
             </p>
         </div>
     </div>
 
     <div class="row justify-content-md-center mt-lg-2">
-        <section class="section col-12 col-md-auto">
+        <section class="section col-8 col-md-auto">
             <h2 class="text-center mb-1">Последние посты</h2>
 
             <div class="swiper-container hSlider">

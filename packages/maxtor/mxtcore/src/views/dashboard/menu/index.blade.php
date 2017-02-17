@@ -4,8 +4,19 @@
 
 @section('content')
 
-    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'createmenuitem']) }}" class="btn btn-success">Добавить пункт меню</a>
-    <a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'createMenuType']) }}" class="btn btn-outline-success">Добавить новый тип меню</a>
+    @include('mxtcore::dashboard.partials.components.toolbar', [
+        'menu' => [
+                    [
+                        'url'      => route('dashboard.components', ['alias' => $page->alias, 'method' => 'createmenuitem']),
+                        'title'    => 'Добавить пункт меню'
+                    ],
+                    [
+                        'url'      => route('dashboard.components', ['alias' => $page->alias, 'method' => 'createMenuType']),
+                        'title'    => 'Добавить новый тип меню'
+                    ],
+            ]
+    ])
+
     @foreach($menu as $item)
         @if($menuType != $item->menuType->title)
         <h4>{{ $item->menuType->title }}</h4>

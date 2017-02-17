@@ -45,9 +45,10 @@ class PostsController extends Controller
     public function create($controller, $page)
     {
         $categories = $this->getCategoriesList( (new Category()) );
-        $tags = Tag::pluck('name', 'id');
+        $tags       = Tag::pluck('name', 'id');
+        $photos     = (new Post)->photos->pluck('original_name', 'id');
 
-        return view('blog::dashboard.posts.create', compact('categories', 'tags'));
+        return view('blog::dashboard.posts.create', compact('categories', 'tags', 'photos'));
     }
 
     public function edit($controller, $page, $id)

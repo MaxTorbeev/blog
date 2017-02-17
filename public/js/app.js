@@ -62298,8 +62298,8 @@ __webpack_require__(65);
             selector: '#editor',
             height: 700,
             //                document_base_url   : "/",
-            plugins: 'image code link',
-            toolbar: 'undo redo | link image | code | link',
+            plugins: ['advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code fullscreen', 'insertdatetime media table contextmenu paste code link'],
+            toolbar: 'undo redo | link image | code | link | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | ',
             image_title: true, // enable title field in the Image dialog
             automatic_uploads: true,
             images_upload_url: '/postAcceptor.php',
@@ -62497,7 +62497,15 @@ $(function () {
 
 window.Swiper = __webpack_require__(62);
 
-var blogPreviewSlider = new Swiper('.hSlider', {
+var blogPreviewSlider = new Swiper('.hBlogImagesSlider', {
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    pagination: '.swiper-pagination',
+    paginationType: 'progress'
+
+});
+
+var horizontalSlider = new Swiper('.hSlider', {
     pagination: '.swiper-pagination',
     slidesPerView: 2,
     paginationClickable: true
