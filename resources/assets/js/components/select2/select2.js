@@ -48,9 +48,9 @@ $(function() {
     });
 
     function formatRepo(repo){
-        if (repo.loading) return 'Загрузка';
         var markup;
-
+        
+        if (repo.loading) return 'Загрузка';
         markup = `
                 <div class="select2-results">
                     <div class="select2-results_image">

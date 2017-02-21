@@ -36,9 +36,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-                {{--@foreach($post->photos as $photo)--}}
-                    {{--<img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">--}}
-                {{--@endforeach--}}
+
             </div>
 
             <div class="col col-9">
@@ -50,7 +48,7 @@
                         <span>Опубликовано: {{ $post->published_at }}</span>
                     </li>
                     <li class="post_info_item">
-                        <span>Пользователем: {{ $post->user }}</span>
+                        <span>Пользователем: {{ $post->author->name }}</span>
                     </li>
                 </ul>
 

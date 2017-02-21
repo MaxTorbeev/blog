@@ -62297,11 +62297,10 @@ __webpack_require__(65);
         tinymce.init({
             selector: '#editor',
             height: 700,
-            //                document_base_url   : "/",
             plugins: ['advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code fullscreen codesample', 'insertdatetime media table contextmenu paste code link'],
             toolbar: 'codesample | undo redo | link image | code | link | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | ',
 
-            codesample_languages: [{ text: 'HTML/XML', value: 'markup' }, { text: 'JavaScript', value: 'javascript' }, { text: 'CSS', value: 'css' }, { text: 'PHP', value: 'php' }, { text: 'Ruby', value: 'ruby' }, { text: 'Python', value: 'python' }, { text: 'Java', value: 'java' }, { text: 'C', value: 'c' }, { text: 'C#', value: 'csharp' }, { text: 'C++', value: 'cpp' }],
+            codesample_languages: [{ text: 'HTML/XML', value: 'markup' }, { text: 'JavaScript', value: 'javascript' }, { text: 'CSS', value: 'css' }, { text: 'PHP', value: 'php' }],
 
             image_title: true, // enable title field in the Image dialog
             automatic_uploads: true,
@@ -62480,9 +62479,9 @@ $(function () {
     });
 
     function formatRepo(repo) {
-        if (repo.loading) return 'Загрузка';
         var markup;
 
+        if (repo.loading) return 'Загрузка';
         markup = '\n                <div class="select2-results">\n                    <div class="select2-results_image">\n                       <img src="/' + repo.path + '/' + repo.thumbnail_filename + '" class=""> \n                    </div>\n                    <div class="select2-results_title">' + repo.original_name + '</div>\n                </div>\n                 ';
 
         return markup;

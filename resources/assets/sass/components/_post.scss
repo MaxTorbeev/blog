@@ -1,0 +1,12 @@
+.post{
+
+    ul.post_info{
+        margin-left: -40px;
+    }
+
+    &_info{
+        &_item{
+            display: inline-block;
+        }
+    }
+}
