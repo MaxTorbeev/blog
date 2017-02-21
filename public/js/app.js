@@ -62298,8 +62298,11 @@ __webpack_require__(65);
             selector: '#editor',
             height: 700,
             //                document_base_url   : "/",
-            plugins: ['advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code fullscreen', 'insertdatetime media table contextmenu paste code link'],
-            toolbar: 'undo redo | link image | code | link | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | ',
+            plugins: ['advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code fullscreen codesample', 'insertdatetime media table contextmenu paste code link'],
+            toolbar: 'codesample | undo redo | link image | code | link | insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | ',
+
+            codesample_languages: [{ text: 'HTML/XML', value: 'markup' }, { text: 'JavaScript', value: 'javascript' }, { text: 'CSS', value: 'css' }, { text: 'PHP', value: 'php' }, { text: 'Ruby', value: 'ruby' }, { text: 'Python', value: 'python' }, { text: 'Java', value: 'java' }, { text: 'C', value: 'c' }, { text: 'C#', value: 'csharp' }, { text: 'C++', value: 'cpp' }],
+
             image_title: true, // enable title field in the Image dialog
             automatic_uploads: true,
             images_upload_url: '/postAcceptor.php',

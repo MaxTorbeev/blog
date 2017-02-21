@@ -8,10 +8,10 @@
         min-height: 100%;
     }
 
-    &_container{
-        background-color: white;
-    }
+    &_container{}
+
     &_aside {
+        position: fixed;
         padding: 0 !important;
         margin: 0 !important;
         flex: 1;
@@ -19,8 +19,15 @@
         color: white;
     }
 
+    &_main,
+    &_aside{
+        min-height: 100%;
+    }
     &_main {
+        position: absolute;
         flex: 1;
+        background-color: white;
+        right: 0;
     }
 }
 

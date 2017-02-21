@@ -174,6 +174,7 @@ return [
          * MaxTor packages Service Providers...
          */
         MaxTor\Blog\BlogServiceProvider::class,
+        MaxTor\MXTCore\MXTCoreServiceProvider::class,
 
         /*
          * Application Service Providers...
