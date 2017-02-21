@@ -26,7 +26,6 @@
             tinymce.init({
                 selector            : '#editor',
                 height              : 700,
-//                document_base_url   : "/",
                 plugins             : [
                                         'advlist autolink lists link image charmap print preview anchor',
                                         'searchreplace visualblocks code fullscreen codesample',
