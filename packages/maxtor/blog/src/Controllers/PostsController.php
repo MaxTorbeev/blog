@@ -25,7 +25,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::published()->get();
 
         return view('blog::index', compact('posts'));
     }
@@ -37,7 +37,7 @@ class PostsController extends Controller
 
     public function show($alias)
     {
-        $post = Post::whereAlias($alias)->firstOrFail();
+        $post = Post::whereAlias($alias)->published()->firstOrFail();
 
         return view('blog::show', compact('post'));
     }

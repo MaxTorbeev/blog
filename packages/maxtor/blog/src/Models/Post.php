@@ -47,10 +47,9 @@ class Post extends Model
     public function scopePublished($query)
     {
         if(!Auth::user()){
-            return $query->where('published_at', '<=', Carbon::now())
-                ->where('published', '=', 1);
+            return $query->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
         }
-        return $query->where('published_at', '<=', Carbon::now())->where('published', '=', 1) ;
+        return $query->where('published_at', '<=', Carbon::now());
     }
 
     /** Set the published_at attribite

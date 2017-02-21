@@ -21,43 +21,41 @@
             </p>
 
             <p class="text-center">
-                <a class="btn btn-facebook-gradient btn-rounded" href="https://www.facebook.com/">
+                <a class="btn btn-facebook-gradient btn-rounded" href="https://www.facebook.com/" target="_blank">
                     <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a class="btn btn-vk-gradient btn-rounded" href="https://vk.com/id13237163">
+                <a class="btn btn-vk-gradient btn-rounded" href="https://vk.com/id13237163" target="_blank">
                     <i class="fa fa-vk" aria-hidden="true"></i>
                 </a>
-                <a class="btn btn-behance-gradient btn-rounded" href="https://www.behance.net/MaxTorb">
+                <a class="btn btn-behance-gradient btn-rounded" href="https://www.behance.net/MaxTorb" target="_blank">
                     <i class="fa fa-behance" aria-hidden="true"></i>
                 </a>
             </p>
         </div>
     </div>
 
+    @if(0)
     <div class="row justify-content-md-center mt-lg-2">
         <section class="section col-8 col-md-auto">
             <h2 class="text-center mb-1">Последние посты</h2>
 
-            <div class="swiper-container hSlider">
-                <div class="swiper-wrapper">
-                    @foreach($posts as $post)
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <img class="card-img-top" src="{{ $post->previewImage->getThumbnail() }}" alt="{{ $post->title }}">
-                                <div class="card-block">
-                                    <h4 class="card-title">
-                                        <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">{{ $post->title }}</a>
-                                    </h4>
-                                    <p class="card-text">{{ $post->intro_text }}</p>
-                                </div>
-                            </div>
+            <div class="card-deck">
 
+                @foreach($posts as $post)
+                    <div class="card">
+                        <img class="card-img-top" class="img-fluid" width="220" src="{{ $post->previewImage->getThumbnail() }}" alt="{{ $post->title }}">
+                        <div class="card-block">
+                            <h4 class="card-title">
+                                <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">{{ $post->title }}</a>
+                            </h4>
                         </div>
-                    @endforeach
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
+                        <div class="card-footer">
+                            <small class="text-muted">{{ $post->published_at }}</small>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </section>
     </div>
+    @endif
 @stop
