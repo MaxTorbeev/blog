@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ACL\Models;
+namespace MaxTor\MXTCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

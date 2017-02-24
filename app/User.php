@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\ACL\Models\Role;
+use MaxTor\MXTCore\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ACL\Models;
+namespace MaxTor\MXTCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\ACL\Models\Role;
+use \MaxTor\MXTCore\Models\Role;
 
 class Permission extends Model
 {
@@ -11,5 +11,4 @@ class Permission extends Model
     {
         return $this->belongsToMany(Role::class);
     }
-
 }

@@ -20,6 +20,7 @@ class Post extends Model
         'full_text',
         'cat_id',
         'preview_photo_id',
+        'created_user_id',
         'published',
         'published_at'
     ];
@@ -45,8 +46,9 @@ class Post extends Model
      */
 
     public function scopePublished($query)
-    {
-        if(!Auth::user()){
+    {;
+
+        if(!Auth::user() || !Auth::user()->id == $query->first()->created_user_id){
             return $query->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
         }
         return $query->where('published_at', '<=', Carbon::now());
