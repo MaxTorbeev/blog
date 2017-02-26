@@ -21,6 +21,12 @@ class Post extends Model
         'cat_id',
         'preview_photo_id',
         'created_user_id',
+
+        'metakey',
+        'metadesc',
+        'metadata',
+
+
         'published',
         'published_at'
     ];
@@ -40,7 +46,7 @@ class Post extends Model
     /**
      * scopeFunction name
      *
-     * Возможно использование Article::published()->get()
+     * Возможно использование Post::published()->get()
      * @param $query
      * @return bool
      */

@@ -80,7 +80,10 @@ class PostsController extends Controller
             $this->syncTags($post, $request->input('tag_list'));
         }
         $post->update($request->all());
-        flash()->success('Материал был сохранен', 'Материал успешно сохранен.');
+
+        $request->session()->flash('flash_message', 'Материал успешно сохранен!');
+
+//        flash()->success('Материал был сохранен', 'Материал успешно сохранен.');
 
         return redirect()->back();
     }

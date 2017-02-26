@@ -5,12 +5,17 @@
 
     <a href="{{ route('post.show', [$post->alias]) }}" target="_blank">Перейти на страницу</a>
 
+    @if(Session::has('flash_message'))
+       {{ Session::get('flash_message') }}
+    @endif
+
     {!! Form::model($post, ['url' =>  route('post.update', [$post->id]), 'files' => true, 'method' => 'PATCH']) !!}
         @include ('blog::dashboard.posts.form', [
-        'submitButtonText' => 'Редактировать материал',
-        'deletePost' => 'true'
+        'submitButtonText'  => 'Редактировать материал',
+        'deletePost'        => 'true'
         ])
     {!! Form::close() !!}
+
     <h3>Добавить изображения</h3>
     {!! Form::model(
            $post,
