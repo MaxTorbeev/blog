@@ -39,8 +39,8 @@ class DashboardController extends Controller
      */
     public function loadComponents($alias, $method = null, $id = null)
     {
-        $page = Menu::whereAlias($alias)->firstOrFail();
-        $extension = $page->extension()->first();
+        $page       = Menu::whereAlias($alias)->firstOrFail();
+        $extension  = $page->extension()->first();
 
         if ($method === null){
             $method = 'dashboard';
