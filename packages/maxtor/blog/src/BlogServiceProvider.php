@@ -18,7 +18,7 @@ class BlogServiceProvider extends ServiceProvider
 
         $this->app->register('MaxTor\MXTCore\MXTCoreServiceProvider');
 
-        $this->app['blog::install'] = $this->app->share(function () {
+        $this->app->singleton('blog::install', function () {
             return new \MaxTor\Blog\Commands\BlogCommand();
         });
 

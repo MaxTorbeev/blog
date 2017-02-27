@@ -25,3 +25,5 @@ Route::group([
     Route::resource('/menu', 'MenuController');
 
 });
+
+Auth::routes();

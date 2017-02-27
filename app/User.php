@@ -28,6 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public function owns($related)
     {
         return $this->id == $related->created_user_id;

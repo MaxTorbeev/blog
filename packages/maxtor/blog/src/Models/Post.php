@@ -3,6 +3,8 @@
 namespace MaxTor\Blog\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +40,26 @@ class Post extends Model
      */
     protected $dates = ['published_at'];
 
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('published_at', function (Builder $builder) {
+
+            if( Auth::user() ){
+                $builder->where('published_at', '<=', Carbon::now());
+            } else {
+                $builder->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
+            }
+
+        });
+    }
+
     public function setAliasAttribute($alias)
     {
         $this->attributes['alias'] = str_replace(' ', '-', $alias);
@@ -51,13 +73,16 @@ class Post extends Model
      * @return bool
      */
 
-    public function scopePublished($query)
-    {;
+    public function scopePublished(Builder $builder)
+    {
+//        dd(Auth::user() && Auth::user()->id == $query->first()->created_user_id);
+//
+//        if( Auth::user() && Auth::user()->id == $builder->first()->created_user_id ){
+//            return $builder->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
+//        }
 
-        if(!Auth::user() || !Auth::user()->id == $query->first()->created_user_id){
-            return $query->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
-        }
-        return $query->where('published_at', '<=', Carbon::now());
+
+//        return $query->where('published_at', '<=', Carbon::now());
     }
 
     /** Set the published_at attribite

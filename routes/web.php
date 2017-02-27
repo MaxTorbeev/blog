@@ -1,10 +1,11 @@
 <?php
 
+
 Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'MaxTor\MXTCore\Controllers\SiteController@index');
+
 
 Auth::routes();
-

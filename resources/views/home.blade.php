@@ -1,4 +1,4 @@
-@extends('mxtcore::layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -10,14 +10,6 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
-                {{--{{ dd(\Illuminate\Support\Facades\Auth::user()->roles) }}--}}
-                @can('edit_forum')
-                    <h1>Can edit_forum</h1>
-                @endcan
-
-                @can('manage_money')
-                <h1>Can manage_money</h1>
-                @endcan
             </div>
         </div>
     </div>
