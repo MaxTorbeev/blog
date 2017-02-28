@@ -23,7 +23,7 @@
     <div class="col-sm-8">
         <div class="form-group  {{ $errors->has('intro_text') ? 'has-danger' : '' }}">
             {!! Form::label('intro_text', 'Вводный текст:') !!}
-            {!! Form::textarea('intro_text', null, ['class'=>'form-control', 'rows'=>'3', ]) !!}
+            {!! Form::textarea('intro_text', null, ['class'=>'form-control', 'rows'=>'6' ]) !!}
             @if ($errors->has('intro_text'))
                 <small class="form-control-feedback">{{ $errors->first('intro_text') }}</small>
             @endif
@@ -67,7 +67,7 @@
 
         <div class="form-group">
             {!! Form::label('metadesc', 'meta-description:') !!}
-            {!! Form::input('text', 'metadesc', $post->metadesc, ['class'=>'form-control' ]) !!}
+            {!! Form::textarea('metadesc', $post->metadesc, ['class'=>'form-control', 'rows'=>'5' ]) !!}
         </div>
 
         <div class="form-group">
