@@ -77,9 +77,11 @@
     </div>
 </div>
 
-<div class="form-group">
-    {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}
-    <a href="{{ url()->previous() }}" class="btn btn btn-secondary">Назад</a>
+<div class="panel form_buttonGroups form_buttonGroups-fixed">
+    <div class="form-group">
+        {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}
+        <a href="{{ url()->previous() }}" class="btn btn btn-secondary">Назад</a>
+    </div>
 </div>
 
 @section('footer')
