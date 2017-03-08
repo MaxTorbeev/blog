@@ -65,5 +65,30 @@ class DashboardController extends Controller
         return $control;
     }
 
+    /**
+     * get Image form dialog for TinyMCE editor
+     *
+     * @todo append resizer image
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function imageUpload(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('mxtcore::dashboard.system.editor.image-dialog');
+
+        } else if ($request->isMethod('post')) {
+            $file = $request->file('imagefile');
+
+            $fileName = md5(time()) . '.' .$file->getClientOriginalExtension();
+
+            $file->move('uploads/images/',$fileName);
+            $file_path = '/uploads/images/'. $fileName;
+
+            return view('mxtcore::dashboard.system.editor.image-upload', compact('file_path'));
+        }
+
+        return false;
+    }
+
   
 }

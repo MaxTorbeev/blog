@@ -11,6 +11,16 @@ Route::group([
         'uses'  => 'DashboardController@index'
     ])->middleware('check.role:root');
 
+    Route::get('/editor/upload-image', [
+        'as'    => 'editor.image-dialog',
+        'uses'  => 'DashboardController@imageUpload'
+    ]);
+
+    Route::post('/editor/upload-image', [
+        'as'    => 'editor.image-dialog',
+        'uses'  => 'DashboardController@imageUpload'
+    ]);
+
     Route::get('/{alias?}/{method?}/{id?}', [
         'as'    => 'dashboard.components',
         'uses'  => 'DashboardController@loadComponents'
@@ -25,5 +35,6 @@ Route::group([
     Route::resource('/menu', 'MenuController');
 
 });
+
 
 Auth::routes();

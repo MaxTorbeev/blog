@@ -27,9 +27,7 @@ window.Dropzone = require("./components/dropzone/dropzone");
 
 require("./components/select2/select2");
 require("./components/swiper/swiper");
-
-
-
+require("./vendor/prism");
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
