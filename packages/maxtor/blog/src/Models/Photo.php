@@ -59,6 +59,8 @@ class Photo extends Model
 
     protected function makeThumbnail()
     {
-        Image::make($this->path . '/' . $this->filename)->fit(450)->save($this->path . '/' . $this->thumbnail_filename);
+        Image::make($this->path . '/' . $this->filename)
+            ->resize(900, 330)
+            ->save($this->path . '/' . $this->thumbnail_filename);
     }
 }

@@ -1,0 +1,40 @@
+.frontend {
+    height: 100%;
+    background-attachment: fixed;
+
+    &_row,
+    &_container {
+        min-height: 100%;
+    }
+
+    &_container{}
+
+    &_aside {
+        position: fixed;
+        padding: 0 !important;
+        margin: 0 !important;
+        flex: 1;
+        left: 0;
+        background-color: $gray_90;
+        color: white;
+        max-width: 280px;
+        z-index: 99999;
+        @include box-shadow(4px 0 7px rgba($black, .2))
+
+    }
+
+    &_main,
+    &_aside{
+        min-height: 100%;
+    }
+    &_main {
+        position: absolute;
+        flex: 1;
+        left: 280px;
+        max-width: 1200px;
+    }
+}
+
+@import "sidebar";
+
+@import "content";

@@ -1,0 +1,23 @@
+.blog{
+    &_listItem{
+        margin-bottom: 2rem;
+
+        &_img{
+            margin-bottom: 1rem;
+        }
+
+        &_title{
+            font-size: 3rem;
+            font-weight: lighter;
+        }
+
+        &_publish{
+            font-size: 18px;
+            text-align: right;
+
+            .day{
+                font-size: 36px;
+            }
+        }
+    }
+}

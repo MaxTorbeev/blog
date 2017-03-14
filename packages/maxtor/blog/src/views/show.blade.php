@@ -17,58 +17,46 @@
         <a href="#">Редактирование </a>
     @endcan
 
-    <article class="post">
-        <div class="row">
+    <article class="blog post">
 
-            <div class="col col-3">
-
-                <div class="swiper-container hBlogImagesSlider">
-                    <div class="swiper-wrapper">
-                    @foreach($post->photos as $photo)
-                        <div class="swiper-slide">
-                            <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">
-                        </div>
-                    @endforeach
+        <div class="swiper-container hBlogImagesSlider">
+            <div class="swiper-wrapper">
+                @foreach($post->photos as $photo)
+                    <div class="swiper-slide">
+                        <img src="/{{ $photo->path . '/' . $photo->thumbnail_filename }}" class="img-fluid" alt="{{ $photo->original_name }}">
                     </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-
+                @endforeach
             </div>
-
-            <div class="col col-9">
-
-                <h1 class="post_title">{{ $post->title }}</h1>
-
-                <ul class="post_info">
-                    <li class="post_info_item">
-                        <span>Опубликовано: {{ $post->published_at }}</span>
-                    </li>
-                    <li class="post_info_item">
-                        <span>Пользователем: {{ $post->author->name }}</span>
-                    </li>
-                </ul>
-
-                <div class="post_introText mtn lead">
-                    {{ $post->intro_text }}
-                    {{--@include("partials.share")--}}
-                </div>
-
-                <div class="post_fullText">
-                    {!! $post->full_text !!}
-                </div>
-            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
 
 
-        <div class="row">
-            <div class="col col-9">
+        <h1 class="post_title">{{ $post->title }}</h1>
 
-            </div>
+        <ul class="post_info">
+            <li class="post_info_item">
+                <span>Опубликовано: {{ $post->published_at }}</span>
+            </li>
+            <li class="post_info_item">
+                <span>Пользователем: {{ $post->author->name }}</span>
+            </li>
+        </ul>
+
+        <div class="post_introText mtn lead">
+            {{ $post->intro_text }}
+            {{--@include("partials.share")--}}
         </div>
+
+        <div class="post_fullText">
+            {!! $post->full_text !!}
+        </div>
+
+
+
     </article>
 
 

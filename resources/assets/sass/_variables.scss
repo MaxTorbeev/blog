@@ -75,9 +75,9 @@ $brand-inverse:             $gray_90 !default;
 
 $enable-flex:               true !default;
 $enable-rounded:            true !default;
-$enable-shadows:            false !default;
+$enable-shadows:            true !default;
 $enable-gradients:          false !default;
-$enable-transitions:        false !default;
+$enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
@@ -313,8 +313,8 @@ $btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
-$btn-padding-x-sm:               .5rem !default;
-$btn-padding-y-sm:               .25rem !default;
+$btn-padding-x-sm:               1rem !default;
+$btn-padding-y-sm:               .3rem !default;
 
 $btn-padding-x-lg:               1.5rem !default;
 $btn-padding-y-lg:               .75rem !default;

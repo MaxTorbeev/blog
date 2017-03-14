@@ -5,6 +5,9 @@
 // Bootstrap
 @import "links";
 
+@import "frontend/frontend";
+
+@import "components/blog";
 @import "components/body";
 // Vendor Components
 @import "node_modules/sweetalert/dev/sweetalert";

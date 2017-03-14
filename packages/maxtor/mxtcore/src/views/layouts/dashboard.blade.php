@@ -68,6 +68,7 @@
 
     <footer class="dashboard_footer">
         @include('mxtcore::dashboard.partials.footer')
+        @include('partials.flash')
     </footer>
 
 </div>

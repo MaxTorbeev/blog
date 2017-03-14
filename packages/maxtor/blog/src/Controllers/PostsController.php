@@ -25,7 +25,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::published()->get();
+        $posts = Post::latest('published_at')->published()->get();
 
         return view('blog::index', compact('posts'));
     }
@@ -61,7 +61,7 @@ class PostsController extends Controller
         return view('blog::dashboard.posts.edit', compact('post', 'categories', 'page', 'tags', 'photos'));
     }
 
-    public function store(PostRequest $request, Flash $flash)
+    public function store(PostRequest $request, Flash $flash, Post $post)
     {
         Auth::user()->posts()->create($request->all());
 
