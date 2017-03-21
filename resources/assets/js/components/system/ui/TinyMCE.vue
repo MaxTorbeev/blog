@@ -1,6 +1,5 @@
 <template id="tinymce-template">
-    <textarea id="editor" :name="name" class="wysiwyg" cols="30" rows="10">
-        <slot></slot>
+    <textarea id="editor" :name="name" v-text="this.$slots.default[0].text" class="wysiwyg" cols="30" rows="10">
     </textarea>
 </template>
 
@@ -13,6 +12,7 @@
     require('tinymce/plugins/link/plugin');
     require('tinymce/plugins/autoresize/plugin');
 
+
     export default {
         template: '#tinymce-template',
 
@@ -21,6 +21,7 @@
         ],
 
         created() {
+
             tinymce.baseURL = "/editor";
             tinymce.document_base_url = '/';
 

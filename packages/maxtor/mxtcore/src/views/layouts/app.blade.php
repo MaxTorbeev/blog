@@ -12,6 +12,8 @@
     <meta name="description" content="{{ config('mxtcore.description') }}">
     <meta name="generator" content="{{ config('mxtcore.generator') }}">
 
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
     @yield('meta')
 
     <title>{{ config('mxtcore.title', 'MaxTor blog') }}</title>
@@ -24,7 +26,7 @@
     </script>
 </head>
 <body class="frontend">
-    <div class="frontend_container">
+    <div id="app" class="frontend_container">
         <aside class="col-lg-2 col-md-3 frontend_aside">
 
             <a class="navbar_brand" href="{{ url('/') }}">MaxTor.name</a>
@@ -62,14 +64,17 @@
             </div>
         </main>
 
-        <!-- Scripts -->
-        <script src="/js/app.js"></script>
-
         @yield('scripts.footer')
-
         @include('partials.flash')
 
     </div>
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+
+    @if (Request::server ("SERVER_NAME") == 'maxtor.name' || Request::server ("SERVER_NAME") == 'www.maxtor.name')
+        {{--Yandex.Metrika counter--}}
+        <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter28282586 = new Ya.Metrika({ id:28282586, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/28282586" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    @endif
 
 </body>
 </html>

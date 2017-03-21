@@ -31,12 +31,15 @@
         <div class="form-group  {{ $errors->has('full_text') ? 'has-danger' : '' }}">
             {!! Form::label('full_text', 'Полный текст:') !!}
 
-            <tinymce name="full_text"> {{ $post->full_text }} </tinymce>
+            <tinymce name="full_text">
+                {{ $post->full_text }}
+            </tinymce>
             @if ($errors->has('full_text'))
                 <small class="form-control-feedback">{{ $errors->first('full_text') }}</small>
             @endif
         </div>
     </div>
+
     <div class="col-sm-4">
 
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">

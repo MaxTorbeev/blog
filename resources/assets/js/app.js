@@ -13,7 +13,8 @@ require('./bootstrap');
  */
 
 
-var Alert = require('./components/system/ui/Alert.vue');
+var Alert                   = require('./components/system/ui/Alert.vue');
+var BlogHitsCounter         = require('./components/blog/ui/HitsCounter.vue');
 
 Vue.component('tinymce', require('./components/system/ui/TinyMCE.vue'));
 Vue.component('modal', require('./components/system/ui/Modal.vue'));
@@ -27,7 +28,8 @@ Vue.component('menu-types-form', require('./components/dashboard/menu/MenuTypesF
 new Vue({
     el: '#app',
     components: {
-        'alert' : Alert
+        'alert'             : Alert,
+        'blog-hits-counter' : BlogHitsCounter
     }
 });
 

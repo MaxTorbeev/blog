@@ -39,10 +39,13 @@
 
         <ul class="post_info">
             <li class="post_info_item">
-                <span>Опубликовано: {{ $post->published_at }}</span>
+                <blog-hits-counter component="posts" post-id="{{ $post->id }}"></blog-hits-counter>
             </li>
             <li class="post_info_item">
-                <span>Пользователем: {{ $post->author->name }}</span>
+                <span><i class="fa fa-calendar" aria-hidden="true"></i> {{ $post->published_at }}</span>
+            </li>
+            <li class="post_info_item">
+                <span><i class="fa fa-user-o" aria-hidden="true"></i> {{ $post->author->name }}</span>
             </li>
         </ul>
 

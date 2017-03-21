@@ -26,16 +26,13 @@
                         <h3 class="blog_listItem_title">
                             <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">{{ $post->title }}</a>
                         </h3>
+
+                        <p class="blog_listItem_text">{{ $post->intro_text }}</p>
+
+                        <a class="btn btn-primary-gradient btn-sm btn-rounded" href="{{ route('post.show',  ['alias' => $post->alias]) }}" target="_blank">
+                            Подробнее
+                        </a>
                     </div>
-                </div>
-
-                <div class="offset-md-2 offset-sm-2">
-                    <p class="blog_listItem_text">{{ $post->intro_text }}</p>
-
-                    <a class="btn btn-primary-gradient btn-sm btn-rounded" href="{{ route('post.show',  ['alias' => $post->alias]) }}" target="_blank">
-                        Подробнее
-                    </a>
-
                 </div>
             </div>
         @endforeach

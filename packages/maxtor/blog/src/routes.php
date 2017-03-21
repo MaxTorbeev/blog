@@ -53,4 +53,8 @@ Route::group([
         'uses' => 'ApiController@getPhotosList'
     ]);
 
+    Route::any('posts/api/post-hits/{postId}', [
+        'as' => 'post_api_hits',
+        'uses' => 'ApiController@getPostHits'
+    ]);
 });

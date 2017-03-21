@@ -11,7 +11,10 @@ class ApiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => [
+            'index',
+            'getPostHits'
+        ]]);
     }
 
     /**
@@ -26,6 +29,18 @@ class ApiController extends Controller
         $photos = $post->photos->all();
 
         return $photos;
+    }
+
+    public function getPostHits(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+
+        if($request->isMethod('post')){
+            $post->update(['hist' => $post->hits++]);
+        }
+
+        return $post->hits;
+
     }
 
 }
