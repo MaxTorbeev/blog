@@ -5,12 +5,16 @@
 
     @include('mxtcore::dashboard.partials.components.toolbar', [
         'menu' => [
-                    [
-                        'url'      => route('dashboard.components', ['alias' => $page->alias, 'method' => 'addUser']),
-                        'title'    => 'Добавить пользователя'
-                    ]
+                [
+                    'url'      => route('dashboard.components', ['alias' => $page->alias, 'method' => 'addUser']),
+                    'title'    => 'Добавить пользователя'
+                ]
             ]
     ])
+
+    @can('edit_forum')
+        <h1>Редактирование форума</h1>
+    @endcan
 
     <table class="table table-sm ">
         <thead class="thead-inverse">

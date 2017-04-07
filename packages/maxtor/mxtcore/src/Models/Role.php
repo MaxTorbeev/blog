@@ -30,7 +30,6 @@ class Role extends Model
      * Determine if the user may perform the given permission.
      *
      * @param string|Permission $permission
-     *
      * @return bool
      */
     public function hasPermissionTo($permission)
@@ -38,6 +37,7 @@ class Role extends Model
         if (is_string($permission)) {
             $permission = app(Permission::class)->findByName($permission);
         }
+
         return $this->permissions->contains('id', $permission->id);
     }
 }
