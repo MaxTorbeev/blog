@@ -13,22 +13,22 @@ require('./bootstrap');
  */
 
 
-var Alert                   = require('./components/system/ui/Alert.vue');
-var BlogHitsCounter         = require('./components/blog/ui/HitsCounter.vue');
+// var Alert                   = require('./components/system/ui/Alert.vue');
+let BlogHitsCounter         = require('./components/blog/ui/HitsCounter.vue');
 
-Vue.component('tinymce', require('./components/system/ui/TinyMCE.vue'));
-Vue.component('modal', require('./components/system/ui/Modal.vue'));
+// Vue.component('tinymce', require('./components/system/ui/TinyMCE.vue'));
+// Vue.component('modal', require('./components/system/ui/Modal.vue'));
 
 Vue.component('tags-form', require('./components/dashboard/tags/tags-form.vue'));
 
 Vue.component('form-table', require('./components/system/forms/form-table.vue'));
-Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
+// Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
 Vue.component('menu-types-form', require('./components/dashboard/menu/MenuTypesForm.vue'));
 
 new Vue({
     el: '#app',
     components: {
-        'alert'             : Alert,
+        // 'alert'             : Alert,
         'blog-hits-counter' : BlogHitsCounter
     }
 });

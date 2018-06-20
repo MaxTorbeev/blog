@@ -1,8 +1,6 @@
 .hasBeenAppend{
-
-
     @keyframes mymove {
-        from {background-color: $brand-warning;}
+        from {background-color: $primary;}
         to {background-color: transparent;}
     }
 }

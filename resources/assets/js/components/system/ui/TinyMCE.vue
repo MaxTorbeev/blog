@@ -4,7 +4,7 @@
 </template>
 
 <script>
-    var tinymce = require('tinymce'); // or require
+    let tinymce = require('tinymce'); // or require
     require('tinymce');
 
     require('tinymce/themes/modern/theme');

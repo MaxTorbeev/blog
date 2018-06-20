@@ -18,6 +18,19 @@ class Photo extends Model
         'original_name'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($photo) {
+            $thumbPhotoPath = public_path() . '/' . $photo->path . '/' . $photo->filename;
+            $photoPath = public_path() . '/' . $photo->path . '/' . $photo->thumbnail_filename;
+
+            if(file_exists($thumbPhotoPath)) unlink($thumbPhotoPath);
+            if(file_exists($photoPath)) unlink($photoPath);
+        });
+    }
+
     public function posts()
     {
         return $this->belongsTo('MaxTor\Blog\Models\Post');

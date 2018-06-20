@@ -50,13 +50,13 @@
 
     &-warning{
         &-gradient{
-            @include gradientButton($brand-warning)
+            @include gradientButton($primary)
         }
     }
 
     &-primary{
         &-gradient{
-            @include gradientButton($brand-primary)
+            @include gradientButton($primary)
         }
     }
 

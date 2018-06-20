@@ -17,13 +17,8 @@
     @yield('meta')
 
     <title>{{ config('mxtcore.title', 'MaxTor blog') }}</title>
-
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([ 'csrfToken' => csrf_token(), ]); ?>
-    </script>
+    <link href="{{ asset('/css/reboot.css') }}" rel="stylesheet">
+    <script>window.Laravel = <?php echo json_encode([ 'csrfToken' => csrf_token(), ]); ?></script>
 </head>
 <body class="frontend">
     <div id="app" class="frontend_container">
@@ -68,8 +63,9 @@
         @include('partials.flash')
 
     </div>
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/app.js') }}"></script>
 
     @if (Request::server ("SERVER_NAME") == 'maxtor.name' || Request::server ("SERVER_NAME") == 'www.maxtor.name')
         {{--Yandex.Metrika counter--}}

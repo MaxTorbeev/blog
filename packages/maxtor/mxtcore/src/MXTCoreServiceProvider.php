@@ -22,7 +22,7 @@ class MXTCoreServiceProvider extends ServiceProvider
 
         $this->commands('mxtcore::install');
 
-        $this->loadViewsFrom(__DIR__.'./views', 'mxtcore');
+        $this->loadViewsFrom(__DIR__.'/views', 'mxtcore');
 
         $this->publishes([
             __DIR__.'/config/mxtcore.php' => config_path('mxtcore.php'),
