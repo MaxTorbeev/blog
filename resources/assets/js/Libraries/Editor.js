@@ -1,7 +1,7 @@
-import NativeComponent from '../core/NativeComponent';
-import Asset from '../core/Asset';
+import AbstractNativeComponent from 'Core/NativeComponent';
+import Asset from 'Core/Asset';
 
-class Editor extends NativeComponent {
+class Editor extends AbstractNativeComponent {
 
     init() {
         if (window.tinymce)
@@ -18,6 +18,10 @@ class Editor extends NativeComponent {
             language: 'ru',
             height: '480',
             content_css: `${window.location.origin}/css/reboot.css, ${window.location.origin}/css/app.css`,
+
+            external_plugins: {
+                'imageupload': '/editor/custom/plugins/imageupload/plugin.js'
+            },
 
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
@@ -36,13 +40,10 @@ class Editor extends NativeComponent {
             ],
 
 
-
             relative_urls: false,
             remove_script_host: true
         });
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    new Editor('textarea#editor')
-});
+export default Editor;

@@ -11,7 +11,6 @@ window.rusToLat = require('translitit-cyrillic-russian-to-latin');
 try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
-    require('./libraries/Editor');
 } catch (e) {
     console.log(e);
 }
@@ -33,13 +32,6 @@ try {
 // require("./components/swiper/swiper");
 // require("./vendor/prism");
 
-/**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
- */
-
-window.Vue = require('vue');
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

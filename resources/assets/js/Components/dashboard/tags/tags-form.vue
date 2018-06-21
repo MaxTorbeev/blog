@@ -25,7 +25,7 @@
 
 <script type="text/babel">
 
-    import Form from '../../../core/Form';
+    import Form from 'Core/Form';
 
     export default {
         template: '#tagsForm-template',

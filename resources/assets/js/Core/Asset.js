@@ -1,5 +1,4 @@
-export default class Asset {
-
+class Asset {
     /**
      * Загружает ассинхронно стили
      */
@@ -60,9 +59,11 @@ export default class Asset {
                     resolve(response.data);
                 })
                 .catch(function (error) {
-                    notify.error(`${error.response.status} - ${error.response.statusText} in ${error.response.request.responseURL}`);
+                    flash(`${error.response.status} - ${error.response.statusText} in ${error.response.request.responseURL}`, 'error');
                     reject(error.response.data);
                 });
         });
     }
 }
+
+export default Asset;

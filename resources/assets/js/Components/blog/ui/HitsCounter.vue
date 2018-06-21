@@ -6,7 +6,6 @@
 </template>
 
 <script type="text/babel">
-
     export default {
         template: '#hits-counter',
 
@@ -28,15 +27,9 @@
 
         methods: {
             fetchHitsCount(requestType = 'get') {
-                var vm = this;
-
                 axios[requestType]('/' + this.component + '/api/post-hits/' + this.postId)
-                        .then(function (response) {
-                            vm.hits = response.data;
-                        })
-                        .catch(function (error) {
-                            vm.hits = error.response.statusText;
-                        });
+                        .then((response) =>  this.hits = response.data)
+                        .catch((error) => vm.hits = error.response.statusText);
             }
         },
 
@@ -51,7 +44,5 @@
                 }
             }, 10000)
         },
-
-        beforeDestroy() {}
     }
 </script>

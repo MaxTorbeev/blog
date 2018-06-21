@@ -4,7 +4,22 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import'./bootstrap';
+import Vue from 'vue';
+import notify from 'Core/Notification';
+
+/**
+ * Vue is a modern JavaScript library for building interactive web interfaces
+ * using reactive data binding and reusable components. Vue's API is clean
+ * and simple, leaving you to focus on building your next great project.
+ */
+
+window.Vue = Vue;
+window.events = new Vue();
+
+window.flash = function (message, level = 'success') {
+    notify.create(message, level).show();
+};
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -12,23 +27,14 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+let BlogHitsCounter         = require('./Components/blog/ui/HitsCounter.vue');
 
-// var Alert                   = require('./components/system/ui/Alert.vue');
-let BlogHitsCounter         = require('./components/blog/ui/HitsCounter.vue');
-
-// Vue.component('tinymce', require('./components/system/ui/TinyMCE.vue'));
-// Vue.component('modal', require('./components/system/ui/Modal.vue'));
-
-Vue.component('tags-form', require('./components/dashboard/tags/tags-form.vue'));
-
-Vue.component('form-table', require('./components/system/forms/form-table.vue'));
-// Vue.component('menu-items', require('./components/dashboard/menu/Menu.vue'));
-Vue.component('menu-types-form', require('./components/dashboard/menu/MenuTypesForm.vue'));
+Vue.component('tinymce', require('./Components/system/ui/TinyMCE.vue'));
+Vue.component('tags-form', require('./Components/dashboard/tags/tags-form.vue'));
 
 new Vue({
     el: '#app',
     components: {
-        // 'alert'             : Alert,
         'blog-hits-counter' : BlogHitsCounter
     }
 });

@@ -19,7 +19,7 @@
             Ну в общем вы поняли.
         </p>
 
-        <textarea name="" id="editor" cols="30" rows="10"></textarea>
+        <tinymce></tinymce>
 
         <p class="text-center">
             <a class="btn btn-facebook-gradient btn-rounded" href="https://www.facebook.com/" target="_blank">

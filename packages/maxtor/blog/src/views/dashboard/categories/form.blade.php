@@ -61,13 +61,4 @@
 
 @section('footer')
 
-    <script type="text/javascript" src="{!! asset('build/media/ckeditor/ckeditor.js') !!}"></script>
-
-    <script>
-        CKEDITOR.replace('body',{
-            filebrowserBrowseUrl : '/elfinder/ckeditor'
-        });
-
-    </script>
-
 @endsection
