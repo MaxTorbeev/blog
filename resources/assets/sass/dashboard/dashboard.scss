@@ -1,37 +1,15 @@
-.dashboard {
-    height: 100%;
-    @include gradient-y($blue-light_70, $blue-light_90);
-    background-attachment: fixed;
+// If you want to override variables do it here
+@import "variables";
 
-    &_row,
-    &_container {
-        min-height: 100%;
-    }
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+@import "~@coreui/icons/scss/coreui-icons";
+@import "~flag-icon-css/sass/flag-icon";
+@import "~simple-line-icons/scss/simple-line-icons";
+//@import "~pace-progress/css/pace.min.css";
 
-    &_container{}
+// If you want to add something do it here
+@import "custom";
 
-    &_aside {
-        position: fixed;
-        padding: 0 !important;
-        margin: 0 !important;
-        flex: 1;
-        background-color: $gray-blue_90;
-        color: white;
-    }
+@import "~font-awesome/scss/font-awesome";
 
-    &_main,
-    &_aside{
-        min-height: 100%;
-    }
-    &_main {
-        position: absolute;
-        flex: 1;
-        background-color: white;
-        right: 0;
-    }
-}
-
-@import "sidebar";
-
-@import "content";
-@import "forms";

@@ -1,44 +1,44 @@
-.sidebar{
-    &_logo{
+.sidebar {
+    &_logo {
         background-color: $gray-blue_80;
         font-weight: bolder;
         font-size: 1.5rem;
         padding: 15px;
     }
-    &_menu{
-        margin-left: -40px;
-        & > li{
+    &_menu {
+        margin-left: 0;
+        & > li {
             display: block;
-            &:nth-child(2n){
+            &:nth-child(2n) {
                 background-color: darken($gray-blue_80, 10%);
             }
-            a{
+            a {
                 display: block;
                 padding: 5px 15px;
                 color: white;
                 opacity: .8;
-                &:hover{
+                &:hover {
                     text-decoration: none;
                     opacity: 1;
                 }
                 @include transition(.3s);
             }
 
-            ul{
-                & > li{
+            ul {
+                & > li {
                     border-left: 2px solid $blue-light_50;
                     margin-left: -40px;
                     display: block;
-                    a{
+                    a {
                         padding-left: 20px;
                     }
-                    & > ul{
+                    & > ul {
                         margin-left: 20px;
 
-                        li{
+                        li {
                             border-left: 2px solid $blue-light_60;
                             display: block;
-                            a{
+                            a {
                             }
                         }
                     }

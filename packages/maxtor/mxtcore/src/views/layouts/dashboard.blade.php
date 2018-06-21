@@ -15,22 +15,25 @@
     <title>{{ config('mxtcore.title', 'MaxTor blog') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.dashboard.css" rel="stylesheet">
+    <link href="{{ asset('/css/reboot.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.dashboard.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([ 'csrfToken' => csrf_token(), ]); ?>
     </script>
 </head>
-<body class="dashboard">
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 
-<div id="app" class="container dashboard_container">
-    <div class="row dashboard_row">
-        <aside class="col-lg-2 col-md-3 dashboard_aside">
+    @include('mxtcore::dashboard.partials.header')
+
+    <div id="app" class="app-body">
+        <div class="sidebar">
             @include('mxtcore::dashboard.partials.sidebar')
-        </aside>
+            <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+        </div>
 
-        <main class="col-lg-10 col-md-9 dashboard_main">
-            <div class="content">
+        <main class="main">
+            <div class="container-fluid">
                 <div class="content_topBar">
                     <div class="row">
                         <div class="col-sm-8">
@@ -65,15 +68,12 @@
         </main>
     </div>
 
-
-    <footer class="dashboard_footer">
+    <footer class="app-footer">
         @include('mxtcore::dashboard.partials.footer')
         @include('partials.flash')
     </footer>
 
-</div>
-
-<!-- Scripts -->
-<script src="/js/app.js"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('check.role:root');
     }
 
     /**
@@ -86,9 +86,6 @@ class DashboardController extends Controller
 
             return view('mxtcore::dashboard.system.editor.image-upload', compact('file_path'));
         }
-
-        return false;
     }
 
-  
 }

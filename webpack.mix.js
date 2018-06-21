@@ -13,16 +13,16 @@ const path = require('path');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-//.sass('resources/assets/sass/app.dashboard.scss', 'public/css')
-//.sass('resources/assets/sass/app.editor.scss', 'public/css')
+    .sass('resources/assets/sass/app.dashboard.scss', 'public/css')
+    .sass('resources/assets/sass/app.editor.scss', 'public/css')
     .sass('resources/assets/sass/reboot.scss', 'public/css')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .webpackConfig({
         resolve: {
             alias: {
                 Components: path.resolve(__dirname, 'resources/assets/js/Components'),
-                Core:       path.resolve(__dirname, 'resources/assets/js/Core'),
-                Libraries:  path.resolve(__dirname, 'resources/assets/js/Libraries')
+                Core: path.resolve(__dirname, 'resources/assets/js/Core'),
+                Libraries: path.resolve(__dirname, 'resources/assets/js/Libraries')
             }
         }
     });

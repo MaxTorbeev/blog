@@ -9,7 +9,7 @@ Route::group([
     Route::get('/', [
         'as'    => 'dashboard.components',
         'uses'  => 'DashboardController@index'
-    ])->middleware('check.role:root');
+    ]);
 
     Route::get('/editor/upload-image', [
         'as'    => 'editor.image-dialog',
@@ -34,6 +34,7 @@ Route::group([
     Route::resource('/extensions', 'ExtensionsController');
     Route::resource('/menu', 'MenuController');
 
+    Route::resource('/users', 'UsersController');
 });
 
 

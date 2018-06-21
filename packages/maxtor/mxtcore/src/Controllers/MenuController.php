@@ -9,9 +9,15 @@ use App\Http\Controllers\Controller;
 use MaxTor\MXTCore\Models\Extension;
 use MaxTor\MXTCore\Models\Menu;
 use MaxTor\MXTCore\Models\MenuType;
+use MaxTor\MXTCore\Requests\MenuRequests;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('check.role:root');
+    }
+
     public function index()
     {
         $extensions = Extension::all();
@@ -19,20 +25,20 @@ class MenuController extends Controller
         return view('mxtcore::dashboard.extensions.index', compact('extensions'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, MenuRequests $request)
     {
-        $menu = Menu::whereId($id)->firstOrFail();
+        $menu = Menu::where('id', $id)->firstOrFail();
         $menu->update($request->all());
 
         return redirect()->back();
     }
 
-    public function store(Request $request)
+    public function store(MenuRequests $request)
     {
         $menu = new Menu();
         $menu->create($request->all());
 
-        return redirect()->back();
+        return back()->with('flash', 'Пункт меню был создан');
     }
 
     public function dashboard($controller, $page)
@@ -72,7 +78,8 @@ class MenuController extends Controller
 //        return view('mxtcore::dashboard.menu.menu-items.update', compact('menu', 'menuTypes', 'extensions', 'parentMenuItem'));
 //    }
 
-    public function menuTypeStore(Request $request){
+    public function menuTypeStore(Request $request)
+    {
         (new MenuType)->create($request->all());
 
         return 'Тип меню успешно создан';
@@ -108,30 +115,6 @@ class MenuController extends Controller
         $model = $model->pluck('title', 'id');
 
         return $model->prepend('Не выбрано', null);
-    }
-
-    public function getArrayForForm($model)
-    {
-        return [
-            'id' => [
-                'value' => $model->id,
-                'type' => 'text'
-            ],
-
-            'menu_type_id' => [
-                'label' => 'Тип меню',
-                'value' => $model->menu_type_id,
-                'type' => 'select',
-                'options' => MenuType::pluck('title', 'id')
-            ],
-
-            'extensions_id' => [
-                'value' => $model->menu_type_id,
-                'type' => 'select',
-                'options' => Extension::pluck('name', 'id')
-            ],
-
-        ];
     }
 
 }

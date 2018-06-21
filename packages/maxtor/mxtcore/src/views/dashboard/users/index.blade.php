@@ -29,7 +29,7 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td><a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'edit']) }}">{{ $user->name }}</a></td>
+                <td><a href="{{ route('dashboard.components', ['alias' => $page->alias, 'method' => 'edit', 'id' => $user->id ]) }}">{{ $user->name }}</a></td>
                 <td>{{ $user->email }}</td>
                 <td>
                     @foreach($user->roles as $role)

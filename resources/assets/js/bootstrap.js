@@ -3,6 +3,7 @@ window.Popper = require('popper.js').default;
 
 window.rusToLat = require('translitit-cyrillic-russian-to-latin');
 
+import Select from './Libraries/Select2';
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -11,6 +12,15 @@ window.rusToLat = require('translitit-cyrillic-russian-to-latin');
 try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
+
+    $(document).ready(function() {
+        new Select('.select2');
+    });
+
+    require('perfect-scrollbar/dist/perfect-scrollbar.min.js');
+    require('@coreui/coreui/dist/js/coreui.min.js');
+    require('pace-progress/pace.min.js');
+
 } catch (e) {
     console.log(e);
 }

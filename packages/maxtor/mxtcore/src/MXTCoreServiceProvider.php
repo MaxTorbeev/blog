@@ -51,17 +51,12 @@ class MXTCoreServiceProvider extends ServiceProvider
      * Compose the navigation bar.
      *
      * @description Метод передает массив в partials.navigator при загрузке страницы.
-     *
-     * @return array
      */
     public function composeDashboardNavigation()
     {
         view()->composer('mxtcore::dashboard.partials.sidebar', function ($view) {
-
             $dashboard = MenuType::whereMenuType('dashboard')->firstOrFail();
-
             $view->with('dashboardMenu', $dashboard->menu()->whereNull('parent_id')->get());
-
         });
     }
 }

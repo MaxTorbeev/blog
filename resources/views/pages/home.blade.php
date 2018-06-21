@@ -19,8 +19,6 @@
             Ну в общем вы поняли.
         </p>
 
-        <tinymce></tinymce>
-
         <p class="text-center">
             <a class="btn btn-facebook-gradient btn-rounded" href="https://www.facebook.com/" target="_blank">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -33,6 +31,15 @@
             </a>
         </p>
     </div>
+
+    <select name="bla bla" class="select2 form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="1">1</option>
+        <option value="1">1</option>
+    </select>
 
     @if(0)
     <div class="row justify-content-md-center mt-lg-2">
