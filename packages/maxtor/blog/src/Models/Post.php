@@ -17,7 +17,7 @@ class Post extends Model
      */
     protected $fillable = [
         'title',
-        'alias',
+        'slug',
         'intro_text',
         'full_text',
         'cat_id',
@@ -27,7 +27,6 @@ class Post extends Model
         'metakey',
         'metadesc',
         'metadata',
-
 
         'published',
         'published_at'

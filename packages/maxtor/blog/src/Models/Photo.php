@@ -8,7 +8,7 @@ use Illuminate\Http\UploadedFile;
 
 class Photo extends Model
 {
-    protected $table = 'posts_photos';
+    protected $table = 'photos';
 
     protected $baseDir = 'images/posts';
 
@@ -26,8 +26,11 @@ class Photo extends Model
             $thumbPhotoPath = public_path() . '/' . $photo->path . '/' . $photo->filename;
             $photoPath = public_path() . '/' . $photo->path . '/' . $photo->thumbnail_filename;
 
-            if(file_exists($thumbPhotoPath)) unlink($thumbPhotoPath);
-            if(file_exists($photoPath)) unlink($photoPath);
+            if (file_exists($thumbPhotoPath))
+                unlink($thumbPhotoPath);
+
+            if (file_exists($photoPath))
+                unlink($photoPath);
         });
     }
 
@@ -54,10 +57,10 @@ class Photo extends Model
 
     protected function saveAs($file)
     {
-        $this->filename         = md5(time()) . '.' .$file->getClientOriginalExtension();
-        $this->path             = $this->baseDir;
-        $this->thumbnail_filename   = 'tn-' . $this->filename;
-        $this->original_name    = $file->getClientOriginalName();
+        $this->filename = md5(time()) . '.' . $file->getClientOriginalExtension();
+        $this->path = $this->baseDir;
+        $this->thumbnail_filename = 'tn-' . $this->filename;
+        $this->original_name = $file->getClientOriginalName();
 
         return $this;
     }

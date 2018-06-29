@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxTor\Blog\Controllers;
+namespace MaxTor\Blog\Controllers\Frontend;
 
 use App\Http\Flash;
 use Gate;

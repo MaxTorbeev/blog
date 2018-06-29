@@ -21,7 +21,7 @@ trait HasRoles
      *
      * @return mixed
      */
-    public function assingRole($role)
+    public function assignRole($role)
     {
         return $this->roles()->save(
             Role::whereName($role)->firstOrFail()

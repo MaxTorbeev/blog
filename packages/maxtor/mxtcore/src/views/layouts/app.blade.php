@@ -26,10 +26,10 @@
 
             <a class="navbar_brand" href="{{ url('/') }}">MaxTor.name</a>
 
-            <ul class="navbar_mainmenu navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Блог</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Технологии</a></li>
-            </ul>
+            {{--<ul class="navbar_mainmenu navbar-nav">--}}
+                {{--<li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Блог</a></li>--}}
+                {{--<li class="nav-item"><a class="nav-link" href="{{ route('post.index') }}">Технологии</a></li>--}}
+            {{--</ul>--}}
 
             <div class="navbar_mainmenu-bottom">
                 <ul class="navbar_mainmenu navbar-nav">

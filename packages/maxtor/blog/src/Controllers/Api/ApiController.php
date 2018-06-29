@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxTor\Blog\Controllers;
+namespace MaxTor\Blog\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

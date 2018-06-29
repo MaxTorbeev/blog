@@ -17,7 +17,8 @@ class Role extends Model
     }
 
     /**
-     * Sync roles on permission
+     * Sync roles on permission.
+     *
      * @param Permission $permission
      * @return Model
      */

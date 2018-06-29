@@ -13,12 +13,19 @@ class CheckPermission
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, $permission)
     {
-        if (!$request->user()->hasRole($role)) {
+        if ($request->user() === null)
             return redirect()->route('login');
+
+        $roles = auth()->user()->roles()->get();
+
+        foreach ($roles as $role) {
+            if ($role->hasPermissionTo($permission)) {
+                return $next($request);
+            }
         }
 
-        return $next($request);
+        return redirect()->route('login');
     }
 }

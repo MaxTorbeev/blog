@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use MaxTor\MXTCore\Models\Permission;
+use MaxTor\MXTCore\Policies\RolePolicies;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,7 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      *
-     * @return void
+     * @return void | boolean
      */
     public function boot()
     {
@@ -30,19 +31,6 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->registerPolicies();
 
-        foreach ($this->getPermissions() as $permission) {
-            Gate::define($permission->name, function ($user) use ($permission) {
-                return $user->hasRole($permission->roles);
-            });
-        }
-    }
-
-    protected  function getPermissions()
-    {
-        try {
-            return Permission::with('roles')->get();
-        } catch (\Exception $e) {
-            return [];
-        }
+        RolePolicies::define();
     }
 }

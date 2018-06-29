@@ -26,15 +26,15 @@ class Permission extends Model
     /**
      * Find a permission by its name.
      *
-     * @param string $name
-     *
+     * @param $name
+     * @return mixed
      * @throws PermissionDoesNotExist
      */
     public static function findByName($name)
     {
         $permission = static::where('name', $name)->first();
 
-        if (! $permission) {
+        if (!$permission) {
             throw new PermissionDoesNotExist();
         }
 

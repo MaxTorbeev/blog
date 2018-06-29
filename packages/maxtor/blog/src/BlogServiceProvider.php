@@ -31,7 +31,8 @@ class BlogServiceProvider extends ServiceProvider
         ]);
 
         //Routes
-        include __DIR__ . '/routes.php';
+        include_once __DIR__ . '/frontend_routes.php';
+        include_once __DIR__ . '/admin_routes.php';
     }
 
     /**

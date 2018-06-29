@@ -3,7 +3,7 @@
 
 Route::group([
     'prefix' => '/',
-    'namespace' => 'MaxTor\Blog\Controllers',
+    'namespace' => 'MaxTor\Blog\Controllers\Frontend',
     'middleware' => 'web'
 ], function() {
 
@@ -43,18 +43,18 @@ Route::group([
         ]
     );
 
-    Route::post('posts/{alias}/photos', [
+    Route::post('posts/{slug}/photos', [
         'as' => 'store_photo_path',
         'uses' => 'PostsController@addPhoto'
     ]);
 
-    Route::get('posts/api/photos/{postId}', [
-        'as' => 'store_photo_path',
-        'uses' => 'ApiController@getPhotosList'
-    ]);
-
-    Route::any('posts/api/post-hits/{postId}', [
-        'as' => 'post_api_hits',
-        'uses' => 'ApiController@getPostHits'
-    ]);
+//    Route::get('posts/api/photos/{postId}', [
+//        'as' => 'store_photo_path',
+//        'uses' => 'ApiController@getPhotosList'
+//    ]);
+//
+//    Route::any('posts/api/post-hits/{postId}', [
+//        'as' => 'post_api_hits',
+//        'uses' => 'ApiController@getPostHits'
+//    ]);
 });

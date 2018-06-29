@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxTor\Blog\Controllers;
+namespace MaxTor\Blog\Controllers\Frontend;
 
 use App\Http\Flash;
 use Gate;
@@ -30,20 +30,22 @@ class PostsController extends Controller
         return view('blog::index', compact('posts'));
     }
 
-    public function portfolio($alias)
+    public function portfolio($slug)
     {
         return 'portfolio';
     }
 
-    public function show($alias)
+    public function show($slug)
     {
-        $post = Post::whereAlias($alias)->published()->firstOrFail();
+        $post = Post::whereSlug($slug)->published()->firstOrFail();
 
         return view('blog::show', compact('post'));
     }
 
     public function create($controller, $page)
     {
+        return 'test';
+
         $categories = $this->getCategoriesList( (new Category()) );
         $tags       = Tag::pluck('name', 'id');
         $photos     = (new Post)->photos->pluck('original_name', 'id');
@@ -113,7 +115,7 @@ class PostsController extends Controller
         $post->tags()->sync($tags);
     }
 
-    public function addPhoto($alias, Request $request)
+    public function addPhoto($slug, Request $request)
     {
         $this->validate($request, [
             'photo' => 'required|mimes:jpg,jpeg,png,bmp'
@@ -121,7 +123,7 @@ class PostsController extends Controller
 
         $photo = $this->makePhoto($request->file('photo'));
 
-        Post::whereAlias($alias)->firstOrFail()->addPhoto($photo);
+        Post::whereSlug($slug)->firstOrFail()->addPhoto($photo);
 
         return 'Done';
     }
