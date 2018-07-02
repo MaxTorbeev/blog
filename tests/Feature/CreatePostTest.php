@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
-use MaxTor\Blog\Models\Post;
+use MaxTor\Content\Models\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -19,7 +19,7 @@ class CreatePostTest extends TestCase
      */
     function guest_may_not_created_post()
     {
-        $this->withExceptionHandling();
+        $this->withOutExceptionHandling();
 
         $this->get('/admin/posts/create')->assertRedirect('/login');
         $this->post('/admin/posts')->assertRedirect('/login');

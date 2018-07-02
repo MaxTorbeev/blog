@@ -179,7 +179,7 @@ return [
         /*
          * MaxTor packages Service Providers...
          */
-        MaxTor\Blog\BlogServiceProvider::class,
+        MaxTor\Content\ContentServiceProvider::class,
         MaxTor\MXTCore\MXTCoreServiceProvider::class,
 
         /*
