@@ -11,7 +11,7 @@ class MenuTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function a_menu_params_can_set_params_as_json_string()
+    function a_menu_params_can_set_as_json_string()
     {
         $this->withOutExceptionHandling();
 
