@@ -1,11 +1,11 @@
 <?php
-//
-//Route::group([
-//    'prefix' => '/admin',
-//    'namespace' => 'MaxTor\MXTCore\Controllers',
-//    'middleware' => 'web'
-//], function() {
-//
+
+Route::group([
+    'prefix' => '/admin',
+    'namespace' => 'MaxTor\MXTCore\Controllers',
+    'middleware' => 'web'
+], function() {
+
 //    Route::get('/', [
 //        'as'    => 'dashboard.components',
 //        'uses'  => 'DashboardController@index'
@@ -30,12 +30,12 @@
 //        'as'    => 'menutype.create',
 //        'uses'  => 'MenuController@menuTypeStore'
 //    ]);
-//
-//    Route::resource('/extensions', 'ExtensionsController');
-//    Route::resource('/menu', 'MenuController');
-//
-//    Route::resource('/users', 'UsersController');
-//});
-//
-//
-//Auth::routes();
+
+    Route::resource('/extensions', 'ExtensionsController');
+    Route::resource('/menu', 'MenuController', ['as' => 'admin']);
+    Route::resource('/menu-types', 'MenuTypesController', ['as' => 'admin']);
+
+    Route::resource('/users', 'UsersController');
+});
+
+

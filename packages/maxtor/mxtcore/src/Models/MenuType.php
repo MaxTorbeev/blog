@@ -8,14 +8,10 @@ class MenuType extends Model
 {
     protected $table = 'menu_type';
 
-    protected $fillable = [
-        'menu_type',
-        'title',
-        'description'
-    ];
+    protected $guarded = [];
 
     public function menu()
     {
-        return $this->hasMany('MaxTor\MXTCore\Models\Menu', 'menu_type_id');
+        return $this->hasMany(Menu::class, 'menu_type_id');
     }
 }

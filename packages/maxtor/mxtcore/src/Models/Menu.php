@@ -8,21 +8,35 @@ class Menu extends Model
 {
     protected $table = 'menu';
 
-    protected $fillable = [
-        'title',
-        'alias',
-        'menu_type_id',
-        'extensions_id',
-        'parent_id',
-        'image',
-        'published',
-    ];
+    protected $guarded = [];
 
-    public function getControllerAttribute()
+    /**
+     * @todo Не работает поле с параметрами роутера.
+     * @return mixed|string
+     */
+    public function getUriAttribute()
     {
-        $controllerArr = explode('\\', $this->extension()->first()->controller_path);
+        if($this->url !== null){
+            return $this->url;
+        } else {
+            try{
+                $this->url = route($this->route_name, $this->params, false);
+            } catch (\Exception $e){
+                $this->url = 'Так себе ссылка =(';
+            }
+        }
 
-        return end($controllerArr);
+        return $this->url;
+    }
+
+    public function setParamsAttribute($value)
+    {
+        $this->attributes['params'] = json_encode($value);
+    }
+
+    public function getParamsAttribute($value)
+    {
+        return json_decode($value);
     }
 
     /**
@@ -33,16 +47,6 @@ class Menu extends Model
     public function menuType()
     {
         return $this->belongsTo('MaxTor\MXTCore\Models\MenuType', 'menu_type_id');
-    }
-
-    /**
-     * Menu type by menu item
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function extension()
-    {
-        return $this->belongsTo('MaxTor\MXTCore\Models\Extension', 'extensions_id');
     }
 
     public function parent()

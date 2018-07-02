@@ -2,6 +2,7 @@
 
 namespace MaxTor\Content\Models;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,7 +34,7 @@ class Tag extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**

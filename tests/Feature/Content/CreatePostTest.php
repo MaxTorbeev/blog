@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Content;
 
 use App\User;
 use MaxTor\Content\Models\Post;

@@ -15,14 +15,35 @@ class MenuController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('check.role:root');
+        $this->middleware('check.permission:access_dashboard');
     }
 
     public function index()
     {
-        $extensions = Extension::all();
+        $this->authorize('show_menu_item', Menu::class);
 
-        return view('mxtcore::dashboard.extensions.index', compact('extensions'));
+        return view('mxtcore::dashboard.menu.menu-items.index', [
+            'menuItems' => Menu::all()
+        ]);
+    }
+
+    public function create()
+    {
+        $this->authorize('create_menu_item', Menu::class);
+
+        return view('mxtcore::dashboard.menu.menu-items.create', [
+            'menuTypes' => null
+        ]);
+    }
+
+    public function store(MenuRequests $request)
+    {
+        $this->authorize('create_menu_item', Menu::class);
+
+        $menu = new Menu();
+        $menu->create($request->all());
+
+        return back()->with('flash', 'Пункт меню был создан');
     }
 
     public function update($id, MenuRequests $request)
@@ -31,24 +52,6 @@ class MenuController extends Controller
         $menu->update($request->all());
 
         return redirect()->back();
-    }
-
-    public function store(MenuRequests $request)
-    {
-        $menu = new Menu();
-        $menu->create($request->all());
-
-        return back()->with('flash', 'Пункт меню был создан');
-    }
-
-    public function dashboard($controller, $page)
-    {
-        $menu = Menu::all();
-        $parentMenuItem = $this->getMenuList($menu);
-        $extensions = Extension::pluck('name', 'id');
-        $menuTypes = MenuType::pluck('title', 'id');
-
-        return view('mxtcore::dashboard.menu.index', compact('menu', 'extensions', 'menuTypes', 'parentMenuItem', 'page'));
     }
 
     public function createMenuItem($controller, $page)
