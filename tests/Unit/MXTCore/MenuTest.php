@@ -34,7 +34,7 @@ class MenuTest extends TestCase
             'params'    => ['menu_type' => 1]
         ]);
 
-        $this->assertEquals('/admin/menu-types/1/edit', $menu->uri);
+        $this->assertEquals('/admin/menu-types/1/edit', $menu->url_path);
     }
 
     /** @test */
@@ -46,6 +46,6 @@ class MenuTest extends TestCase
             'route_name' => 'admin.menu-types.create'
         ]);
 
-        $this->assertEquals('/admin/menu-types/create', $menu->uri);
+        $this->assertEquals('/admin/menu-types/create', $menu->url_path);
     }
 }

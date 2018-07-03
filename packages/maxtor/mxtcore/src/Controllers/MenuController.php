@@ -32,7 +32,8 @@ class MenuController extends Controller
         $this->authorize('create_menu_item', Menu::class);
 
         return view('mxtcore::dashboard.menu.menu-items.create', [
-            'menuTypes' => null
+            'menuTypes' => null,
+            'routeCollection' => app()->routes->getRoutes()
         ]);
     }
 

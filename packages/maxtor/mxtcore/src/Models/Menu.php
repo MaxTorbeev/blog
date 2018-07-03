@@ -11,18 +11,19 @@ class Menu extends Model
     protected $guarded = [];
 
     /**
-     * @todo Не работает поле с параметрами роутера.
+     * Creating a URL path from the router or url attributes.
+     *
      * @return mixed|string
      */
-    public function getUriAttribute()
+    public function getUrlPathAttribute()
     {
         if($this->url !== null){
             return $this->url;
         } else {
             try{
-                $this->url = route($this->route_name, $this->params, false);
+                $this->url = route($this->route_name, json_decode($this->getOriginal('params'), true), false);
             } catch (\Exception $e){
-                $this->url = 'Так себе ссылка =(';
+                $this->url = $e->getMessage();
             }
         }
 

@@ -15863,7 +15863,7 @@ var Select = function (_AbstractNativeCompon) {
 
             $.fn.select2.defaults.set("theme", "bootstrap4");
 
-            __WEBPACK_IMPORTED_MODULE_1_Core_Asset__["a" /* default */].styleUrl('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css');
+            // Asset.styleUrl('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css');
 
             this.elements.forEach(function (element) {
                 $(element).select2(_this2.params);
