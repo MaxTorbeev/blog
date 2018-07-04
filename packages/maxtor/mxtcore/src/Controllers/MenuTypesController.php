@@ -17,6 +17,13 @@ class MenuTypesController extends Controller
         $this->middleware('check.permission:access_dashboard');
     }
 
+    public function index()
+    {
+        return view('mxtcore::dashboard.menu.menu-types.index', [
+            'menuTypes' => MenuType::all()
+        ]);
+    }
+
     /**
      * Форма создания типа меню.
      *
@@ -54,8 +61,8 @@ class MenuTypesController extends Controller
     {
         $this->authorize('create_menu_type', MenuType::class);
 
-        return view('mxtcore::dashboard.menu.menu-types.create', [
-
+        return view('mxtcore::dashboard.menu.menu-types.edit', [
+            'menuType' => $menuType,
             'menuTypes' => MenuType::all()
         ]);
     }

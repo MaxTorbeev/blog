@@ -1,5 +1,5 @@
 <li class="nav-item nav-dropdown">
-    <a href="{{ $item->route_name }}" class="nav-link">{{ $item->title }}</a>
+    <a href="{{ $item->url_path }}" class="nav-link">{{ $item->title }}</a>
 
     @if (count($item->children) > 0)
         <ul class="nav">

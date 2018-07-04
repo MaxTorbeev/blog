@@ -24,9 +24,7 @@ class RolePolicies
     protected static function getPermissions()
     {
         try {
-            return Cache::remember("auth.permissions", 10, function () {
-                return Permission::with('roles')->get();
-            });
+            return Permission::with('roles')->get();
         } catch (\Exception $e) {
             return [];
         }

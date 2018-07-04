@@ -33,7 +33,8 @@ class MenuController extends Controller
 
         return view('mxtcore::dashboard.menu.menu-items.create', [
             'menuTypes' => null,
-            'routeCollection' => app()->routes->getRoutes()
+            'routeCollection' => app()->routes->getRoutes(),
+            'parentMenuItem' => Menu::pluck('title', 'id')
         ]);
     }
 
@@ -49,6 +50,8 @@ class MenuController extends Controller
 
     public function update($id, MenuRequests $request)
     {
+        $this->authorize('create_menu_item', Menu::class);
+
         $menu = Menu::where('id', $id)->firstOrFail();
         $menu->update($request->all());
 
@@ -66,8 +69,7 @@ class MenuController extends Controller
             'menu',
             'menuTypes',
             'extensions',
-            'parentMenuItem',
-            'page'
+            'parentMenuItem'
         ));
     }
 

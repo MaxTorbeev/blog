@@ -33,37 +33,16 @@
     </div>
 </div>
 
-{{--<div class="form-group row">--}}
-    {{--{!! Form::label('extensions_id', 'Расширение:', ['class' => 'col col-xs-3 col-form-label']) !!}--}}
-    {{--<div class="col col-xs-9">--}}
-        {{--{!! Form::select('extensions_id', $extensions, null, ['class'=>'form-control select']) !!}--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="form-group row">
+    {!! Form::label('parent_id', 'Родительский пункт меню:', ['class' => 'col col-xs-3 col-form-label']) !!}
+    <div class="col col-xs-9">
+        {!! Form::select('parent_id', $parentMenuItem, 'null', ['class'=>'form-control select']) !!}
+    </div>
+</div>
 
-        {{--<div class="form-group row">--}}
-            {{--{!! Form::label('menu_type_id', 'Тип меню:', ['class' => 'col col-xs-3 col-form-label']) !!}--}}
-            {{--<div class="col col-xs-9">--}}
-                {{--{!! Form::select('menu_type_id', $menuTypes, null, ['class'=>'form-control select']) !!}--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-        {{--<div class="form-group row">--}}
-            {{--{!! Form::label('parent_id', 'Родительский элемент:', ['class' => 'col col-xs-3 col-form-label']) !!}--}}
-            {{--<div class="col col-xs-9">--}}
-                {{--{!! Form::select('parent_id', $parentMenuItem, 'null', ['class'=>'form-control select']) !!}--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-        {{--<div class="form-group row">--}}
-            {{--{!! Form::label('published', 'Опубликовано:', ['class' => 'col col-xs-3 col-form-label']) !!}--}}
-            {{--<div class="col col-xs-9">--}}
-                {{--{!! Form::select('published', ['0' => 'Нет', '1' => 'Да'], 1, ['class'=>'form-control select']) !!}--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-        <div class="form-group">
-            {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
-        </div>
+<div class="form-group">
+    {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
+</div>
 
 
 
