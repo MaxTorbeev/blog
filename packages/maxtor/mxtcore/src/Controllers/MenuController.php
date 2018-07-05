@@ -34,7 +34,7 @@ class MenuController extends Controller
         return view('mxtcore::dashboard.menu.menu-items.create', [
             'menuTypes' => null,
             'routeCollection' => app()->routes->getRoutes(),
-            'parentMenuItem' => Menu::pluck('title', 'id')
+            'parentMenuItem' => $this->getList(Menu::all())
         ]);
     }
 
@@ -42,81 +42,34 @@ class MenuController extends Controller
     {
         $this->authorize('create_menu_item', Menu::class);
 
-        $menu = new Menu();
-        $menu->create($request->all());
+        $menu = Menu::create($request->all());
 
-        return back()->with('flash', 'Пункт меню был создан');
+        return redirect(route('admin.menu.edit', ['menu' => $menu->id]))
+            ->with('flash', 'Пункт меню создан успешно');
     }
 
-    public function update($id, MenuRequests $request)
+    public function edit(Menu $menu)
     {
         $this->authorize('create_menu_item', Menu::class);
 
-        $menu = Menu::where('id', $id)->firstOrFail();
+        return view('mxtcore::dashboard.menu.menu-items.edit', [
+            'menu' => $menu,
+            'routeCollection' => app()->routes->getRoutes(),
+            'parentMenuItem' => $this->getList(Menu::all())
+        ]);
+    }
+
+    public function update(Menu $menu, MenuRequests $request)
+    {
+        $this->authorize('create_menu_item', Menu::class);
+
         $menu->update($request->all());
 
-        return redirect()->back();
+        return redirect(route('admin.menu.edit', ['menu' => $menu->id]))
+            ->with('flash', 'Пункт меню редактирован успешно');
     }
 
-    public function createMenuItem($controller, $page)
-    {
-        $menu = new Menu();
-        $parentMenuItem = $this->getMenuList($menu);
-        $extensions = Extension::pluck('name', 'id');
-        $menuTypes = MenuType::pluck('title', 'id');
-
-        return view('mxtcore::dashboard.menu.menu-items.create', compact(
-            'menu',
-            'menuTypes',
-            'extensions',
-            'parentMenuItem'
-        ));
-    }
-
-//    public function editMenuItem($id)
-//    {
-//        $menu = new Menu();
-//
-//        $parentMenuItem = Menu::pluck('title', 'id');
-//        $extensions = Extension::pluck('name', 'id');
-//        $menuTypes = MenuType::pluck('title', 'id');
-//
-//        return view('mxtcore::dashboard.menu.menu-items.update', compact('menu', 'menuTypes', 'extensions', 'parentMenuItem'));
-//    }
-
-    public function menuTypeStore(Request $request)
-    {
-        (new MenuType)->create($request->all());
-
-        return 'Тип меню успешно создан';
-    }
-
-    public function createMenuType($controller, $page)
-    {
-        $menuTypes = MenuType::all();
-
-        return view('mxtcore::dashboard.menu.menu-types.create', compact(
-            'menuTypes',
-            'page'
-        ));
-
-    }
-
-    public function api()
-    {
-        $menu = Menu::all();
-
-        return $menu;
-    }
-
-    public function apiItem($controller, $page, $id)
-    {
-        $menu = Menu::find($id);
-
-        return $this->getArrayForForm($menu);
-    }
-
-    protected function getMenuList($model)
+    protected function getList($model)
     {
         $model = $model->pluck('title', 'id');
 

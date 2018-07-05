@@ -19,7 +19,6 @@ try {
 
     require('perfect-scrollbar/dist/perfect-scrollbar.min.js');
     require('@coreui/coreui/dist/js/coreui.min.js');
-    require('pace-progress/pace.min.js');
 
 } catch (e) {
     console.log(e);

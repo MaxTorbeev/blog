@@ -31,8 +31,6 @@ class CreateMenuTest extends TestCase
      */
     public function guest_may_not_created_menu_type()
     {
-//        $this->withOutExceptionHandling();
-
         $this->get('admin/menu-types/create')->assertRedirect('/login');
         $this->post('admin/menu-types')->assertRedirect('/login');
     }
@@ -64,12 +62,31 @@ class CreateMenuTest extends TestCase
      */
     public function guest_may_not_created_menu_item()
     {
-//        $this->withOutExceptionHandling();
 
         $this->get('admin/menu/create')->assertRedirect('/login');
 
         $this->signIn(create(User::class), 'root', ['access_dashboard', 'create_menu_item']);
 
         $this->get('admin/menu/create')->assertStatus(200);
+    }
+
+    /**
+     * Пользователь с соответствующими правами может создать тип меню.
+     *
+     * @test
+     */
+    public function an_authenticated_user_can_create_new_menu_item()
+    {
+        $this->signIn(create(User::class), 'root', ['access_dashboard', 'create_menu_item']);
+
+        $menu = make(Menu::class);
+
+        $this->get('/admin/menu/create')->assertStatus(200);
+
+        $response = $this->post('/admin/menu', $menu->toArray());
+
+        $this->get($response->headers->get('Location'))
+            ->assertSee($menu->title)
+            ->assertSee($menu->slug);
     }
 }

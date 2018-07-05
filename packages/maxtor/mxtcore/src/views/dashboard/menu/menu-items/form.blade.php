@@ -26,16 +26,13 @@
 <div class="form-group row">
     {!! Form::label('published', 'Опубликовано:', ['class' => 'col col-md-2 col-form-label']) !!}
     <div class="col col-xs-10">
-        <label class="switch switch-primary">
-            <input type="checkbox" class="switch-input" checked="{{ $menu->published }}">
-            <span class="switch-slider"></span>
-        </label>
+        {!! Form::select('published', ['1' => 'Показывать', '0' => 'Не показывать'], 1 , ['class' => 'form-control select'] ); !!}
     </div>
 </div>
 
 <div class="form-group row">
-    {!! Form::label('parent_id', 'Родительский пункт меню:', ['class' => 'col col-xs-3 col-form-label']) !!}
-    <div class="col col-xs-9">
+    {!! Form::label('parent_id', 'Родительский пункт меню:', ['class' => 'col col-md-2 col-form-label']) !!}
+    <div class="col col-md-2">
         {!! Form::select('parent_id', $parentMenuItem, 'null', ['class'=>'form-control select']) !!}
     </div>
 </div>

@@ -62,6 +62,14 @@
 
                 </div>
                 <div class="content_main">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                        </div>
+                    @endif
+
                     @yield('content')
                 </div>
             </div>
@@ -75,5 +83,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/app.js') }}"></script>
+
+    @if(session('flash'))
+        <script>
+            document.addEventListener('DOMContentLoaded', flash('{{ session('flash') }}') );
+        </script>
+    @endif
 </body>
 </html>

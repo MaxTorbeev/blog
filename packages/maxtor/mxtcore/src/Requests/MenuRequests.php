@@ -26,7 +26,7 @@ class MenuRequests extends FormRequest
         return [
             'title'             => 'required',
             'published'         => 'required|integer',
-            'menu_type_id'      => 'integer',
+//            'menu_type_id'      => 'integer',
         ];
     }
 

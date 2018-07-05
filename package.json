@@ -40,5 +40,8 @@
     "vue-loader": "^11.1.4",
     "vue-spinner": "latest",
     "vue-template-compiler": "latest"
+  },
+  "dependencies": {
+    "vue2-datatable-component": "^2.3.1"
   }
 }

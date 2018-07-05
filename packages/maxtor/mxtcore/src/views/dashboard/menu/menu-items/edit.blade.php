@@ -8,7 +8,8 @@
                 Редактрирование пункта меню «{{ $menu->title }}»
             </div>
             <div class="card-body">
-                {!! Form::model($menu, ['url' => route('admin.menu.store')]) !!}
+                {!! Form::model($menu, ['url' => route('admin.menu.update', [ $menu->id ])]) !!}
+                @method('PUT')
                 @include ('mxtcore::dashboard.menu.menu-items.form', ['submitButtonText' => 'Редактировать пункт меню' ])
                 {!! Form::close() !!}
             </div>

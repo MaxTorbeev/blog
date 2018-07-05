@@ -66,4 +66,22 @@ class MenuTypesController extends Controller
             'menuTypes' => MenuType::all()
         ]);
     }
+
+    public function update(MenuType $menuType, Request $request)
+    {
+        $this->authorize('create_menu_type', MenuType::class);
+
+        $menuType->update($request->all());
+
+        return back()->with('flash', 'Тип меню успешно редактирован');
+    }
+
+    public function delete(MenuType $menuType)
+    {
+        $this->authorize('delete_menu_type', MenuType::class);
+
+        $menuType->destroy();
+
+        return redirect(route('admin.menu.index'))->with('flash', 'Тип меню был удален');
+    }
 }
