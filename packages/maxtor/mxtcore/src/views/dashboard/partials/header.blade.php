@@ -11,10 +11,10 @@
     </button>
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-            <a class="nav-link" href="#">Dashboard</a>
+            <a class="nav-link" href="{{ route('admin.menu.index') }}">Пункты меню</a>
         </li>
         <li class="nav-item px-3">
-            <a class="nav-link" href="#">Users</a>
+            <a class="nav-link" href="{{ route('admin.users.index') }}">Пользователи</a>
         </li>
         <li class="nav-item px-3">
             <a class="nav-link" href="#">Settings</a>
@@ -39,8 +39,14 @@
         </li>
         <li class="nav-item dropdown">
 
+            <ul class="nav navbar-nav float-sm-right">
+                @if (!Auth::guest())
+
+                @endif
+            </ul>
+
             <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img class="img-avatar" src="{{ asset('img/avatars/6.jpg') }}" alt="">
+                {{ Auth::user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
@@ -90,8 +96,9 @@
                     <i class="fa fa-shield"></i> Lock Account
                 </a>
 
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-lock"></i> Logout
+                <a class="dropdown-item" href="{{ url('/logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Выход
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                 </a>
             </div>
         </li>

@@ -12,14 +12,14 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('check.role:root');
+        $this->middleware('check.permission:access_dashboard');
     }
 
-    public function dashboard($controller, $page)
+    public function index()
     {
-        $users = (new User())->all();
+        $users = User::all();
 
-        return view('mxtcore::dashboard.users.index', compact('users', 'page'));
+        return view('mxtcore::dashboard.users.index', compact('users'));
     }
 
     public function edit($controller, $page, $id)

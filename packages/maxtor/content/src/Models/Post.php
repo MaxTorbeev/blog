@@ -4,6 +4,7 @@ namespace MaxTor\Content\Models;
 
 use App\User;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use MaxTor\Content\Traits\RecordsPhoto;
 
 class Post extends Model
 {
-    use RecordsPhoto;
+    use RecordsPhoto, Sluggable;
 
     /**
      * Fillable fields for a post
@@ -44,6 +45,20 @@ class Post extends Model
     protected $dates = ['published_at'];
 
     /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
+    /**
      * The "booting" method of the model.
      *
      * @return void
@@ -63,9 +78,9 @@ class Post extends Model
         });
     }
 
-    public function setAliasAttribute($alias)
+    public function setSlugAttribute($alias)
     {
-        $this->attributes['alias'] = str_replace(' ', '-', $alias);
+        $this->attributes['slug'] = str_replace(' ', '-', $alias);
     }
 
     /** Set the published_at attribite

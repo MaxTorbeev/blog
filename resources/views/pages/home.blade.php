@@ -31,38 +31,4 @@
             </a>
         </p>
     </div>
-
-    <select name="bla bla" class="select2 form-control">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-    </select>
-
-    @if(0)
-    <div class="row justify-content-md-center mt-lg-2">
-        <section class="section col-8 col-md-auto">
-            <h2 class="text-center mb-1">Последние посты</h2>
-
-            <div class="card-deck">
-
-                @foreach($posts as $post)
-                    <div class="card">
-                        <img class="card-img-top" class="img-fluid" width="220" src="{{ $post->previewImage->getThumbnail() }}" alt="{{ $post->title }}">
-                        <div class="card-block">
-                            <h4 class="card-title">
-                                <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">{{ $post->title }}</a>
-                            </h4>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">{{ $post->published_at }}</small>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </section>
-    </div>
-    @endif
 @stop

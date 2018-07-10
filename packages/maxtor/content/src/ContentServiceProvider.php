@@ -44,8 +44,8 @@ class ContentServiceProvider extends ServiceProvider
     {
         view()->composer('pages.home', function ($view) {
 
-            $posts = Post::published();
-            $view->with('posts', $posts->get());
+//            $posts = Post::published();
+//            $view->with('posts', $posts->get());
 
         });
     }

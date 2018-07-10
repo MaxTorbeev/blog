@@ -17,16 +17,28 @@ class PermissionsTableSeeder extends Seeder
                 'label' => 'Доступ в панель управления'
             ],
             [
-                'name' => 'show_posts',
+                'name' => 'show_post',
                 'label' => 'Просмотр постов'
             ],
             [
-                'name' => 'create_posts',
+                'name' => 'create_post',
                 'label' => 'Создание постов'
             ],
             [
-                'name' => 'delete_posts',
+                'name' => 'delete_post',
                 'label' => 'Удаление постов'
+            ],
+            [
+                'name' => 'show_post_category',
+                'label' => 'Просмотр категории постов'
+            ],
+            [
+                'name' => 'create_post_category',
+                'label' => 'Создание категории постов'
+            ],
+            [
+                'name' => 'delete_post_category',
+                'label' => 'Удаление категории постов'
             ],
             [
                 'name' => 'show_menu_item',

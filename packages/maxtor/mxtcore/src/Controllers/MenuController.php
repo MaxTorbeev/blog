@@ -32,8 +32,8 @@ class MenuController extends Controller
         $this->authorize('create_menu_item', Menu::class);
 
         return view('mxtcore::dashboard.menu.menu-items.create', [
-            'menuTypes' => null,
-            'routeCollection' => app()->routes->getRoutes(),
+            'menuTypes' => $this->getList(MenuType::all()),
+            'routeCollection' => Menu::routesList(),
             'parentMenuItem' => $this->getList(Menu::all())
         ]);
     }
@@ -54,7 +54,8 @@ class MenuController extends Controller
 
         return view('mxtcore::dashboard.menu.menu-items.edit', [
             'menu' => $menu,
-            'routeCollection' => app()->routes->getRoutes(),
+            'menuTypes' => $this->getList(MenuType::all()),
+            'routeCollection' => Menu::routesList(),
             'parentMenuItem' => $this->getList(Menu::all())
         ]);
     }

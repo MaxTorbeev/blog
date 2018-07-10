@@ -1,5 +1,7 @@
 @extends('mxtcore::layouts.dashboard')
 
+@section('breadcrumbs') {{ Breadcrumbs::render('admin.menu') }} @endsection
+
 @section('content')
     <a href="{{ route('admin.menu.create') }}" class="btn btn-outline-info">
         Добавить пункт меню
@@ -19,6 +21,11 @@
                     <td>
                         <a href="{{ route('admin.menu.edit', ['id' => $item->id]) }}">
                             {{ $item->title }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.menu-types.edit', ['menu_type' => $item->menuType->id]) }}">
+                            {{ $item->menuType->title }}
                         </a>
                     </td>
                     <td><a href="{{ $item->url_path }}" target="_blank">{{ $item->url_path }}</a></td>

@@ -32,7 +32,7 @@ class MenuTableSeeder extends Seeder
                 'menu_type_id'      => 1,
                 'title'             => 'Менеджер меню',
                 'route_name'        => 'admin.menu.index',
-                'parent_id'         => null
+                'parent_id'         => 0
             ],
             [
                 'menu_type_id'      => '1',

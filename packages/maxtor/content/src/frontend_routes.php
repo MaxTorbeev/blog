@@ -1,6 +1,4 @@
 <?php
-
-
 Route::group([
     'prefix' => '/',
     'namespace' => 'MaxTor\Content\Controllers\Frontend',

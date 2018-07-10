@@ -27,25 +27,25 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
 
-//        Schema::create('post_tag', function (Blueprint $table) {
-//            $table->unsignedInteger('post_id');
-//
-//            $table->foreign('post_id')
-//                ->references('id')
-//                ->on('posts')
-//                ->onUpdate('cascade')
-//                ->onDelete('cascade');
-//
-//            $table->unsignedInteger('tag_id');
-//
-//            $table->foreign('tag_id')
-//                ->references('id')
-//                ->on('tags')
-//                ->onUpdate('cascade')
-//                ->onDelete('cascade');
-//
-//            $table->timestamps();
-//        });
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->unsignedInteger('post_id');
+
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->unsignedInteger('tag_id');
+
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -55,7 +55,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-//        Schema::drop('post_tag');
+        Schema::drop('post_tag');
         Schema::drop('tags');
     }
 }

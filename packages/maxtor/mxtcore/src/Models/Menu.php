@@ -17,13 +17,13 @@ class Menu extends Model
      */
     public function getUrlPathAttribute()
     {
-        if($this->url !== null){
+        if ($this->url !== null) {
             return $this->url;
         } else {
-            try{
+            try {
                 $this->url = route($this->route_name, json_decode($this->getOriginal('params'), true), false);
-            } catch (\Exception $e){
-                $this->url = $e->getMessage();
+            } catch (\Exception $e) {
+                $this->url = null;
             }
         }
 
@@ -38,6 +38,24 @@ class Menu extends Model
     public function getParamsAttribute($value)
     {
         return json_decode($value);
+    }
+
+    public static function routesList($selectedMiddleware = 'web')
+    {
+        $routesList = null;
+
+        foreach (app()->routes->getRoutes() as $routes) {
+            $middleware = is_array($routes->getAction()['middleware']) ? $routes->getAction()['middleware'][0] : $routes->getAction()['middleware'];
+
+            if ($selectedMiddleware === $middleware) {
+                $routesList[$routes->getName()] = [
+                    'uri' => $routes->uri(),
+                    'action' =>$routes->getAction()
+                ];
+            }
+        }
+
+        return $routesList;
     }
 
     /**

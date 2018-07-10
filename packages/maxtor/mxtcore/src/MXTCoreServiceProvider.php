@@ -56,8 +56,7 @@ class MXTCoreServiceProvider extends ServiceProvider
     {
         view()->composer('mxtcore::dashboard.partials.sidebar', function ($view) {
             $dashboard = MenuType::whereSlug('dashboard')->firstOrFail();
-
-            $view->with('dashboardMenu', $dashboard->menu()->whereNull('parent_id')->get());
+            $view->with('dashboardMenu', $dashboard->menu()->where('parent_id', 0)->get());
         });
     }
 }

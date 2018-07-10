@@ -1,16 +1,8 @@
 @extends('mxtcore::layouts.dashboard')
 
+@section('breadcrumbs') {{ Breadcrumbs::render('admin.content.posts') }} @endsection
+
 @section('content')
-
-    @include('mxtcore::dashboard.partials.components.toolbar', [
-        'menu' => [
-                    [
-                        'url'      => url( '/admin/' . $page->alias . '/create'),
-                        'title'    => 'Добавить материал'
-                    ],
-            ]
-    ])
-
     <table class="table table-sm ">
         <thead class="thead-inverse">
         <tr>
@@ -24,7 +16,7 @@
         <tbody>
         @foreach($posts as $post)
             <tr>
-                <td><a href="{{ url( '/admin/' . $page->alias . '/edit', [$post->id]) }}">{{ $post->title }}</a></td>
+                <td><a href="{{ route('admin.posts.index')  }}">{{ $post->title }}</a></td>
                 <td>{{ $post->category->title }}</td>
                 <td>{{ $post->author->name }}</td>
                 <td>{{ $post->hits }}</td>

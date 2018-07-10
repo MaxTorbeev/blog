@@ -15,7 +15,7 @@ use MaxTor\Content\Models\Post;
 use MaxTor\Content\Models\Tag;
 use MaxTor\Content\Requests\PostRequest;
 
-class PostsController extends Controller
+class CategoriesController extends Controller
 {
     public function __construct()
     {

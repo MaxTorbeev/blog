@@ -16,10 +16,20 @@
     {!! Form::label('route_name', 'Имя маршрута Laravel:', ['class' => 'col col-md-2 col-form-label']) !!}
     <div class="col col-xs-10">
         <select name="route_name" class="form-control select2">
-            @foreach ($routeCollection as $route)
-                <option value="{{ $route->getName() }}">{{ $route->uri() }}<small></small></option>
+            <option>Не выбрано</option>
+            @foreach ($routeCollection as $routeName => $route)
+                <option value="{{ $routeName }}" @if($menu->route_name == $routeName) selected @endif>
+                    {{ $route['uri'] }}
+                </option>
             @endforeach
         </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    {!! Form::label('menu_type_id', 'Тип меню:', ['class' => 'col col-md-2 col-form-label']) !!}
+    <div class="col col-xs-10">
+        {!! Form::select('menu_type_id', $menuTypes, 1 , ['class' => 'form-control select'] ); !!}
     </div>
 </div>
 
