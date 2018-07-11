@@ -3,6 +3,13 @@
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.content.posts') }} @endsection
 
 @section('content')
+
+    <ul class="nav nav-pills mb-2">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.posts.create') }}">Добавить пост</a>
+        </li>
+    </ul>
+
     <table class="table table-sm ">
         <thead class="thead-inverse">
         <tr>

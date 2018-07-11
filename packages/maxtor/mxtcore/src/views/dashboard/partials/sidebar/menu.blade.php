@@ -1,4 +1,4 @@
-<li class="nav-item  @if(count($item->children) > 0) nav-dropdown @endif">
+<li class="nav-item  @if(count($item->children) > 0) nav-dropdown open @endif">
     @if($item->url_path)
         <a
             href="{{ $item->url_path }}"

@@ -80,4 +80,46 @@ class CreateMenuTest extends TestCase
             ->assertSee($menu->title)
             ->assertSee($menu->slug);
     }
+
+    /**
+     * Пользователь с соответствующими правами может удалить пункт меню.
+     *
+     * @test
+     */
+    public function an_authenticated_user_can_delete_menu_item()
+    {
+        $this->withOutExceptionHandling();
+
+        $this->signIn(create(User::class), 'root', ['access_dashboard', 'delete_menu_item']);
+
+        $menu = create(Menu::class);
+        $menuChild = create(Menu::class, ['parent_id' => $menu->id]);
+
+        $response = $this->json('DELETE', '/admin/menu/' . $menu->id . '/');
+        $response->assertStatus(204);
+
+        $this->assertDatabaseMissing('menu', ['id' => $menu->id]);
+        $this->assertDatabaseMissing('menu', ['parent_id' => $menu->id]);
+    }
+
+    /**
+     * Пользователь с соответствующими правами может удалить пункт меню.
+     *
+     * @test
+     */
+    public function an_authenticated_user_can_delete_menu_type()
+    {
+        $this->withOutExceptionHandling();
+
+        $this->signIn(create(User::class), 'root', ['access_dashboard', 'delete_menu_type']);
+
+        $menuType = create(MenuType::class);
+        $menu = create(Menu::class, ['menu_type_id' => $menuType->id]);
+
+        $response = $this->json('DELETE', '/admin/menu-types/' . $menuType->id);
+        $response->assertStatus(204);
+
+        $this->assertDatabaseMissing('menu_types', ['id' => $menuType->id]);
+        $this->assertDatabaseMissing('menu', ['menu_type_id' => $menuType->id]);
+    }
 }

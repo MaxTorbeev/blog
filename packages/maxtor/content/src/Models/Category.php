@@ -2,6 +2,7 @@
 
 namespace MaxTor\Content\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use MaxTor\Content\Models\Post;
 
@@ -9,22 +10,23 @@ class Category extends Model
 {
     protected $table = 'posts_categories';
 
-    protected $fillable = [
-        'level',
-        'parent_id',
+    use Sluggable;
 
-        'title',
-        'slug',
-        'description',
-        'note',
+    protected $guarded = [];
 
-        'metakey',
-        'metadesc',
-        'metadata',
-
-        'hits',
-        'state',
-    ];
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function posts()
     {

@@ -3,6 +3,7 @@
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.menu') }} @endsection
 
 @section('content')
+
     <a href="{{ route('admin.menu.create') }}" class="btn btn-outline-info">
         Добавить пункт меню
     </a>
@@ -15,7 +16,7 @@
             <table class="table table-responsive-sm">
                 <tbody>
 
-                @foreach($menuItems as $item):
+                @foreach($menu as $item):
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>
@@ -33,6 +34,11 @@
                         @if($item->published)
                             <span class="badge badge-success">Active</span>
                         @endif
+                    </td>
+                    <td>
+                        @can('delete_menu_item', \MaxTor\MXTCore\Models\Menu::class)
+                            <delete action="{{ route('admin.menu.destroy', ['id' => $item->id]) }}">X</delete>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach

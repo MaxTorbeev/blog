@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-4">
         <div class="form-group  {{ $errors->has('alias') ? 'has-danger' : '' }}">
-            {!! Form::label('alias', 'Алиас:') !!}
+            {!! Form::label('alias', 'Ссылка:') !!}
             {!! Form::text('alias', null, ['class'=>'form-control']) !!}
             @if ($errors->has('alias'))
                 <small class="form-control-feedback">{{ $errors->first('alias') }}</small>

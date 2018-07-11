@@ -15,27 +15,7 @@ class Post extends Model
 {
     use RecordsPhoto, Sluggable;
 
-    /**
-     * Fillable fields for a post
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'title',
-        'slug',
-        'intro_text',
-        'full_text',
-        'cat_id',
-        'preview_photo_id',
-        'created_user_id',
-
-        'metakey',
-        'metadesc',
-        'metadata',
-
-        'published',
-        'published_at'
-    ];
+    protected $guarded = [];
 
     /**
      * Additional fields to treat as Carbon instances

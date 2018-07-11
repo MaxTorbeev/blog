@@ -18,7 +18,7 @@
         <select name="route_name" class="form-control select2">
             <option>Не выбрано</option>
             @foreach ($routeCollection as $routeName => $route)
-                <option value="{{ $routeName }}" @if($menu->route_name == $routeName) selected @endif>
+                <option value="{{ $routeName }}" @if($menu->route_name === $routeName) selected @endif>
                     {{ $route['uri'] }}
                 </option>
             @endforeach
@@ -29,7 +29,7 @@
 <div class="form-group row">
     {!! Form::label('menu_type_id', 'Тип меню:', ['class' => 'col col-md-2 col-form-label']) !!}
     <div class="col col-xs-10">
-        {!! Form::select('menu_type_id', $menuTypes, 1 , ['class' => 'form-control select'] ); !!}
+        {!! Form::select('menu_type_id', $menuTypes, $menu->menu_type_id, ['class' => 'form-control select'] ); !!}
     </div>
 </div>
 
@@ -43,7 +43,14 @@
 <div class="form-group row">
     {!! Form::label('parent_id', 'Родительский пункт меню:', ['class' => 'col col-md-2 col-form-label']) !!}
     <div class="col col-md-2">
-        {!! Form::select('parent_id', $parentMenuItem, 'null', ['class'=>'form-control select']) !!}
+        <select name="parent_id" class="form-control select2">
+            <option value="0">Не выбрано</option>
+            @foreach ($parentMenuItem as $item)
+                <option value="{{ $item->id }}" @if($menu->parent_id === $item->id) selected @endif>
+                    {{ $item->title }}
+                </option>
+            @endforeach
+        </select>
     </div>
 </div>
 

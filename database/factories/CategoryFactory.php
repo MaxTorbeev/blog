@@ -1,7 +1,7 @@
 <?php
 
 use App\User;
-use MaxTor\Blog\Models\Category;
+use MaxTor\Content\Models\Category;
 use Faker\Generator as Faker;
 
 /*

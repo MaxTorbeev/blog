@@ -76,12 +76,16 @@ class MenuTypesController extends Controller
         return back()->with('flash', 'Тип меню успешно редактирован');
     }
 
-    public function delete(MenuType $menuType)
+    public function destroy($id)
     {
         $this->authorize('delete_menu_type', MenuType::class);
 
-        $menuType->destroy();
+        MenuType::destroy($id);
 
-        return redirect(route('admin.menu.index'))->with('flash', 'Тип меню был удален');
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return redirect(route('admin.menu-types.index'))->with('flash', 'Тип меню был удален');
     }
 }

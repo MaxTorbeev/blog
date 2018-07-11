@@ -23,7 +23,7 @@ class MenuController extends Controller
         $this->authorize('show_menu_item', Menu::class);
 
         return view('mxtcore::dashboard.menu.menu-items.index', [
-            'menuItems' => Menu::all()
+            'menu' => Menu::all()
         ]);
     }
 
@@ -34,7 +34,7 @@ class MenuController extends Controller
         return view('mxtcore::dashboard.menu.menu-items.create', [
             'menuTypes' => $this->getList(MenuType::all()),
             'routeCollection' => Menu::routesList(),
-            'parentMenuItem' => $this->getList(Menu::all())
+            'parentMenuItem' => Menu::all()
         ]);
     }
 
@@ -56,7 +56,7 @@ class MenuController extends Controller
             'menu' => $menu,
             'menuTypes' => $this->getList(MenuType::all()),
             'routeCollection' => Menu::routesList(),
-            'parentMenuItem' => $this->getList(Menu::all())
+            'parentMenuItem' => Menu::where('id', '!=', $menu->id)->get()
         ]);
     }
 
@@ -70,11 +70,28 @@ class MenuController extends Controller
             ->with('flash', 'Пункт меню редактирован успешно');
     }
 
-    protected function getList($model)
+    public function destroy(Menu $menu)
+    {
+        $this->authorize('delete_menu_item', Menu::class);
+
+        $menu->delete();
+
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return redirect(route('admin.menu.index'))->with('flash', 'Пункт меню успешно удален');
+    }
+
+    protected function getList($model, $pushNull = false)
     {
         $model = $model->pluck('title', 'id');
 
-        return $model->prepend('Не выбрано', null);
+        if(!$pushNull){
+            return $model;
+        }
+
+        return $model->push('Не выбрано', '0');
     }
 
 }

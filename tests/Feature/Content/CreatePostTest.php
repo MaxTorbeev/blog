@@ -36,7 +36,7 @@ class CreatePostTest extends TestCase
      *
      * @test
      */
-    public function user_access_create_post_form_via_root_role()
+    function user_access_create_post_form_via_root_role()
     {
         $this->withOutExceptionHandling();
 

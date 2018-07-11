@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import'./bootstrap';
+import './bootstrap';
 import Vue from 'vue';
 import notify from 'Core/Notification';
 
@@ -27,15 +27,12 @@ window.flash = function (message, level = 'success') {
  * the application, or feel free to tweak this setup for your needs.
  */
 
-let BlogHitsCounter         = require('./Components/blog/ui/HitsCounter.vue');
-
 Vue.component('tinymce', require('./Components/system/ui/TinyMCE.vue'));
-Vue.component('tags-form', require('./Components/dashboard/tags/tags-form.vue'));
+Vue.component('delete', require('./Components/global/Delete'));
 
 new Vue({
     el: '#app',
     components: {
-        'blog-hits-counter' : BlogHitsCounter
     }
 });
 

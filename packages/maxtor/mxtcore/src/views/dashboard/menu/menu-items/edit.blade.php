@@ -1,7 +1,8 @@
 @extends('mxtcore::layouts.dashboard')
 
-@section('content')
+@section('breadcrumbs') {{ Breadcrumbs::render('admin.menu.edit', $menu) }} @endsection
 
+@section('content')
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">

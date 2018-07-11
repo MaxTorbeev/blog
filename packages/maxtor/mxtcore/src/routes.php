@@ -51,8 +51,20 @@ Breadcrumbs::for('admin.menu', function ($trail) {
     $trail->push('Пункты меню', route('admin.menu.index'));
 });
 
+// Admin > Menu > Edit
+Breadcrumbs::for('admin.menu.edit', function ($trail, $menu) {
+    $trail->parent('admin.menu');
+    $trail->push($menu->title, route('admin.menu.index', ['id' => $menu->id]));
+});
+
 // Admin > Menu types
 Breadcrumbs::for('admin.menu-types', function ($trail) {
     $trail->parent('admin');
     $trail->push('Типы меню', route('admin.menu.index'));
+});
+
+// Admin > Menu types > Edit
+Breadcrumbs::for('admin.menu-types.edit', function ($trail, $menuType) {
+    $trail->parent('admin.menu-types');
+    $trail->push($menuType->title, route('admin.menu-types.edit', ['id' => $menuType->id]));
 });

@@ -18,7 +18,7 @@ use Faker\Generator as Faker;
 
 $factory->define(MenuType::class, function (Faker $faker) {
     return [
-        'title' => $title = $faker->title,
+        'title' => $title = $faker->name,
         'slug' => str_slug($title),
         'description' => $faker->paragraph,
     ];

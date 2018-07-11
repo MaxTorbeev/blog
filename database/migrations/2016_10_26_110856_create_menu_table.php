@@ -30,9 +30,9 @@ class CreateMenuTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('menu_type', function (Blueprint $table) {
+        Schema::create('menu_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug', 100);
+            $table->string('slug', 100)->unique();
             $table->string('title');
             $table->string('description')->nullable();
 
@@ -50,6 +50,6 @@ class CreateMenuTable extends Migration
     public function down()
     {
         Schema::dropIfExists('menu');
-        Schema::dropIfExists('menu_type');
+        Schema::dropIfExists('menu_types');
     }
 }

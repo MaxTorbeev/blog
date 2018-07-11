@@ -10,6 +10,15 @@ class Menu extends Model
 
     protected $guarded = [];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($menu) {
+            $menu->children->each->update(['parent_id' => 0]);
+        });
+    }
+
     /**
      * Creating a URL path from the router or url attributes.
      *
@@ -28,6 +37,16 @@ class Menu extends Model
         }
 
         return $this->url;
+    }
+
+    /**
+     * Set null in DB if $value equal zero
+     *
+     * @param $value
+     */
+    public function setParentIdAttribute($value)
+    {
+        $this->attributes['parent_id'] = ($value == 0) ? null : $value;
     }
 
     public function setParamsAttribute($value)
