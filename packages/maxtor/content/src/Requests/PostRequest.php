@@ -24,11 +24,10 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|max:255',
-            'alias'     => 'required|unique:posts|max:255',
+            'name'      => 'required|max:255',
+//            'slug'      => 'required|unique:posts|max:255',
             'metadesc'  => 'max:255',
             'metakey'   => 'max:255',
-            'full_text' => 'required',
         ];
     }
 }

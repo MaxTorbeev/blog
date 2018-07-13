@@ -2,14 +2,14 @@
 <div class="row">
     <div class="col-md-8">
         <div class="form-group">
-            {!! Form::label('title', 'Title:') !!}
-            {!! Form::text('title', null, ['class'=>'form-control']) !!}
+            {!! Form::label('name', 'name:') !!}
+            {!! Form::text('name', null, ['class'=>'form-control']) !!}
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            {!! Form::label('alias', 'Алиас:') !!}
-            {!! Form::text('alias', null, ['class'=>'form-control']) !!}
+            {!! Form::label('slug', 'Ссылка:') !!}
+            {!! Form::text('slug', null, ['class'=>'form-control']) !!}
         </div>
     </div>
 </div>
@@ -25,8 +25,8 @@
     <div class="col-sm-4">
 
         <div class="form-group">
-            {!! Form::label('state', 'Опубликовано:') !!}
-            {!! Form::select('state', array('0' => 'Нет', '1' => 'Да'), null, ['class'=>'form-control select']) !!}
+            {!! Form::label('published', 'Опубликовано:') !!}
+            {!! Form::select('published', ['0' => 'Нет', '1' => 'Да'], null, ['class'=>'form-control select']) !!}
         </div>
 
         {{--<div class="form-group">--}}
@@ -36,18 +36,18 @@
 
         <div class="form-group">
             {!! Form::label('parent_id', 'Родительская категория:') !!}
-            {!! Form::select('parent_id', $categoryList, null, ['class'=>'form-control select2']) !!}
+            {!! Form::select('parent_id', $categories, $category->parent_id, ['class'=>'form-control select2']) !!}
         </div>
 
-        {{--<div class="form-group">--}}
-        {{--{!! Form::label('metadesc', 'meta-description:') !!}--}}
-        {{--{!! Form::input('text', 'metadesc', $posts->metadesc, ['class'=>'form-control' ]) !!}--}}
-        {{--</div>--}}
+        <div class="form-group">
+        {!! Form::label('metadesc', 'meta-description:') !!}
+        {!! Form::input('text', 'metadesc', $category->metadesc, ['class'=>'form-control' ]) !!}
+        </div>
 
-        {{--<div class="form-group">--}}
-        {{--{!! Form::label('metakey', 'meta-keywords:') !!}--}}
-        {{--{!! Form::input('text', 'metakey', $posts->metakey, ['class'=>'form-control' ]) !!}--}}
-        {{--</div>--}}
+        <div class="form-group">
+        {!! Form::label('metakey', 'meta-keywords:') !!}
+        {!! Form::input('text', 'metakey', $category->metakey, ['class'=>'form-control' ]) !!}
+        </div>
 
     </div>
 </div>

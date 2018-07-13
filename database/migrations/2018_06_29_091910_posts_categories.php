@@ -15,13 +15,13 @@ class PostsCategories extends Migration
     {
         Schema::create('posts_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('parent_id');
-
-            $table->string('title');
+            $table->string('name');
             $table->string('slug', 100);
+            $table->unsignedInteger('parent_id')->nullable()->default(null);
 
-            $table->text('description');
-            $table->string('note');
+
+            $table->text('description')->nullable()->default(null);
+            $table->string('note')->nullable()->default(null);
 
             $table->integer('priority')->default(500);
 

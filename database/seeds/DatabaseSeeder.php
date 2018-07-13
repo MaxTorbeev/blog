@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             MenuTableSeeder::class,
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            CategoriesSeeder::class,
         ]);
 
         $this->changeAllPermissionToRole();

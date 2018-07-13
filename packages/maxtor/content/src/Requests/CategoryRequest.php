@@ -24,9 +24,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required',
-            'slug'          => 'required|unique:posts_categories|max:255',
-            'description'   => 'required',
+            'name'          => 'required',
+//            'slug'          => 'required|unique:posts_categories|max:255',
         ];
     }
 }

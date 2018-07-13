@@ -1,15 +1,8 @@
 @extends('mxtcore::layouts.dashboard')
 
-@section('content')
+{{--@section('breadcrumbs') {{ Breadcrumbs::render('admin.content.categories') }} @endsection--}}
 
-    @include('mxtcore::dashboard.partials.components.toolbar', [
-        'menu' => [
-                    [
-                        'url'      => url( '/admin/' . $page->alias . '/create'),
-                        'title'    => 'Добавить категорию'
-                    ],
-            ]
-    ])
+@section('content')
 
     <table class="table table-sm ">
         <thead class="thead-inverse">
@@ -24,11 +17,11 @@
         <tbody>
         @foreach($categories as $category)
         <tr>
-            <td><a href="{{ url( '/admin/' . $page->alias . '/edit', [$category->id]) }}">{{ $category->title }}</a></td>
-            <td>{{ count($category->posts) }}</td>
-            <td>{{ $category->author->name }}</td>
-            <td>{{ $category->hits }}</td>
-            <th scope="row">{{ $category->id }}</th>
+            <td><a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}">{{ $category->name }}</a></td>
+            {{--<td>{{ count($category->posts) }}</td>--}}
+            {{--<td>{{ $category->author->name }}</td>--}}
+            {{--<td>{{ $category->hits }}</td>--}}
+            {{--<th scope="row">{{ $category->id }}</th>--}}
         </tr>
         @endforeach
         </tbody>

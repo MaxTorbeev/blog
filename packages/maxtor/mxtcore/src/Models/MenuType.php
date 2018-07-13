@@ -3,9 +3,12 @@
 namespace MaxTor\MXTCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use MaxTor\MXTCore\Traits\SetCreators;
 
 class MenuType extends Model
 {
+    use SetCreators;
+
     protected $table = 'menu_types';
 
     protected $guarded = [];
@@ -15,7 +18,7 @@ class MenuType extends Model
         parent::boot();
 
         static::deleting(function ($menuType) {
-            $menuType->menu->each->update(['menu_type_id' => 0]);
+            $menuType->menu->each->update(['menu_type_id' => 1]);
         });
     }
 

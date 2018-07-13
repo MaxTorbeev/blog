@@ -3,6 +3,7 @@
 namespace Tests\Feature\Content;
 
 use App\User;
+use MaxTor\Content\Models\Category;
 use MaxTor\Content\Models\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -36,13 +37,22 @@ class CreatePostTest extends TestCase
      *
      * @test
      */
-    function user_access_create_post_form_via_root_role()
+    function an_authenticated_user_can_create_new_post()
     {
         $this->withOutExceptionHandling();
 
         $this->signIn(create(User::class), 'root', ['access_dashboard', 'create_post']);
 
+        $post = make(Post::class);
+
         $this->get('/admin/posts/create')->assertStatus(200);
+
+        $response = $this->post('/admin/posts', $post->toArray());
+
+        $this->get($response->headers->get('Location'))
+            ->assertSee($post->name)
+            ->assertSee($post->slug);
+
     }
 
 }

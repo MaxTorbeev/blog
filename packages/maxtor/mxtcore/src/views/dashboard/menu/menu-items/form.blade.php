@@ -1,7 +1,7 @@
 <div class="form-group row">
-    {!! Form::label('title', 'Заголовок:', ['class' => 'col col-md-2 col-form-label']) !!}
+    {!! Form::label('name', 'Заголовок:', ['class' => 'col col-md-2 col-form-label']) !!}
     <div class="col col-xs-10">
-        {!! Form::text('title', $menu->title, ['class'=>'form-control']) !!}
+        {!! Form::text('name', $menu->name, ['class'=>'form-control']) !!}
     </div>
 </div>
 
@@ -47,7 +47,7 @@
             <option value="0">Не выбрано</option>
             @foreach ($parentMenuItem as $item)
                 <option value="{{ $item->id }}" @if($menu->parent_id === $item->id) selected @endif>
-                    {{ $item->title }}
+                    {{ $item->name }}
                 </option>
             @endforeach
         </select>

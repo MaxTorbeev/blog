@@ -23,8 +23,8 @@
         <tbody>
         @foreach($posts as $post)
             <tr>
-                <td><a href="{{ route('admin.posts.index')  }}">{{ $post->title }}</a></td>
-                <td>{{ $post->category->title }}</td>
+                <td><a href="{{ route('admin.posts.index')  }}">{{ $post->slug }}</a></td>
+                <td>{{ $post->category->name }}</td>
                 <td>{{ $post->author->name }}</td>
                 <td>{{ $post->hits }}</td>
                 <th scope="row">{{ $post->id }}</th>

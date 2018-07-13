@@ -7,6 +7,7 @@ Route::group([
 ], function() {
     Route::resource('posts', 'PostsController', ['as' => 'admin']);
     Route::resource('categories', 'CategoriesController', ['as' => 'admin']);
+    Route::resource('tags', 'TagsController', ['as' => 'admin']);
 });
 
 /**
@@ -34,5 +35,5 @@ Breadcrumbs::for('admin.content.posts.create', function ($trail) {
 // Admin > Content > Categories
 Breadcrumbs::for('admin.content.categories', function ($trail) {
     $trail->parent('admin.content');
-    $trail->push('Контент менеджер', route('admin.posts.index'));
+    $trail->push('Менеджер категорий', route('admin.categories.index'));
 });

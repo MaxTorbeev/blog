@@ -7,10 +7,10 @@
                 @if(\Route::currentRouteName() === $item->route_name) active @endif
             "
         >
-            @if(count($item->parent)) - @endif {{ $item->title }}
+            @if(count($item->parent)) - @endif {{ $item->name }}
         </a>
     @else
-        {{ $item->title }}
+        {{ $item->name }}
     @endif
 
     @if (count($item->children) > 0)

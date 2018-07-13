@@ -14,8 +14,9 @@ use MaxTor\Content\Models\Photo;
 use MaxTor\Content\Models\Post;
 use MaxTor\Content\Models\Tag;
 use MaxTor\Content\Requests\PostRequest;
+use MaxTor\MXTCore\Controllers\DashboardController;
 
-class PostsController extends Controller
+class PostsController extends DashboardController
 {
     public function __construct()
     {
@@ -24,12 +25,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        return view('content::dashboard.posts.index', [
-            'posts' => Post::all(),
-            'categories' => (new Category())::pluck('title', 'id'),
-            'tags' => Tag::pluck('name', 'id'),
-            'photos' => (new Post)->photos->pluck('original_name', 'id')
-        ]);
+        return view('content::dashboard.posts.index', ['posts' => Post::all()]);
     }
 
     /**
@@ -43,8 +39,45 @@ class PostsController extends Controller
         $this->authorize('create_post', Post::class);
 
         return view('content::dashboard.posts.create', [
-            'categories' => (new Category())::pluck('title', 'id'),
-            'tags' => Tag::pluck('name', 'id'),
+            'posts' => Post::all(),
+            'categories' => $this->getList(Category::all(), true),
+            'tags' => $this->getList(Tag::all(), null),
+            'photos' => (new Post)->photos->pluck('original_name', 'id')
+        ]);
+    }
+
+    public function store(PostRequest $request)
+    {
+        $this->authorize('create_post', Post::class);
+
+        $post = Post::create($request->all());
+
+        return redirect(route('admin.posts.edit', ['id' => $post->id]))
+            ->with('flash', 'Пост создан успешно');
+    }
+
+    public function edit(Post $post)
+    {
+        $this->authorize('create_post', Post::class);
+
+        return view('content::dashboard.posts.edit', [
+            'post' => $post,
+            'categories' => $this->getList(Category::all(), true),
+            'tags' => $this->getList(Tag::all(), null),
+            'photos' => (new Post)->photos->pluck('original_name', 'id')
+        ]);
+    }
+
+    public function update(Post $post, PostRequest $request)
+    {
+        $this->authorize('create_post', Post::class);
+
+        $post->update($request->all());
+
+        return view('content::dashboard.posts.edit', [
+            'post' => $post,
+            'categories' => $this->getList(Category::all(), true),
+            'tags' => $this->getList(Tag::all(), null),
             'photos' => (new Post)->photos->pluck('original_name', 'id')
         ]);
     }

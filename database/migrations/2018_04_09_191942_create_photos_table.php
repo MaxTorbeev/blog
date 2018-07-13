@@ -15,14 +15,17 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('filename');
             $table->unsignedInteger('subject_id');
             $table->string('subject_type', 50);
             $table->string('type', 50);
-            $table->string('filename');
             $table->string('path');
             $table->string('thumbnail_filename');
             $table->string('original_name');
             $table->text('description');
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
 
             $table->timestamps();
         });

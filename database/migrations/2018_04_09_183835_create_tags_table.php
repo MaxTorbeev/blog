@@ -18,7 +18,9 @@ class CreateTagsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->unsignedInteger('user_id');
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
 
             $table->string('metakey')->nullable();
             $table->string('metadesc')->nullable();

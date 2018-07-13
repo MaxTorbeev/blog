@@ -14,13 +14,15 @@ class MenuTableSeeder extends Seeder
         DB::table('menu_types')->insert([
                 [
                     'slug' => 'no-type',
-                    'title' => 'Без типа меню',
-                    'description' => 'Тим меню не выбран'
+                    'name' => 'Без типа меню',
+                    'description' => 'Тим меню не выбран',
+                    'created_user_id' => 1
                 ],
                 [
                     'slug' => 'dashboard',
-                    'title' => 'Меню панели управления',
-                    'description' => 'Главное меню в панели управления'
+                    'name' => 'Меню панели управления',
+                    'description' => 'Главное меню в панели управления',
+                    'created_user_id' => 1
                 ]
             ]
         );
@@ -28,27 +30,31 @@ class MenuTableSeeder extends Seeder
         DB::table('menu')->insert([
                 [
                     'menu_type_id' => 2,
-                    'title' => 'Менеджер меню',
+                    'name' => 'Менеджер меню',
                     'route_name' => 'admin.menu.index',
-                    'parent_id' => 0
+                    'parent_id' => null,
+                    'created_user_id' => 1
                 ],
                 [
                     'menu_type_id' => 2,
-                    'title' => 'Менеджер пунктов меню',
+                    'name' => 'Менеджер пунктов меню',
                     'route_name' => 'admin.menu.index',
-                    'parent_id' => 1
+                    'parent_id' => 1,
+                    'created_user_id' => 1
                 ],
                 [
                     'menu_type_id' => 2,
-                    'title' => 'Менеджер типов меню',
-                    'route_name' => 'admin.menu.index',
-                    'parent_id' => 1
+                    'name' => 'Менеджер типов меню',
+                    'route_name' => 'admin.menu-types.index',
+                    'parent_id' => 1,
+                    'created_user_id' => 1
                 ],
                 [
                     'menu_type_id' => 2,
-                    'title' => 'Менеджер контента',
+                    'name' => 'Менеджер контента',
                     'route_name' => 'admin.posts.index',
-                    'parent_id' => 0
+                    'parent_id' => null,
+                    'created_user_id' => 1
                 ]
             ]
         );

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use MaxTor\Content\Models\Post;
 use MaxTor\MXTCore\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,16 +41,17 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('MaxTor\Blog\Models\Post', 'created_user_id');
+        return $this->hasMany(Post::class, 'created_user_id');
     }
 
     /**
-     * A user can have many categories
+     * A user can have many categories.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function categories()
     {
-        return $this->hasMany('MaxTor\Blog\Models\Category', 'created_user_id');
+        return $this->hasMany(Post::class, 'created_user_id');
     }
 
     /**
@@ -67,7 +69,7 @@ class User extends Authenticatable
      */
     public function tags()
     {
-        return $this->hasMany('MaxTor\Blog\Models\Tag', 'user_id');
+        return $this->hasMany(Tag::class, 'user_id');
     }
 
 }

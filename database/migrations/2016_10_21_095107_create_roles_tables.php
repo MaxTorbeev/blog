@@ -17,6 +17,10 @@ class CreateRolesTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('label')->nullable();
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
+
             $table->timestamps();
         });
 
@@ -24,6 +28,10 @@ class CreateRolesTables extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('label')->nullable();
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
+
             $table->timestamps();
         });
 

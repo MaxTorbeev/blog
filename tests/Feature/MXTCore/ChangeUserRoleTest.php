@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Content;
+namespace Tests\Feature\MXTCore;
 
 use App\User;
 use MaxTor\MXTCore\Models\Permission;

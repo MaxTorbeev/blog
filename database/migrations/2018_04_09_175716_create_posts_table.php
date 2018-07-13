@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('name');
             $table->string('slug');
             $table->text('preview_photo_id')->nullable();
 
@@ -24,10 +24,10 @@ class CreatePostsTable extends Migration
 
             $table->text('attribs')->nullable();
 
+            $table->unsignedInteger('category_id')->nullable()->default(null);
+
             $table->boolean('published')->default(1);
             $table->integer('parent_id')->default(1);
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
 
             $table->integer('priority')->default(500);
 
@@ -37,6 +37,9 @@ class CreatePostsTable extends Migration
 
             $table->integer('hits')->default(0);
             $table->timestamp('published_at')->nullable();
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
 
             $table->timestamps();
         });

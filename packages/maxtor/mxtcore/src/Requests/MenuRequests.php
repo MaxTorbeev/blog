@@ -24,9 +24,8 @@ class MenuRequests extends FormRequest
     public function rules()
     {
         return [
-            'title'             => 'required',
-            'published'         => 'required|integer',
-//            'menu_type_id'      => 'integer',
+            'name'             => 'required',
+            'published'        => 'integer',
         ];
     }
 
@@ -38,7 +37,7 @@ class MenuRequests extends FormRequest
     public function messages()
     {
         return [
-            'title.required'            => 'Menu title is required',
+            'name.required'            => 'Menu name is required',
         ];
     }
 }

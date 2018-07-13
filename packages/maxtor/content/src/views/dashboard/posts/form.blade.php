@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col-md-8">
-        <div class="form-group  {{ $errors->has('title') ? 'has-danger' : '' }}">
-            {!! Form::label('title', 'Title:') !!}
-            {!! Form::text('title', null, ['class'=>'form-control']) !!}
-            @if ($errors->has('title'))
-                <small class="form-control-feedback">{{ $errors->first('title') }}</small>
+        <div class="form-group  {{ $errors->has('name') ? 'has-danger' : '' }}">
+            {!! Form::label('name', 'Название:') !!}
+            {!! Form::text('name', null, ['class'=>'form-control']) !!}
+            @if ($errors->has('name'))
+                <small class="form-control-feedback">{{ $errors->first('name') }}</small>
             @endif
         </div>
     </div>
     <div class="col-md-4">
-        <div class="form-group  {{ $errors->has('alias') ? 'has-danger' : '' }}">
-            {!! Form::label('alias', 'Ссылка:') !!}
-            {!! Form::text('alias', null, ['class'=>'form-control']) !!}
-            @if ($errors->has('alias'))
-                <small class="form-control-feedback">{{ $errors->first('alias') }}</small>
+        <div class="form-group  {{ $errors->has('slug') ? 'has-danger' : '' }}">
+            {!! Form::label('slug', 'Ссылка:') !!}
+            {!! Form::text('slug', null, ['class'=>'form-control']) !!}
+            @if ($errors->has('slug'))
+                <small class="form-control-feedback">{{ $errors->first('slug') }}</small>
             @endif
         </div>
     </div>
@@ -57,8 +57,8 @@
         </div>
 
         <div class="form-group  {{ $errors->has('enabled') ? 'has-danger' : '' }}">
-            {!! Form::label('cat_id', 'Категории:') !!}
-            {!! Form::select('cat_id', $categories, null, ['class'=>'form-control select2']) !!}
+            {!! Form::label('category_id', 'Категории:') !!}
+            {!! Form::select('category_id', $categories, null, ['class'=>'form-control select2']) !!}
         </div>
 
         <div class="form-group">
@@ -81,7 +81,7 @@
 <div class="panel form_buttonGroups form_buttonGroups-fixed">
     <div class="form-group">
         {!! Form::submit( $submitButtonText, ['class' => 'btn btn-primary']) !!}
-        <a href="{{ url()->previous() }}" class="btn btn btn-secondary">Назад</a>
+        <a href="{{ route('admin.posts.index') }}" class="btn btn btn-secondary">Отменить</a>
     </div>
 </div>
 

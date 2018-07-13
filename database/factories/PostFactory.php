@@ -1,7 +1,7 @@
 <?php
 
 use App\User;
-use \MaxTor\Blog\Models\Post;
+use MaxTor\Content\Models\Post;
 use Faker\Generator as Faker;
 
 /*
@@ -17,6 +17,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-
+        'name' => $faker->name,
+        'full_text' => $faker->paragraph,
+        'created_user_id' => function(){
+            return factory(User::class)->create()->id;
+        }
     ];
 });

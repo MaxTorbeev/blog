@@ -64,7 +64,8 @@ class Menu extends Model
         $routesList = null;
 
         foreach (app()->routes->getRoutes() as $routes) {
-            $middleware = is_array($routes->getAction()['middleware']) ? $routes->getAction()['middleware'][0] : $routes->getAction()['middleware'];
+            $middleware = is_array($routes->getAction()['middleware']) ? $routes->getAction()['middleware'][0]
+                                                                       : $routes->getAction()['middleware'];
 
             if ($selectedMiddleware === $middleware) {
                 $routesList[$routes->getName()] = [

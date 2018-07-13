@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use MaxTor\Content\Traits\RecordsPhoto;
+use MaxTor\MXTCore\Traits\Cacheable;
+use MaxTor\MXTCore\Traits\SetCreators;
 
 class Post extends Model
 {
-    use RecordsPhoto, Sluggable;
+    use RecordsPhoto, Sluggable, Cacheable, SetCreators;
 
     protected $guarded = [];
 
@@ -33,7 +35,7 @@ class Post extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }
@@ -77,20 +79,6 @@ class Post extends Model
         return Carbon::parse($date)->format('Y-m-d');
     }
 
-    /**
-     * Scope query to those located at a given alias
-     *
-     * @param $query
-     * @param $alias
-     * @return mixed
-     */
-    public function scopeLocatedAt($query, $alias)
-    {
-        $alias = rusToLat(str_replace('-', ' ', $alias));
-
-        return $query->where(compact('alias'));
-    }
-
     public function addPhoto(Photo $photo)
     {
         return $this->photos()->save($photo);
@@ -98,7 +86,7 @@ class Post extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class, 'id', 'cat_id');
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
     /**

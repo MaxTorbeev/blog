@@ -38,8 +38,8 @@ class TagRequest extends FormRequest
     {
         return [
             'name.required'         => 'Тег необходимо назвать',
-            'alias.required'        => 'Нужно указать алиас',
-            'alias.unique'          => 'Такой алиас уже существут',
+            'slug.required'         => 'Нужно указать алиас',
+            'slug.unique'           => 'Такой алиас уже существут',
         ];
     }
 }

@@ -15,12 +15,12 @@
             <table class="table table-responsive-sm">
                 <tbody>
 
-                @foreach($menuTypes as $item):
+                @foreach($menuTypes as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>
                         <a href="{{ route('admin.menu-types.edit', ['id' => $item->id]) }}">
-                            {{ $item->title }}
+                            {{ $item->name }}
                         </a>
                     </td>
                     <td>

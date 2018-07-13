@@ -5,7 +5,7 @@
 @section('content')
     <h1>Новая статья</h1>
 
-    {!! Form::model($post = new \MaxTor\Content\Models\Post(), ['url' => 'posts', 'files' => true]) !!}
+    {!! Form::model($post = new \MaxTor\Content\Models\Post(), ['url' => route('admin.posts.store'), 'files' => true]) !!}
         @include ('content::dashboard.posts.form', ['submitButtonText' => 'Добавить новый материал' ])
     {!! Form::close() !!}
 @stop

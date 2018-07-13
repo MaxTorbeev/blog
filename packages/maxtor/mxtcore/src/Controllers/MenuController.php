@@ -85,7 +85,7 @@ class MenuController extends Controller
 
     protected function getList($model, $pushNull = false)
     {
-        $model = $model->pluck('title', 'id');
+        $model = $model->pluck('name', 'id');
 
         if(!$pushNull){
             return $model;

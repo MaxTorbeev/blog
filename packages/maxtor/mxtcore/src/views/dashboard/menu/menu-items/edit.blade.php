@@ -6,7 +6,7 @@
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                Редактрирование пункта меню «{{ $menu->title }}»
+                Редактрирование пункта меню «{{ $menu->name }}»
             </div>
             <div class="card-body">
                 {!! Form::model($menu, ['url' => route('admin.menu.update', [ $menu->id ])]) !!}

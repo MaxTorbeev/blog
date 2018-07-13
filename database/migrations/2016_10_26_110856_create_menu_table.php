@@ -15,10 +15,10 @@ class CreateMenuTable extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->unsignedInteger('menu_type_id')->unsigned()->nullable()->default(null);
             $table->integer('parent_id')->nullable()->default(null);
             $table->integer('level')->default(0);
-            $table->string('title');
             $table->string('url')->nullable()->default(null)->comment = "Url to";
             $table->string('route_name')->nullable()->default(null)->comment = "Laravel named routes";
 
@@ -27,16 +27,23 @@ class CreateMenuTable extends Migration
 
             $table->boolean('published')->default(1);
             $table->string('image')->nullable();
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
+
             $table->timestamps();
         });
 
         Schema::create('menu_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('slug', 100)->unique();
-            $table->string('title');
             $table->string('description')->nullable();
 
             $table->text('attribs')->nullable();
+
+            $table->unsignedInteger('created_user_id');
+            $table->unsignedInteger('modify_user_id')->nullable();
 
             $table->timestamps();
         });

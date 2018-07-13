@@ -16,17 +16,17 @@
             <table class="table table-responsive-sm">
                 <tbody>
 
-                @foreach($menu as $item):
+                @foreach($menu as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>
                         <a href="{{ route('admin.menu.edit', ['id' => $item->id]) }}">
-                            {{ $item->title }}
+                            {{ $item->name }}
                         </a>
                     </td>
                     <td>
                         <a href="{{ route('admin.menu-types.edit', ['menu_type' => $item->menuType->id]) }}">
-                            {{ $item->menuType->title }}
+                            {{ $item->menuType->name }}
                         </a>
                     </td>
                     <td><a href="{{ $item->url_path }}" target="_blank">{{ $item->url_path }}</a></td>

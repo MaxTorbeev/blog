@@ -6,7 +6,7 @@
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                Редактирование типа меню «{{ $menuType->title }} <small>[ {{ $menuType->slug }}]</small>»
+                Редактирование типа меню «{{ $menuType->name }} <small>[ {{ $menuType->name }}]</small>»
             </div>
             <div class="card-body">
                 {!! Form::model($menuType, ['url' => route('admin.menu-types.update', ['menu_type' => $menuType->id])]) !!}

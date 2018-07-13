@@ -54,7 +54,7 @@ Breadcrumbs::for('admin.menu', function ($trail) {
 // Admin > Menu > Edit
 Breadcrumbs::for('admin.menu.edit', function ($trail, $menu) {
     $trail->parent('admin.menu');
-    $trail->push($menu->title, route('admin.menu.index', ['id' => $menu->id]));
+    $trail->push($menu->name, route('admin.menu.index', ['id' => $menu->id]));
 });
 
 // Admin > Menu types
@@ -66,5 +66,5 @@ Breadcrumbs::for('admin.menu-types', function ($trail) {
 // Admin > Menu types > Edit
 Breadcrumbs::for('admin.menu-types.edit', function ($trail, $menuType) {
     $trail->parent('admin.menu-types');
-    $trail->push($menuType->title, route('admin.menu-types.edit', ['id' => $menuType->id]));
+    $trail->push($menuType->name, route('admin.menu-types.edit', ['id' => $menuType->id]));
 });

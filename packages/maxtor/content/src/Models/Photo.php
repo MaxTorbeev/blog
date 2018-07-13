@@ -3,14 +3,15 @@
 namespace MaxTor\Content\Models;
 
 use Image;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use MaxTor\Content\Models\Post;
 use MaxTor\Content\Traits\RecordsPhoto;
+use MaxTor\MXTCore\Traits\Cacheable;
 
 class Photo extends Model
 {
-
     protected $guarded = [];
 
     protected $baseDir = 'images/posts';
