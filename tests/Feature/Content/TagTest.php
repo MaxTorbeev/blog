@@ -7,7 +7,7 @@ use MaxTor\Content\Models\Tag;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CreateTagTest extends TestCase
+class TagTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -37,8 +37,20 @@ class CreateTagTest extends TestCase
      */
     function an_authenticated_user_can_create_new_tag()
     {
+        $this->withOutExceptionHandling();
+
         $this->signIn(create(User::class), 'root', ['access_dashboard', 'create_tag']);
 
-        $tag = create(Tag::class);
+        $tag = make(Tag::class);
+
+        $this->get('/admin/tags/create')->assertStatus(200);
+
+        $response = $this->post('/admin/tags', $tag->toArray());
+
+        $this->get($response->headers->get('Location'))->assertStatus(200);
+
+        $this->get($response->headers->get('Location'))
+            ->assertSee($tag->name)
+            ->assertSee($tag->slug);
     }
 }

@@ -3,9 +3,12 @@
 namespace MaxTor\MXTCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use MaxTor\MXTCore\Traits\SetCreators;
 
 class Role extends Model
 {
+    use SetCreators;
+
     /**
      * @use $role->permissions()
      *

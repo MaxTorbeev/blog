@@ -32,6 +32,12 @@ Breadcrumbs::for('admin.content.posts.create', function ($trail) {
     $trail->push('Новая статья', route('admin.posts.create'));
 });
 
+// Admin > Content > Posts > Edit
+Breadcrumbs::for('admin.content.posts.edit', function ($trail, $post) {
+    $trail->parent('admin.content.posts');
+    $trail->push($post->name, route('admin.posts.edit', ['id' => $post->id]));
+});
+
 // Admin > Content > Categories
 Breadcrumbs::for('admin.content.categories', function ($trail) {
     $trail->parent('admin.content');

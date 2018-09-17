@@ -5,9 +5,13 @@ namespace MaxTor\MXTCore\Models;
 use Illuminate\Database\Eloquent\Model;
 use MaxTor\MXTCore\Exceptions\PermissionDoesNotExist;
 use \MaxTor\MXTCore\Models\Role;
+use MaxTor\MXTCore\Traits\SetCreators;
 
 class Permission extends Model
 {
+    use SetCreators;
+
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);

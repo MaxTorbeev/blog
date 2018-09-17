@@ -24,8 +24,8 @@ class CreatePhotosTable extends Migration
             $table->string('original_name');
             $table->text('description');
 
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
+            $table->unsignedInteger('created_by_user_id')->nullable();
+            $table->unsignedInteger('modified_by_user_id')->nullable();
 
             $table->timestamps();
         });

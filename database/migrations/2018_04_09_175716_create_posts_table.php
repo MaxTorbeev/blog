@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->index();
             $table->text('preview_photo_id')->nullable();
 
             $table->text('intro_text')->nullable();
@@ -38,8 +38,8 @@ class CreatePostsTable extends Migration
             $table->integer('hits')->default(0);
             $table->timestamp('published_at')->nullable();
 
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
+            $table->unsignedInteger('created_by_user_id')->nullable();
+            $table->unsignedInteger('modified_by_user_id')->nullable();
 
             $table->timestamps();
         });

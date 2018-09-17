@@ -12,7 +12,7 @@ Route::group([
 
     Route::get('/', [
         'as'    => 'dashboard',
-        'uses'  => 'DashboardController@index'
+        'uses'  => 'DashboardController@startpage'
     ]);
 //
 //    Route::get('/editor/upload-image', [

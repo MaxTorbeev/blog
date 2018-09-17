@@ -24,7 +24,7 @@ class Category extends Model
         parent::boot();
 
         static::creating(function ($category) {
-            $category->created_user_id = auth()->user()->id;
+            $category->created_by_user_id = auth()->user()->id;
         });
     }
 
@@ -76,6 +76,6 @@ class Category extends Model
      */
     public function author()
     {
-        return $this->belongsTo(User::class, 'created_user_id');
+        return $this->belongsTo(User::class, 'created_by_user_id');
     }
 }

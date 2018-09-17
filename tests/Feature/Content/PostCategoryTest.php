@@ -8,7 +8,7 @@ use MaxTor\Content\Models\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CreateCategoryPostTest extends TestCase
+class PostCategoryTest extends TestCase
 {
     use RefreshDatabase;
 

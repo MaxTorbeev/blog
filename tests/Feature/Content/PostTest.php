@@ -8,7 +8,7 @@ use MaxTor\Content\Models\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CreatePostTest extends TestCase
+class PostTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -49,10 +49,11 @@ class CreatePostTest extends TestCase
 
         $response = $this->post('/admin/posts', $post->toArray());
 
+        $this->get($response->headers->get('Location'))->assertStatus(200);
+
         $this->get($response->headers->get('Location'))
             ->assertSee($post->name)
             ->assertSee($post->slug);
-
     }
 
 }

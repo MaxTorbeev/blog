@@ -4,21 +4,24 @@ namespace MaxTor\Content\Models;
 
 use App\User;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use MaxTor\MXTCore\Traits\SetCreators;
 
 class Tag extends Model
 {
-    /**
-     * Fillable fileds for a tag.
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'user_id',
-    ];
+    use Sluggable, SetCreators;
 
+    protected $guarded = ['id'];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function scopeCreated($query)
     {
@@ -34,7 +37,7 @@ class Tag extends Model
      */
     public function author()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'created_by_user_id');
     }
 
     /**

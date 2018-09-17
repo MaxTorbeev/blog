@@ -16,6 +16,11 @@ class DashboardController extends Controller
         $this->middleware('check.permission:access_dashboard');
     }
 
+    public function startpage()
+    {
+        return view('mxtcore::dashboard.index');
+    }
+
     /**
      * get Image form dialog for TinyMCE editor
      *

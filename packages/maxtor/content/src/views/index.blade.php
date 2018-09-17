@@ -6,7 +6,7 @@
             <div class="blog_listItem">
 
                 @if($post->previewImage)
-                    <a href="{{ route('post.show',  ['alias' => $post->alias]) }}">
+                    <a href="{{ route('post.show',  ['slug' => $post->slug]) }}">
                         <img src="/{{ $post->previewImage->getThumbnail() }}"  class="blog_listItem_img img-fluid" alt="{{ $post->title }}">
                     </a>
                 @endif

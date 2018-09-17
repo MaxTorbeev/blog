@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function owns($related)
     {
-        return $this->id == $related->created_user_id;
+        return $this->id == $related->created_by_user_id;
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany(Post::class, 'created_user_id');
+        return $this->hasMany(Post::class, 'created_by_user_id');
     }
 
     /**
@@ -51,7 +51,7 @@ class User extends Authenticatable
      */
     public function categories()
     {
-        return $this->hasMany(Post::class, 'created_user_id');
+        return $this->hasMany(Post::class, 'created_by_user_id');
     }
 
     /**
@@ -60,7 +60,7 @@ class User extends Authenticatable
      */
     public function extensions()
     {
-        return $this->hasMany('MaxTor\MXTCore\Models\Extension', 'created_user_id');
+        return $this->hasMany('MaxTor\MXTCore\Models\Extension', 'created_by_user_id');
     }
 
     /**
@@ -69,7 +69,7 @@ class User extends Authenticatable
      */
     public function tags()
     {
-        return $this->hasMany(Tag::class, 'user_id');
+        return $this->hasMany(Tag::class, 'created_by_user_id');
     }
 
 }

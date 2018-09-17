@@ -19,8 +19,8 @@ class CreateExtensionsTable extends Migration
             $table->string('controller_path')->unique();
             $table->boolean('enabled')->default(0);
 
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
+            $table->unsignedInteger('created_by_user_id')->nullable();
+            $table->unsignedInteger('modified_by_user_id')->nullable();
 
             $table->timestamps();
         });

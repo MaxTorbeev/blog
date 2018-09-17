@@ -28,8 +28,8 @@ class CreateMenuTable extends Migration
             $table->boolean('published')->default(1);
             $table->string('image')->nullable();
 
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
+            $table->unsignedInteger('created_by_user_id');
+            $table->unsignedInteger('modified_by_user_id')->nullable();
 
             $table->timestamps();
         });
@@ -42,8 +42,8 @@ class CreateMenuTable extends Migration
 
             $table->text('attribs')->nullable();
 
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
+            $table->unsignedInteger('created_by_user_id')->nullable();
+            $table->unsignedInteger('modified_by_user_id')->nullable();
 
             $table->timestamps();
         });

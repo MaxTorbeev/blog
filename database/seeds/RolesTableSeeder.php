@@ -15,17 +15,17 @@ class RolesTableSeeder extends Seeder
             [
                 'name' => 'root',
                 'label' => 'Супер пользователь',
-                'created_user_id' => 1
+                'created_by_user_id' => 1
             ],
             [
                 'name' => 'editor',
                 'label' => 'Редактор',
-                'created_user_id' => 1
+                'created_by_user_id' => 1
             ],
             [
                 'name' => 'register',
                 'label' => 'Зарегистрированный пользователь',
-                'created_user_id' => 1
+                'created_by_user_id' => 1
             ],
         ]);
     }

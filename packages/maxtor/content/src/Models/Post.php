@@ -17,7 +17,7 @@ class Post extends Model
 {
     use RecordsPhoto, Sluggable, Cacheable, SetCreators;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     /**
      * Additional fields to treat as Carbon instances
@@ -26,11 +26,6 @@ class Post extends Model
      */
     protected $dates = ['published_at'];
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
     public function sluggable()
     {
         return [
@@ -49,21 +44,17 @@ class Post extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('published_at', function (Builder $builder) {
-
-            if( Auth::user() ){
-                $builder->where('published_at', '<=', Carbon::now());
-            } else {
-                $builder->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
-            }
-
-        });
+//        static::addGlobalScope('published_at', function (Builder $builder) {
+//
+//            if( Auth::user() ){
+//                $builder->where('published_at', '<=', Carbon::now());
+//            } else {
+//                $builder->where('published_at', '<=', Carbon::now())->where('published', '=', 1);
+//            }
+//
+//        });
     }
 
-    public function setSlugAttribute($alias)
-    {
-        $this->attributes['slug'] = str_replace(' ', '-', $alias);
-    }
 
     /** Set the published_at attribite
      *
@@ -127,6 +118,6 @@ class Post extends Model
      */
     public function author()
     {
-        return $this->belongsTo(User::class, 'created_user_id');
+        return $this->belongsTo(User::class, 'created_by_user_id');
     }
 }

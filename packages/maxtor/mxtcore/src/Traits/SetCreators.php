@@ -14,11 +14,15 @@ trait SetCreators
     protected static function bootSetCreators()
     {
         static::creating(function ($model) {
-            $model->created_user_id = auth()->user()->id;
+            if(property_exists($model, 'created_by_user_id')){
+                $model->created_by_user_id = auth()->user()->id;
+            }
         });
 
         static::updating(function ($model) {
-            $model->modify_user_id = auth()->user()->id;
+            if(property_exists($model, 'modified_by_user_id')){
+                $model->modify_user_id = auth()->user()->id;
+            }
         });
     }
 }

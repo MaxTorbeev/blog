@@ -21,7 +21,7 @@ $factory->define(MenuType::class, function (Faker $faker) {
         'name' => $name = $faker->name,
         'slug' => str_slug($name),
         'description' => $faker->paragraph,
-        'created_user_id' => function(){
+        'created_by_user_id' => function(){
             return factory(User::class)->create()->id;
         }
     ];

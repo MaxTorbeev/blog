@@ -1,7 +1,7 @@
 import AbstractNativeComponent from 'Core/NativeComponent';
 import Asset from 'Core/Asset';
 
-class Editor extends AbstractNativeComponent {
+export default class Editor extends AbstractNativeComponent {
 
     init() {
         if (window.tinymce)
@@ -45,5 +45,3 @@ class Editor extends AbstractNativeComponent {
         });
     }
 }
-
-export default Editor;

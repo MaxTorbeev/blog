@@ -3,9 +3,12 @@
 namespace MaxTor\MXTCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use MaxTor\MXTCore\Traits\SetCreators;
 
 class Menu extends Model
 {
+    use SetCreators;
+
     protected $table = 'menu';
 
     protected $guarded = [];
@@ -85,16 +88,16 @@ class Menu extends Model
      */
     public function menuType()
     {
-        return $this->belongsTo('MaxTor\MXTCore\Models\MenuType', 'menu_type_id');
+        return $this->belongsTo(MenuType::class, 'menu_type_id');
     }
 
     public function parent()
     {
-        return $this->belongsTo('MaxTor\MXTCore\Models\Menu', 'parent_id');
+        return $this->belongsTo(Menu::class, 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany('MaxTor\MXTCore\Models\Menu', 'parent_id');
+        return $this->hasMany(Menu::class, 'parent_id');
     }
 }

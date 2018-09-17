@@ -22,5 +22,8 @@ $factory->define(Menu::class, function (Faker $faker) {
         'menu_type_id' => function () {
             return factory(MenuType::class)->create()->id;
         },
+        'created_by_user_id' => function(){
+            return factory(User::class)->create()->id;
+        }
     ];
 });

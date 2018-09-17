@@ -15,7 +15,7 @@ class CategoriesSeeder extends Seeder
                 [
                     'slug' => 'uncategorised',
                     'name' => 'Категория не указана',
-                    'created_user_id' => 1
+                    'created_by_user_id' => 1
                 ]
             ]
         );

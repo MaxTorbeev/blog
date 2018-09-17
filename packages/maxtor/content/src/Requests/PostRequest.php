@@ -25,6 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'name'      => 'required|max:255',
+            'full_text' => 'required',
 //            'slug'      => 'required|unique:posts|max:255',
             'metadesc'  => 'max:255',
             'metakey'   => 'max:255',

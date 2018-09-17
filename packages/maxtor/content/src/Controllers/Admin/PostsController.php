@@ -39,7 +39,6 @@ class PostsController extends DashboardController
         $this->authorize('create_post', Post::class);
 
         return view('content::dashboard.posts.create', [
-            'posts' => Post::all(),
             'categories' => $this->getList(Category::all(), true),
             'tags' => $this->getList(Tag::all(), null),
             'photos' => (new Post)->photos->pluck('original_name', 'id')

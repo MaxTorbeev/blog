@@ -16,7 +16,7 @@ class PostsCategories extends Migration
         Schema::create('posts_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug', 100);
+            $table->string('slug', 100)->index();
             $table->unsignedInteger('parent_id')->nullable()->default(null);
 
 
@@ -33,8 +33,8 @@ class PostsCategories extends Migration
 
             $table->boolean('published')->default(1);
 
-            $table->unsignedInteger('created_user_id');
-            $table->unsignedInteger('modify_user_id')->nullable();
+            $table->unsignedInteger('created_by_user_id')->nullable();
+            $table->unsignedInteger('modified_by_user_id')->nullable();
 
             $table->integer('hits')->default(0);
             $table->timestamp('published_at')->nullable();
